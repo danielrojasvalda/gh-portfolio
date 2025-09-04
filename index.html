@@ -105,7 +105,7 @@
           <p>Currently enrolled in a comprehensive Software Developer Bootcamp, further enriching my skill set and knowledge in the field. My commitment to software development and continuous learning remains unwavering.</p>
           <p>As a software developer, I have a proven track record of delivering quality results to clients. I excel in full-stack development, leveraging my skills in JavaScript, CSS, PHP, and various programming languages to create dynamic and engaging web applications. Additionally, I have experience troubleshooting front-end issues and driving innovation.</p>
           <div class="row mb-3">
-            <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">Freddy Daniel Rojas</span></h6></div>
+            <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">Freddy Rojas</span></h6></div>
             <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">12 September</span></h6></div>
             <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary">+1 321 945 7729</span></h6></div>
             <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">danielrojasvalda@gmail.com</span></h6></div>
@@ -383,7 +383,7 @@
         <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
         <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
       </div>
-      <p class="m-0">&copy; <a class="text-white font-weight-bold" href="#">danielrojas</a>. All Rights Reserved. Designed by danielrojas</p>
+      <p class="m-0">&copy; <a class="text-white font-weight-bold" href="#">freddyrojas</a>. All Rights Reserved. Designed by freddyrojas</p>
     </div>
   </div>
   <!-- Footer End -->
@@ -440,23 +440,36 @@
     });
   </script>
 
-  <!-- ===================== AI Chat Widget ===================== -->
+  <!-- ===================== AI Chat Widget (Free fallback) ===================== -->
   <style>
-    #ai-btn{position:fixed;right:20px;bottom:20px;padding:12px 16px;border-radius:999px;border:0;box-shadow:0 6px 20px rgba(0,0,0,.15);cursor:pointer;z-index:9999;background:#0078ff;color:#fff;font-weight:600}
-    #ai-box{position:fixed;right:20px;bottom:80px;width:320px;max-height:60vh;display:none;background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.2);overflow:hidden;z-index:9999}
-    #ai-head{padding:12px 14px;font-weight:600;border-bottom:1px solid #eee;background:#0078ff;color:#fff}
+    :root{
+      /* default; will be overwritten to your .text-primary color via JS */
+      --ai-accent:#0078ff; 
+      --ai-contrast:#ffffff;
+    }
+    #ai-btn{
+      position:fixed;right:20px;bottom:20px;padding:12px 16px;border-radius:999px;border:0;
+      box-shadow:0 6px 20px rgba(0,0,0,.15);cursor:pointer;z-index:9999;background:var(--ai-accent);
+      color:var(--ai-contrast);font-weight:600
+    }
+    #ai-box{
+      position:fixed;right:20px;bottom:80px;width:320px;max-height:60vh;display:none;background:#fff;border-radius:16px;
+      box-shadow:0 10px 30px rgba(0,0,0,.2);overflow:hidden;z-index:9999;border:1px solid rgba(0,0,0,.06)
+    }
+    #ai-head{padding:12px 14px;font-weight:600;border-bottom:1px solid #eee;background:var(--ai-accent);color:var(--ai-contrast)}
     #ai-log{padding:12px;height:320px;overflow-y:auto;font-size:14px;line-height:1.4}
     #ai-log .m{margin-bottom:10px}
-    #ai-log .you{text-align:right;color:#0078ff}
+    #ai-log .you{text-align:right;color:var(--ai-accent)}
     #ai-log .bot{text-align:left}
     #ai-form{display:flex;gap:8px;padding:10px;border-top:1px solid #eee}
     #ai-form input{flex:1;padding:10px;border:1px solid #ddd;border-radius:10px}
-    #ai-form button{padding:10px 14px;border:0;border-radius:10px;cursor:pointer;background:#0078ff;color:#fff}
+    #ai-form button{padding:10px 14px;border:0;border-radius:10px;cursor:pointer;background:var(--ai-accent);color:var(--ai-contrast)}
+    #ai-status{font-size:12px;opacity:.75;margin-left:8px}
   </style>
 
   <button id="ai-btn" aria-controls="ai-box" aria-expanded="false">💬 Ask AI</button>
   <div id="ai-box" role="dialog" aria-label="AI Chat">
-    <div id="ai-head">Portfolio AI</div>
+    <div id="ai-head">Portfolio AI <span id="ai-status"></span></div>
     <div id="ai-log" aria-live="polite"></div>
     <form id="ai-form">
       <input id="ai-input" type="text" placeholder="Ask about my skills, projects…" required />
@@ -464,14 +477,33 @@
     </form>
   </div>
 
-  <script>
-    const WORKER_URL = "https://portfolio-ai.danielrojasvalda.workers.dev/chat"; // <-- your Worker
+  <script type="module">
+    // ---- Match colors with your site by reading .text-primary ----
+    (function matchAccent(){
+      const probe = document.createElement('span');
+      probe.className = 'text-primary';
+      probe.style.display = 'none';
+      document.body.appendChild(probe);
+      const c = getComputedStyle(probe).color;
+      if (c) document.documentElement.style.setProperty('--ai-accent', c);
+      probe.remove();
+    })();
 
+    // ---- Config ----
+    const WORKER_URL = "https://portfolio-ai.danielrojasvalda.workers.dev/chat"; // remote (paid) if you ever enable billing
+    const LOCAL_MODEL = "tinyllama-1.1b-chat-v1.0-q4f32_1-MLC"; // ~220MB, free, runs in-browser
+    // const LOCAL_MODEL = "qwen2-0.5b-instruct-q4f16_1-MLC";   // ~400–500MB, better quality
+
+    // ---- Elements ----
     const btn = document.getElementById('ai-btn');
     const box = document.getElementById('ai-box');
     const log = document.getElementById('ai-log');
     const form = document.getElementById('ai-form');
     const input = document.getElementById('ai-input');
+    const statusEl = document.getElementById('ai-status');
+
+    let localEngine = null;
+    let usingLocal = false;
 
     btn.onclick = () => {
       const open = box.style.display === 'block';
@@ -488,24 +520,86 @@
       log.scrollTop = log.scrollHeight;
     }
 
+    function setStatus(txt){
+      statusEl.textContent = txt ? `· ${txt}` : '';
+    }
+
+    // ---- Remote call (Cloudflare Worker) ----
+    async function askRemote(q) {
+      const r = await fetch(WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: q })
+      });
+      const data = await r.json();
+      if (data?.answer) return data.answer;
+      throw new Error(data?.error || "remote-failed");
+    }
+
+    // ---- Free local model (WebLLM) ----
+    async function ensureLocalEngine() {
+      if (!('gpu' in navigator)) throw new Error("no-webgpu");
+      if (localEngine) return localEngine;
+
+      const { CreateMLCEngine } = await import("https://esm.run/@mlc-ai/web-llm");
+      setStatus("downloading model…");
+      localEngine = await CreateMLCEngine(LOCAL_MODEL, {
+        initProgressCallback: (p) => {
+          const msg = p?.text ? `downloading… ${p.text}` :
+                      (typeof p?.progress === "number" ? `downloading… ${Math.round(p.progress*100)}%` : "preparing…");
+          setStatus(`local ${msg}`);
+          if (log.lastChild && log.lastChild.className.includes('bot')) {
+            log.lastChild.textContent = `Loading local AI: ${msg}`;
+          }
+        },
+      });
+      setStatus("local mode");
+      return localEngine;
+    }
+
+    async function askLocal(q) {
+      const engine = await ensureLocalEngine();
+      const res = await engine.chat.completions.create({
+        messages: [
+          { role: "system", content:
+            "You are the assistant for Freddy Rojas's portfolio. Keep answers short; when useful include one anchor link (#about, #skill, #qualification, #portfolio, #contact). Reply in Spanish if the user writes in Spanish; otherwise English."
+          },
+          { role: "user", content: q }
+        ],
+        temperature: 0.3,
+        max_tokens: 300,
+      });
+      return res.choices?.[0]?.message?.content || "No response.";
+    }
+
+    // ---- Submit handler with automatic fallback ----
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const q = input.value.trim();
       if (!q) return;
+
       addMessage(q, 'you');
       input.value = '';
       addMessage('…thinking', 'bot');
+
       try {
-        const r = await fetch(WORKER_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: q })
-        });
-        const data = await r.json();
-        log.lastChild.textContent = data.answer || data.error || 'No response.';
+        const answer = usingLocal ? await askLocal(q) : await askRemote(q);
+        log.lastChild.textContent = answer;
+        setStatus(usingLocal ? "local mode" : "");
       } catch (err) {
-        log.lastChild.textContent = 'Error contacting AI service.';
-        console.error(err);
+        // Remote failed → try free local
+        try {
+          usingLocal = true;
+          const answer = await askLocal(q);
+          log.lastChild.textContent = answer;
+        } catch (e2) {
+          if (e2.message === "no-webgpu") {
+            log.lastChild.textContent = "Free local mode needs a WebGPU browser (Chrome/Edge desktop).";
+          } else {
+            log.lastChild.textContent = "Could not load the local model.";
+            console.error(e2);
+          }
+        }
       }
     });
   </script>
