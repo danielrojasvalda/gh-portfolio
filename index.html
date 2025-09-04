@@ -477,133 +477,133 @@
     </form>
   </div>
 
-  <script type="module">
-    // ---- Match colors with your site by reading .text-primary ----
-    (function matchAccent(){
-      const probe = document.createElement('span');
-      probe.className = 'text-primary';
-      probe.style.display = 'none';
-      document.body.appendChild(probe);
-      const c = getComputedStyle(probe).color;
-      if (c) document.documentElement.style.setProperty('--ai-accent', c);
-      probe.remove();
-    })();
+<script type="module">
+  // ---- Match widget color to your site's accent (.text-primary) ----
+  (function matchAccent(){
+    const probe=document.createElement('span'); probe.className='text-primary'; probe.style.display='none';
+    document.body.appendChild(probe);
+    const c=getComputedStyle(probe).color;
+    if(c) document.documentElement.style.setProperty('--ai-accent', c);
+    probe.remove();
+  })();
 
-    // ---- Config ----
-    const WORKER_URL = "https://portfolio-ai.danielrojasvalda.workers.dev/chat"; // remote (paid) if you ever enable billing
-    const LOCAL_MODEL = "tinyllama-1.1b-chat-v1.0-q4f32_1-MLC"; // ~220MB, free, runs in-browser
-    // const LOCAL_MODEL = "qwen2-0.5b-instruct-q4f16_1-MLC";   // ~400–500MB, better quality
+  // ---- Config ----
+  const WORKER_URL = "https://portfolio-ai.danielrojasvalda.workers.dev/chat"; // paid/remote if you ever enable billing
+  const LOCAL_MODEL = "tinyllama-1.1b-chat-v1.0-q4f32_1-MLC"; // free in-browser model (~220MB)
 
-    // ---- Elements ----
-    const btn = document.getElementById('ai-btn');
-    const box = document.getElementById('ai-box');
-    const log = document.getElementById('ai-log');
-    const form = document.getElementById('ai-form');
-    const input = document.getElementById('ai-input');
-    const statusEl = document.getElementById('ai-status');
+  // ---- Elements ----
+  const btn = document.getElementById('ai-btn');
+  const box = document.getElementById('ai-box');
+  const log = document.getElementById('ai-log');
+  const form = document.getElementById('ai-form');
+  const input = document.getElementById('ai-input');
+  const statusEl = document.getElementById('ai-status');
 
-    let localEngine = null;
-    let usingLocal = false;
+  let localEngine = null;
+  let usingLocal = false;
 
-    btn.onclick = () => {
-      const open = box.style.display === 'block';
-      box.style.display = open ? 'none' : 'block';
-      btn.setAttribute('aria-expanded', String(!open));
-      if (!open) setTimeout(() => input.focus(), 50);
-    };
+  btn.onclick = () => {
+    const open = box.style.display === 'block';
+    box.style.display = open ? 'none' : 'block';
+    btn.setAttribute('aria-expanded', String(!open));
+    if (!open) setTimeout(() => input.focus(), 50);
+  };
 
-    function addMessage(text, who) {
-      const div = document.createElement('div');
-      div.className = `m ${who}`;
-      div.textContent = text;
-      log.appendChild(div);
-      log.scrollTop = log.scrollHeight;
-    }
+  function addMessage(text, who){
+    const div=document.createElement('div');
+    div.className=`m ${who}`;
+    div.textContent=text;
+    log.appendChild(div);
+    log.scrollTop=log.scrollHeight;
+  }
+  function setStatus(t){ statusEl.textContent = t ? `· ${t}` : ''; }
 
-    function setStatus(txt){
-      statusEl.textContent = txt ? `· ${txt}` : '';
-    }
+  // ---------- Remote (Worker/OpenAI) ----------
+  async function askRemote(q){
+    const r = await fetch(WORKER_URL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ message:q })
+    });
+    let data={};
+    try{ data = await r.json(); }catch{}
+    // If Worker reports error OR answer contains offline/quota wording → trigger fallback
+    const offline = /offline|quota|credit/i.test(data?.answer || '') || data?.error;
+    if (offline) throw new Error(data?.error || 'remote-offline');
+    if (data?.answer) return data.answer;
+    throw new Error('remote-failed');
+  }
 
-    // ---- Remote call (Cloudflare Worker) ----
-    async function askRemote(q) {
-      const r = await fetch(WORKER_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: q })
-      });
-      const data = await r.json();
-      if (data?.answer) return data.answer;
-      throw new Error(data?.error || "remote-failed");
-    }
+  // ---------- Free local model (WebLLM) ----------
+  async function ensureLocalEngine(){
+    if (!('gpu' in navigator)) throw new Error('no-webgpu');
+    if (localEngine) return localEngine;
 
-    // ---- Free local model (WebLLM) ----
-    async function ensureLocalEngine() {
-      if (!('gpu' in navigator)) throw new Error("no-webgpu");
-      if (localEngine) return localEngine;
-
-      const { CreateMLCEngine } = await import("https://esm.run/@mlc-ai/web-llm");
-      setStatus("downloading model…");
-      localEngine = await CreateMLCEngine(LOCAL_MODEL, {
-        initProgressCallback: (p) => {
-          const msg = p?.text ? `downloading… ${p.text}` :
-                      (typeof p?.progress === "number" ? `downloading… ${Math.round(p.progress*100)}%` : "preparing…");
-          setStatus(`local ${msg}`);
-          if (log.lastChild && log.lastChild.className.includes('bot')) {
-            log.lastChild.textContent = `Loading local AI: ${msg}`;
-          }
-        },
-      });
-      setStatus("local mode");
-      return localEngine;
-    }
-
-    async function askLocal(q) {
-      const engine = await ensureLocalEngine();
-      const res = await engine.chat.completions.create({
-        messages: [
-          { role: "system", content:
-            "You are the assistant for Freddy Rojas's portfolio. Keep answers short; when useful include one anchor link (#about, #skill, #qualification, #portfolio, #contact). Reply in Spanish if the user writes in Spanish; otherwise English."
-          },
-          { role: "user", content: q }
-        ],
-        temperature: 0.3,
-        max_tokens: 300,
-      });
-      return res.choices?.[0]?.message?.content || "No response.";
-    }
-
-    // ---- Submit handler with automatic fallback ----
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const q = input.value.trim();
-      if (!q) return;
-
-      addMessage(q, 'you');
-      input.value = '';
-      addMessage('…thinking', 'bot');
-
-      try {
-        const answer = usingLocal ? await askLocal(q) : await askRemote(q);
-        log.lastChild.textContent = answer;
-        setStatus(usingLocal ? "local mode" : "");
-      } catch (err) {
-        // Remote failed → try free local
-        try {
-          usingLocal = true;
-          const answer = await askLocal(q);
-          log.lastChild.textContent = answer;
-        } catch (e2) {
-          if (e2.message === "no-webgpu") {
-            log.lastChild.textContent = "Free local mode needs a WebGPU browser (Chrome/Edge desktop).";
-          } else {
-            log.lastChild.textContent = "Could not load the local model.";
-            console.error(e2);
-          }
+    const { CreateMLCEngine } = await import('https://esm.run/@mlc-ai/web-llm');
+    setStatus('downloading model…');
+    localEngine = await CreateMLCEngine(LOCAL_MODEL, {
+      initProgressCallback: (p) => {
+        const msg = p?.text ? `downloading… ${p.text}` :
+                    (typeof p?.progress==='number' ? `downloading… ${Math.round(p.progress*100)}%` : 'preparing…');
+        setStatus(`local ${msg}`);
+        if (log.lastChild?.className.includes('bot')) {
+          log.lastChild.textContent = `Loading local AI: ${msg}`;
         }
       }
     });
-  </script>
+    setStatus('local mode');
+    return localEngine;
+  }
+
+  async function askLocal(q){
+    const engine = await ensureLocalEngine();
+    const res = await engine.chat.completions.create({
+      messages: [
+        { role:'system', content:
+          "You are the assistant for Daniel Rojas Valda's portfolio. Keep answers short; when useful include one anchor link (#about, #skill, #qualification, #portfolio, #contact). Reply in Spanish if the user writes in Spanish; otherwise English."
+        },
+        { role:'user', content: q }
+      ],
+      temperature: 0.3,
+      max_tokens: 300
+    });
+    return res.choices?.[0]?.message?.content || 'No response.';
+  }
+
+  // ---------- Submit with automatic fallback ----------
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const q = input.value.trim();
+    if(!q) return;
+
+    addMessage(q,'you');
+    input.value='';
+    addMessage('…thinking','bot');
+
+    try{
+      const answer = usingLocal ? await askLocal(q) : await askRemote(q);
+      log.lastChild.textContent = answer;
+      setStatus(usingLocal ? 'local mode' : '');
+    }catch(err){
+      // Remote failed or reported offline → switch to free local model
+      try{
+        usingLocal = true;
+        const answer = await askLocal(q);
+        log.lastChild.textContent = answer;
+      }catch(e2){
+        if (e2.message === 'no-webgpu'){
+          log.lastChild.textContent = 'Free local mode needs a WebGPU browser (Chrome/Edge desktop).';
+        } else {
+          log.lastChild.textContent = 'Could not load the local model.';
+          console.error(e2);
+        }
+      }
+    }
+  });
+</script>
+
   <!-- =================== /AI Chat Widget ===================== -->
 
 </body>
 </html>
+
