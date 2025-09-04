@@ -76,7 +76,6 @@
           <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
           <div class="typed-text d-none">Web Designer, Web Developer, FrontEnd Developer, BackEnd Developer, Apps Developer</div>
           <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-            <!-- FIX: Make resume path relative and ensure exact filename/case exists -->
             <a href="files/Resume-Freddy-Rojas.pdf" download class="btn btn-outline-light mr-5">Resume</a>
             <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
             <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
@@ -143,7 +142,6 @@
             <div class="position-relative mb-4">
               <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
               <h5 class="font-weight-bold mb-1">Bachelor of Systems Engineering</h5>
-              <!-- FIX: Properly closed strong tag -->
               <p class="mb-2"><strong>Bolivian Catholic University</strong></p>
             </div>
           </div>
@@ -377,7 +375,6 @@
   <!-- Portfolio End -->
 
   <div class="container-fluid py-5" id="contact"></div>
-  <!-- Contact form is commented out in your original; leaving as-is -->
 
   <!-- Footer Start -->
   <div class="container-fluid bg-primary text-white mt-5 py-5 px-sm-3 px-md-5">
@@ -406,7 +403,6 @@
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="lib/isotope/isotope.pkgd.min.js"></script>
   <script src="lib/lightbox/js/lightbox.min.js"></script>
-  <!-- NEW: ensure images are loaded before Isotope layout -->
   <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 
   <!-- Contact Javascript File -->
@@ -416,7 +412,6 @@
   <!-- Template/Portfolio Initialization -->
   <script>
     $(function () {
-      // Typed text (kept from your template)
       if ($('.typed-text-output').length == 1) {
         var typed_strings = $('.typed-text').text();
         new Typed('.typed-text-output', {
@@ -428,7 +423,6 @@
         });
       }
 
-      // Init Isotope AFTER images are loaded to avoid broken layout
       var $grid = $('.portfolio-container');
       $grid.imagesLoaded(function () {
         $grid.isotope({
@@ -437,7 +431,6 @@
         });
       });
 
-      // Filter buttons
       $('#portfolio-flters li').on('click', function () {
         $('#portfolio-flters li').removeClass('active');
         $(this).addClass('active');
@@ -446,6 +439,77 @@
       });
     });
   </script>
+
+  <!-- ===================== AI Chat Widget ===================== -->
+  <style>
+    #ai-btn{position:fixed;right:20px;bottom:20px;padding:12px 16px;border-radius:999px;border:0;box-shadow:0 6px 20px rgba(0,0,0,.15);cursor:pointer;z-index:9999;background:#0078ff;color:#fff;font-weight:600}
+    #ai-box{position:fixed;right:20px;bottom:80px;width:320px;max-height:60vh;display:none;background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.2);overflow:hidden;z-index:9999}
+    #ai-head{padding:12px 14px;font-weight:600;border-bottom:1px solid #eee;background:#0078ff;color:#fff}
+    #ai-log{padding:12px;height:320px;overflow-y:auto;font-size:14px;line-height:1.4}
+    #ai-log .m{margin-bottom:10px}
+    #ai-log .you{text-align:right;color:#0078ff}
+    #ai-log .bot{text-align:left}
+    #ai-form{display:flex;gap:8px;padding:10px;border-top:1px solid #eee}
+    #ai-form input{flex:1;padding:10px;border:1px solid #ddd;border-radius:10px}
+    #ai-form button{padding:10px 14px;border:0;border-radius:10px;cursor:pointer;background:#0078ff;color:#fff}
+  </style>
+
+  <button id="ai-btn" aria-controls="ai-box" aria-expanded="false">💬 Ask AI</button>
+  <div id="ai-box" role="dialog" aria-label="AI Chat">
+    <div id="ai-head">Portfolio AI</div>
+    <div id="ai-log" aria-live="polite"></div>
+    <form id="ai-form">
+      <input id="ai-input" type="text" placeholder="Ask about my skills, projects…" required />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    const WORKER_URL = "https://portfolio-ai.danielrojasvalda.workers.dev/chat"; // <-- your Worker
+
+    const btn = document.getElementById('ai-btn');
+    const box = document.getElementById('ai-box');
+    const log = document.getElementById('ai-log');
+    const form = document.getElementById('ai-form');
+    const input = document.getElementById('ai-input');
+
+    btn.onclick = () => {
+      const open = box.style.display === 'block';
+      box.style.display = open ? 'none' : 'block';
+      btn.setAttribute('aria-expanded', String(!open));
+      if (!open) setTimeout(() => input.focus(), 50);
+    };
+
+    function addMessage(text, who) {
+      const div = document.createElement('div');
+      div.className = `m ${who}`;
+      div.textContent = text;
+      log.appendChild(div);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const q = input.value.trim();
+      if (!q) return;
+      addMessage(q, 'you');
+      input.value = '';
+      addMessage('…thinking', 'bot');
+      try {
+        const r = await fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: q })
+        });
+        const data = await r.json();
+        log.lastChild.textContent = data.answer || data.error || 'No response.';
+      } catch (err) {
+        log.lastChild.textContent = 'Error contacting AI service.';
+        console.error(err);
+      }
+    });
+  </script>
+  <!-- =================== /AI Chat Widget ===================== -->
+
 </body>
 </html>
-
