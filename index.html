@@ -12,6 +12,32 @@
   <meta property="og:description" content="Experienced software developer showcasing projects and expertise in web and application development.">
   <meta property="og:image" content="img/profile.jpg">
 
+  <!-- JSON-LD for rich results -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Freddy Daniel Rojas",
+    "jobTitle":"Software Engineer",
+    "url":"https://danielrojasvalda.github.io/gh-portfolio",
+    "image":"https://danielrojasvalda.github.io/gh-portfolio/img/profile.jpg",
+    "sameAs":[
+      "https://www.linkedin.com/in/freddyrojasv/",
+      "https://github.com/danielrojasvalda/"
+    ],
+    "knowsLanguage":["es","en"],
+    "workLocation":{
+      "@type":"Place",
+      "address":{
+        "@type":"PostalAddress",
+        "addressLocality":"Tampa",
+        "addressRegion":"FL",
+        "addressCountry":"US"
+      }
+    }
+  }
+  </script>
+
   <!-- Favicon -->
   <link href="img/favicon.ico" rel="icon">
 
@@ -63,17 +89,17 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
   <!-- Navbar Start -->
   <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
-    <a href="index.html" class="navbar-brand ml-lg-3">
+    <a href="index.html" class="navbar-brand ml-lg-3" aria-label="Home">
       <h1 class="m-0 display-5"><span class="text-primary">Freddy</span>Rojas</h1>
     </a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
       <div class="navbar-nav m-auto py-0">
         <a href="#home" class="nav-item nav-link active">Home</a>
         <a href="#about" class="nav-item nav-link">About</a>
-        <a href="#qualification" class="nav-item nav-link">Quality</a>
+        <a href="#qualification" class="nav-item nav-link">Qualifications</a>
         <a href="#skill" class="nav-item nav-link">Skills</a>
         <a href="#service" class="nav-item nav-link">Service</a>
         <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
@@ -96,9 +122,9 @@
           <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
           <div class="typed-text d-none">Web Designer, Web Developer, FrontEnd Developer, BackEnd Developer, Apps Developer</div>
           <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-            <a href="files/Resume-Freddy-Rojas.pdf" download class="btn btn-outline-light mr-5">Resume</a>
-            <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-            <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+            <a href="files/Resume-Freddy-Rojas.pdf" download class="btn btn-outline-light mr-5" aria-label="Download resume">Resume</a>
+            <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
@@ -115,13 +141,13 @@
       </div>
       <div class="row align-items-center">
         <div class="col-lg-5 pb-4 pb-lg-0">
-          <img class="img-fluid rounded w-100" src="img/about.jpg" alt="About photo">
+          <img class="img-fluid rounded w-100" src="img/about.jpg" alt="About photo" loading="lazy">
         </div>
         <div class="col-lg-7">
           <h3 class="mb-4">Software Developer</h3>
-          <p>I am a software engineer with years of experience in Bolivia 🇧🇴. Over the years, my career has been dedicated to specialized software development, driven by a deep passion for crafting innovative solutions. During the transitional period of country relocation, when the technology industry experienced a slowdown due to the impact of COVID-19, I embraced the opportunity to explore new branches within technology. Despite this, my focus remained resolute on continuing my journey as a software developer in the new landscape.</p>
-          <p>Currently enrolled in a comprehensive Software Developer Bootcamp, further enriching my skill set and knowledge in the field. My commitment to software development and continuous learning remains unwavering.</p>
-          <p>As a software developer, I have a proven track record of delivering quality results to clients. I excel in full-stack development, leveraging my skills in JavaScript, CSS, PHP, and various programming languages to create dynamic and engaging web applications. Additionally, I have experience troubleshooting front-end issues and driving innovation.</p>
+          <p>I’m a software engineer originally from Bolivia 🇧🇴 with hands-on experience building specialized applications. During my relocation and the COVID-19 slowdown, I broadened my skill set while staying focused on software development.</p>
+          <p>I'm currently completing a comprehensive Software Engineering Bootcamp, deepening my expertise across modern front-end and back-end stacks.</p>
+          <p>As a software developer, I deliver quality results across the stack—JavaScript, CSS, PHP, Python/Flask, and more—creating dynamic and engaging web applications. I also troubleshoot front-end issues and drive innovation.</p>
           <div class="row mb-3">
             <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">Freddy Daniel Rojas</span></h6></div>
             <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">12 September</span></h6></div>
@@ -139,7 +165,7 @@
   <div class="container-fluid py-5" id="qualification">
     <div class="container">
       <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Quality</h1>
+        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Qualifications</h1>
         <h1 class="position-absolute text-uppercase text-primary">Education &amp; Experience</h1>
       </div>
       <div class="row align-items-center">
@@ -147,18 +173,18 @@
           <h3 class="mb-4">My Education</h3>
           <div class="border-left border-primary pt-2 pl-4 ml-2">
             <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
+              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;" aria-hidden="true"></i>
               <h5 class="font-weight-bold mb-1">Software Engineering Bootcamp</h5>
               <p class="mb-2"><strong>University of South Florida</strong></p>
-              <p>630 hours dedicated to AI for Engineers, JavaScript front-end and Python/Flask and Node.js back-end development, React.js, and rigorous Data Structures and Algorithms training. Ready to innovate and excel in software projects.</p>
+              <p>630 hours focused on AI for Engineers, JavaScript front end, Python/Flask &amp; Node.js back end, React.js, and rigorous data structures &amp; algorithms.</p>
             </div>
             <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
+              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;" aria-hidden="true"></i>
               <h5 class="font-weight-bold mb-1">Superior Course in Project Management</h5>
               <p class="mb-2"><strong>Rey Juan Carlos University</strong></p>
             </div>
             <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
+              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;" aria-hidden="true"></i>
               <h5 class="font-weight-bold mb-1">Bachelor of Systems Engineering</h5>
               <p class="mb-2"><strong>Bolivian Catholic University</strong></p>
             </div>
@@ -168,51 +194,69 @@
           <h3 class="mb-4">My Experience</h3>
           <div class="border-left border-primary pt-2 pl-4 ml-2">
             <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
+              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;" aria-hidden="true"></i>
               <h5 class="font-weight-bold mb-1">Back End Developer</h5>
               <p class="mb-2"><strong>ZYSC Software LLC, Tampa, Florida, USA</strong> | <small>Mar 2025 - Present</small></p>
               <p>Designed and implemented modular RESTful APIs using Python, Flask, and SQLAlchemy, focusing on scalability and maintainability.</p>
-              <p>Enhanced and expanded an existing backend architecture by developing new models, schemas, routes, and reusable utility functions, while maintaining clean documentation and Postman - Swagger support and testing.</p>
-              <p>Coordinated with the frontend and leadership team to align backend functionality with business goals and UI expectations.</p>
-              <p>Set up and maintained secure database access to AWS RDS using SSH tunnels and Docker-based dev environments.</p>
+              <p>Enhanced backend architecture with new models, schemas, routes, and reusable utilities, maintaining clean documentation and Postman/Swagger testing.</p>
+              <p>Collaborated with frontend and leadership to align backend functionality with business goals and UI expectations.</p>
+              <p>Maintained secure database access to AWS RDS via SSH tunnels and Docker-based dev environments.</p>
             </div>
+
             <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
+              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;" aria-hidden="true"></i>
               <h5 class="font-weight-bold mb-1">Quality Assurance Analyst – Multilingual</h5>
               <p class="mb-2"><strong>ID.me, Tampa, Florida, USA</strong> | <small>Jun 2021 - Mar 2025</small></p>
-              <p>Initiated and executed 380+ weekly quality audits, ensuring precise process monitoring via the quality evaluation management system for the IRS and various entities.</p>
-              <p>Spearheaded the identification and reporting of 15+ fraudulent activities, showcasing a keen eye for detail.</p>
-              <p>Effectively employed JIRA, Zendesk, and Confluence for streamlined project tracking and collaboration, resulting in timely resolutions and improved teamwork.</p>
+              <p>Executed 380+ weekly quality audits for IRS and partner programs, flagged fraud patterns, and drove timely resolutions using JIRA, Zendesk, and Confluence.</p>
             </div>
+
+            <!-- NEW: QA Engineer (Cross-training) -->
             <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
+              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;" aria-hidden="true"></i>
+              <h5 class="font-weight-bold mb-1">Quality Assurance Engineer (Cross-training)</h5>
+              <p class="mb-2"><strong>ID.me, Tampa, Florida, USA</strong> | <small>May 2024 – Jul 2024</small></p>
+              <ul class="mb-0">
+                <li>Developed and executed test matrices and test cases for Marketplace web, browser extensions, and mobile apps.</li>
+                <li>Used JIRA, Confluence, Sentry, GitHub, and Harness for collaboration, tracking, and error monitoring.</li>
+                <li>Performed extensive exploratory testing across Marketplace surfaces and extensions.</li>
+                <li>Partnered with QA and software engineers in an agile environment to raise product quality.</li>
+                <li>Prioritized effectively despite limited environments and tight timelines.</li>
+              </ul>
+            </div>
+
+            <div class="position-relative mb-4">
+              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;" aria-hidden="true"></i>
               <h5 class="font-weight-bold mb-1">Classroom Monitor / IT Help Desk</h5>
               <p class="mb-2"><strong>FCPS, Fairfax, Virginia, USA</strong> | <small>Feb 2021 – Jun 2021</small></p>
-              <p>Provided in-person classroom assistance and vital technical support to 50+ teachers and 300+ students weekly.</p>
+              <p>Provided in-person classroom assistance and technical support to 50+ teachers and 300+ students weekly.</p>
             </div>
+
             <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
+              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;" aria-hidden="true"></i>
               <h5 class="font-weight-bold mb-1">Software Development Specialist</h5>
               <p class="mb-2"><strong>Fortaleza Bank, La Paz, Bolivia</strong> | <small>Nov 2019 - Aug 2020</small></p>
-              <p>Engineered and integrated 4GL, PHP, JavaScript backend modules for Netbank; improved performance with EJB and Spring Boot.</p>
+              <p>Built and integrated 4GL/PHP/JS backend modules for Netbank; improved performance with EJB and Spring Boot.</p>
             </div>
+
             <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Full stack Development</h5>
+              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;" aria-hidden="true"></i>
+              <h5 class="font-weight-bold mb-1">Full-Stack Developer</h5>
               <p class="mb-2"><strong>Red Solutions</strong> | <small>Jun 2019 – Jun 2021</small></p>
-              <p>Launched a startup, led SMB tech support, and developed impactful websites using modern stacks.</p>
+              <p>Launched a startup, led SMB tech support, and delivered websites using modern stacks.</p>
             </div>
+
             <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
+              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;" aria-hidden="true"></i>
               <h5 class="font-weight-bold mb-1">Head of IT / Network &amp; Communications</h5>
               <p class="mb-2"><strong>Quipus Public Enterprise, La Paz, Bolivia</strong> | <small>Apr 2015 - Jul 2019</small></p>
-              <p>Revamped web tech stack, improved performance and availability, and automated operations for 800+ units.</p>
+              <p>Revamped web stack, boosted availability and performance, and automated ops for 800+ units.</p>
             </div>
+
             <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
+              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;" aria-hidden="true"></i>
               <h5 class="font-weight-bold mb-1">Backend Software Developer</h5>
               <p class="mb-2"><strong>ProcessMaker, La Paz, Bolivia</strong> | <small>Apr 2013 - Mar 2015</small></p>
-              <p>Resolved PM2.x bugs, API testing, unit tests, and front-end testing with Selenium; managed Scrum projects.</p>
+              <p>Resolved PM2.x bugs, API testing, unit tests, and front-end testing with Selenium; supported Scrum delivery.</p>
             </div>
           </div>
         </div>
@@ -257,38 +301,38 @@
       <div class="row pb-3">
         <div class="col-lg-4 col-md-6 text-center mb-5">
           <div class="d-flex align-items-center justify-content-center mb-4">
-            <i class="fa fa-2x fa-laptop service-icon bg-primary text-white mr-3"></i>
+            <i class="fa fa-2x fa-laptop service-icon bg-primary text-white mr-3" aria-hidden="true"></i>
             <h4 class="font-weight-bold m-0">Web Design</h4>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 text-center mb-5">
           <div class="d-flex align-items-center justify-content-center mb-4">
-            <i class="fa fa-2x fa-laptop-code service-icon bg-primary text-white mr-3"></i>
+            <i class="fa fa-2x fa-laptop-code service-icon bg-primary text-white mr-3" aria-hidden="true"></i>
             <h4 class="font-weight-bold m-0">Web Development</h4>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 text-center mb-5">
           <div class="d-flex align-items-center justify-content-center mb-4">
-            <i class="fab fa-2x fa-android service-icon bg-primary text-white mr-3"></i>
-            <h4 class="font-weight-bold m-0">Apps Design</h4>
+            <i class="fab fa-2x fa-android service-icon bg-primary text-white mr-3" aria-hidden="true"></i>
+            <h4 class="font-weight-bold m-0">App Design</h4>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 text-center mb-5">
           <div class="d-flex align-items-center justify-content-center mb-4">
-            <i class="fab fa-2x fa-apple service-icon bg-primary text-white mr-3"></i>
-            <h4 class="font-weight-bold m-0">Apps Development</h4>
+            <i class="fab fa-2x fa-apple service-icon bg-primary text-white mr-3" aria-hidden="true"></i>
+            <h4 class="font-weight-bold m-0">App Development</h4>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 text-center mb-5">
           <div class="d-flex align-items-center justify-content-center mb-4">
-            <i class="fa fa-2x fa-search service-icon bg-primary text-white mr-3"></i>
+            <i class="fa fa-2x fa-search service-icon bg-primary text-white mr-3" aria-hidden="true"></i>
             <h4 class="font-weight-bold m-0">SEO</h4>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 text-center mb-5">
           <div class="d-flex align-items-center justify-content-center mb-4">
-            <i class="fa fa-2x fa-edit service-icon bg-primary text-white mr-3"></i>
-            <h4 class="font-weight-bold m-0">Content Creating</h4>
+            <i class="fa fa-2x fa-edit service-icon bg-primary text-white mr-3" aria-hidden="true"></i>
+            <h4 class="font-weight-bold m-0">Content Creation</h4>
           </div>
         </div>
       </div>
@@ -305,7 +349,7 @@
       </div>
       <div class="row">
         <div class="col-12 text-center mb-2">
-          <ul class="list-inline mb-4" id="portfolio-flters">
+          <ul class="list-inline mb-4" id="portfolio-flters" aria-label="Portfolio filters">
             <li class="btn btn-sm btn-outline-primary m-1 active" data-filter="*">All</li>
             <li class="btn btn-sm btn-outline-primary m-1" data-filter=".first">Public Sector</li>
             <li class="btn btn-sm btn-outline-primary m-1" data-filter=".second">Bank</li>
@@ -316,60 +360,60 @@
       <div class="row portfolio-container">
         <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-1.jpg" alt="SICOES">
+            <img class="img-fluid rounded w-100" src="img/portfolio-1.jpg" alt="SICOES" loading="lazy">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://www.sicoes.gob.bo/portal/index.php" target="_blank" rel="noopener">
-                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+              <a href="https://www.sicoes.gob.bo/portal/index.php" target="_blank" rel="noopener" aria-label="Open SICOES">
+                <i class="fa fa-plus text-white" style="font-size: 60px;" aria-hidden="true"></i>
               </a>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-2.jpg" alt="Banco Fortaleza">
+            <img class="img-fluid rounded w-100" src="img/portfolio-2.jpg" alt="Banco Fortaleza" loading="lazy">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://www.bancofortaleza.com.bo/" target="_blank" rel="noopener">
-                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+              <a href="https://www.bancofortaleza.com.bo/" target="_blank" rel="noopener" aria-label="Open Banco Fortaleza">
+                <i class="fa fa-plus text-white" style="font-size: 60px;" aria-hidden="true"></i>
               </a>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-3.jpg" alt="SIGEP">
+            <img class="img-fluid rounded w-100" src="img/portfolio-3.jpg" alt="SIGEP" loading="lazy">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://sigep.gob.bo/seguridad/faces/ingreso.jspx" target="_blank" rel="noopener">
-                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+              <a href="https://sigep.gob.bo/seguridad/faces/ingreso.jspx" target="_blank" rel="noopener" aria-label="Open SIGEP">
+                <i class="fa fa-plus text-white" style="font-size: 60px;" aria-hidden="true"></i>
               </a>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-4.jpg" alt="Quipus">
+            <img class="img-fluid rounded w-100" src="img/portfolio-4.jpg" alt="Quipus" loading="lazy">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://www.quipus.gob.bo/" target="_blank" rel="noopener">
-                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+              <a href="https://www.quipus.gob.bo/" target="_blank" rel="noopener" aria-label="Open Quipus">
+                <i class="fa fa-plus text-white" style="font-size: 60px;" aria-hidden="true"></i>
               </a>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-5.jpg" alt="Wedding app">
+            <img class="img-fluid rounded w-100" src="img/portfolio-5.jpg" alt="Wedding app" loading="lazy">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://danielrojasvalda.github.io/wedding-app/" target="_blank" rel="noopener">
-                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+              <a href="https://danielrojasvalda.github.io/wedding-app/" target="_blank" rel="noopener" aria-label="Open Wedding App">
+                <i class="fa fa-plus text-white" style="font-size: 60px;" aria-hidden="true"></i>
               </a>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-6.jpg" alt="Nucci Medical">
+            <img class="img-fluid rounded w-100" src="img/portfolio-6.jpg" alt="Nucci Medical" loading="lazy">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://nuccimedical.com/" target="_blank" rel="noopener">
-                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+              <a href="https://nuccimedical.com/" target="_blank" rel="noopener" aria-label="Open Nucci Medical">
+                <i class="fa fa-plus text-white" style="font-size: 60px;" aria-hidden="true"></i>
               </a>
             </div>
           </div>
@@ -392,19 +436,19 @@
           <p class="mb-4">No form here—use email or LinkedIn to reach me quickly.</p>
 
           <a href="mailto:danielrojasvalda@gmail.com?subject=Portfolio%20inquiry&body=Hi%20Freddy%2C%0A"
-             class="btn btn-outline-primary mr-2">
-            <i class="far fa-envelope mr-1"></i> Email me
+             class="btn btn-outline-primary mr-2" aria-label="Email Freddy">
+            <i class="far fa-envelope mr-1" aria-hidden="true"></i> Email me
           </a>
 
           <a class="btn btn-outline-primary mr-2"
-             href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener">
-            <i class="fab fa-linkedin-in mr-1"></i> LinkedIn
+             href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener" aria-label="Open LinkedIn">
+            <i class="fab fa-linkedin-in mr-1" aria-hidden="true"></i> LinkedIn
           </a>
 
           <a class="btn btn-outline-primary"
              href="https://wa.me/13219457729?text=Hi%20Freddy%2C%20I%20saw%20your%20portfolio..."
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp mr-1"></i> WhatsApp
+             target="_blank" rel="noopener" aria-label="Open WhatsApp chat">
+            <i class="fab fa-whatsapp mr-1" aria-hidden="true"></i> WhatsApp
           </a>
         </div>
       </div>
@@ -416,8 +460,8 @@
   <div class="container-fluid bg-primary text-white mt-5 py-5 px-sm-3 px-md-5">
     <div class="container text-center py-5">
       <div class="d-flex justify-content-center mb-4">
-        <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-        <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+        <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+        <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
       </div>
       <p class="m-0">&copy; <a class="text-white font-weight-bold" href="#">danielrojas</a>. All Rights Reserved. Designed by danielrojas</p>
     </div>
@@ -425,32 +469,28 @@
   <!-- Footer End -->
 
   <!-- Scroll to Bottom -->
-  <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+  <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom" aria-hidden="true"></i>
 
   <!-- Back to Top -->
-  <a href="#" class="btn btn-outline-dark px-0 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+  <a href="#" class="btn btn-outline-dark px-0 back-to-top" aria-label="Back to top"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
 
-  <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/typed/typed.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="lib/lightbox/js/lightbox.min.js"></script>
-  <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <!-- JavaScript Libraries (deferred) -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" defer></script>
+  <script src="lib/typed/typed.min.js" defer></script>
+  <script src="lib/easing/easing.min.js" defer></script>
+  <script src="lib/waypoints/waypoints.min.js" defer></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js" defer></script>
+  <script src="lib/isotope/isotope.pkgd.min.js" defer></script>
+  <script src="lib/lightbox/js/lightbox.min.js" defer></script>
+  <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js" defer></script>
 
-  <!-- Contact JS from template (harmless with no form) -->
-  <script src="mail/jqBootstrapValidation.min.js"></script>
-  <script src="mail/contact.js"></script>
-
-  <!-- Template init -->
+  <!-- Template init (run after deferred libs are ready) -->
   <script>
-    $(function () {
+    window.addEventListener('load', function () {
       // Typed text
-      if ($('.typed-text-output').length == 1) {
-        var typed_strings = $('.typed-text').text();
+      if (document.querySelector('.typed-text-output')) {
+        var typed_strings = document.querySelector('.typed-text').textContent;
         new Typed('.typed-text-output', {
           strings: typed_strings.split(', '),
           typeSpeed: 100,
@@ -459,18 +499,23 @@
           loop: true
         });
       }
+
       // Isotope after images load
-      var $grid = $('.portfolio-container');
-      $grid.imagesLoaded(function () {
-        $grid.isotope({ itemSelector: '.portfolio-item', layoutMode: 'fitRows' });
-      });
-      // Filters
-      $('#portfolio-flters li').on('click', function () {
-        $('#portfolio-flters li').removeClass('active');
-        $(this).addClass('active');
-        var filterValue = $(this).data('filter');
-        $grid.isotope({ filter: filterValue });
-      });
+      var grid = document.querySelector('.portfolio-container');
+      if (grid && window.imagesLoaded && window.Isotope) {
+        imagesLoaded(grid, function () {
+          var iso = new Isotope(grid, { itemSelector: '.portfolio-item', layoutMode: 'fitRows' });
+          // Filters
+          document.getElementById('portfolio-flters').addEventListener('click', function (e) {
+            if (e.target && e.target.matches('li')) {
+              Array.from(this.children).forEach(function (li) { li.classList.remove('active'); });
+              e.target.classList.add('active');
+              var filterValue = e.target.getAttribute('data-filter');
+              iso.arrange({ filter: filterValue });
+            }
+          });
+        });
+      }
     });
   </script>
 
@@ -483,7 +528,7 @@
       <button type="submit">Send</button>
     </form>
   </div>
-  <button id="ai-btn" aria-expanded="false" aria-controls="ai-box"><i class="far fa-comments mr-1"></i> Ask AI</button>
+  <button id="ai-btn" aria-expanded="false" aria-controls="ai-box"><i class="far fa-comments mr-1" aria-hidden="true"></i> Ask AI</button>
 
   <script>
     // Match widget accent to .text-primary
@@ -527,6 +572,7 @@
       addMessage(q,'you');
       input.value='';
       addMessage('…','bot');
+      setStatus('typing');
 
       try{
         const lang = /[¿¡ñáéíóúü]/i.test(q) ? 'es' : 'en';
@@ -537,9 +583,10 @@
         });
         const data = await r.json();
         log.lastChild.textContent = data?.answer || data?.error || 'No response.';
-        setStatus('');
       }catch(err){
         log.lastChild.textContent = 'Error contacting assistant.';
+      }finally{
+        setStatus('');
       }
     });
   </script>
