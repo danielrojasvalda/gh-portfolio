@@ -595,38 +595,32 @@
 
  
 <!-- Footer Start -->
-<div class="container-fluid bg-primary text-white mt-5 py-5 px-sm-3 px-md-5">
-  <div class="container text-center py-5">
+<div class="container-fluid bg-primary text-white mt-5 py-4 px-sm-3 px-md-5">
+  <div class="container text-center">
+    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
 
-    <!-- Social -->
-    <div class="d-flex justify-content-center mb-3">
-      <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
-        <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-      </a>
-      <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener" aria-label="GitHub profile">
-        <i class="fab fa-github" aria-hidden="true"></i>
-      </a>
-    </div>
+      <!-- Social -->
+      <div class="mb-3 mb-md-0 mr-md-3">
+        <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+        <a class="btn btn-light btn-social" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+      </div>
 
-    <!-- Spotify mini embed -->
-    <div class="mx-auto" style="max-width: 520px;">
-      <div class="mb-2 small text-white-50">Coding playlist</div>
+      <!-- Spotify -->
       <iframe
         id="spotifyFooter"
-        style="border-radius:12px"
+        style="border-radius:12px; max-width:320px;"
         src="https://open.spotify.com/embed/playlist/7JRtgEBVVP4fOhZlTSCNPD?utm_source=generator&theme=0"
-        width="100%" height="152" frameborder="0"
+        width="100%" height="80" frameborder="0"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy" title="Spotify playlist">
       </iframe>
     </div>
 
-    <p class="m-0 mt-4">
-      &copy; <a class="text-white font-weight-bold" href="#">danielrojas</a>. All Rights Reserved. Designed by danielrojas
-    </p>
+    <p class="m-0 mt-3 small">&copy; <a class="text-white font-weight-bold" href="#">danielrojas</a>. All Rights Reserved.</p>
   </div>
 </div>
 <!-- Footer End -->
+
 
 <!-- Auto-theme for Spotify -->
 <script>
@@ -641,22 +635,6 @@
     } catch(e) { /* no-op */ }
   })();
 </script>
-
-
-<!-- Footer helpers: auto-theme for Spotify -->
-<script>
-  (function(){
-    var frame = document.getElementById('spotifyFooter');
-    if (!frame) return;
-    var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-    try {
-      var url = new URL(frame.src);
-      url.searchParams.set('theme', prefersLight ? '1' : '0');
-      frame.src = url.toString();
-    } catch(e) { /* no-op */ }
-  })();
-</script>
-
 
   <!-- Scroll to Bottom -->
   <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom" aria-hidden="true"></i>
@@ -782,6 +760,7 @@
   </script>
 </body>
 </html>
+
 
 
 
