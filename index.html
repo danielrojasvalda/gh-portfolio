@@ -608,25 +608,40 @@
       </a>
     </div>
 
-    <!-- Spotify mini (small height) -->
+    <!-- Spotify mini embed -->
     <div class="mx-auto" style="max-width: 520px;">
       <div class="mb-2 small text-white-50">Coding playlist</div>
       <iframe
         id="spotifyFooter"
         style="border-radius:12px"
-        src="https://open.spotify.com/embed/playlist/7JRtgEBVVP4fOhZlTSCNPD?utm_source=generator"
-        width="100%" height="180" frameborder="0"
+        src="https://open.spotify.com/embed/playlist/7JRtgEBVVP4fOhZlTSCNPD?utm_source=generator&theme=0"
+        width="100%" height="152" frameborder="0"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy" title="Spotify playlist">
       </iframe>
     </div>
 
     <p class="m-0 mt-4">
-      &copy; <a class="text-white font-weight-bold" href="#">freddyrojas</a>. All Rights Reserved. Designed by freddyrojas
+      &copy; <a class="text-white font-weight-bold" href="#">danielrojas</a>. All Rights Reserved. Designed by danielrojas
     </p>
   </div>
 </div>
 <!-- Footer End -->
+
+<!-- Auto-theme for Spotify -->
+<script>
+  (function(){
+    var frame = document.getElementById('spotifyFooter');
+    if (!frame) return;
+    var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    try {
+      var url = new URL(frame.src);
+      url.searchParams.set('theme', prefersLight ? '1' : '0'); // 1 = light, 0 = dark
+      frame.src = url.toString();
+    } catch(e) { /* no-op */ }
+  })();
+</script>
+
 
 <!-- Footer helpers: auto-theme for Spotify -->
 <script>
@@ -767,6 +782,7 @@
   </script>
 </body>
 </html>
+
 
 
 
