@@ -112,6 +112,34 @@
         loop: true,
         items: 1
     });
+
+    // ===== Theme toggle (auto + manual) =====
+(function(){
+  const root = document.documentElement;
+  const btn  = document.getElementById('themeToggle');
+  if(!btn) return;
+
+  // 1) Load saved preference if any (light|dark)
+  const saved = localStorage.getItem('theme');
+  if(saved === 'light' || saved === 'dark'){
+    root.setAttribute('data-theme', saved);
+    btn.setAttribute('aria-pressed', saved === 'dark' ? 'true' : 'false');
+  }
+
+  // 2) Toggle & persist
+  btn.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    btn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+
+    // Optional: flip icon
+    btn.innerHTML = next === 'dark' ? '<i class="far fa-sun"></i>' : '<i class="far fa-moon"></i>';
+  });
+})();
+
     
 })(jQuery);
+
 
