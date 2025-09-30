@@ -9982,3 +9982,63 @@ h6,
   padding: 0;
   list-style-type: none;
 }
+/* ===== Theming (Light as default) ===== */
+:root{
+  --bg: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #287094;           /* your brand blue (#287094) */
+  --primary-contrast: #ffffff;
+  --card: #ffffff;
+  --border: rgba(0,0,0,.08);
+}
+
+/* Auto dark if user's system prefers it */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0f172a;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --primary: #2a88b5;         /* slightly brighter blue in dark */
+    --primary-contrast: #101827;
+    --card: #111827;
+    --border: rgba(255,255,255,.08);
+  }
+}
+
+/* Manual override via data-theme on <html> or <body> */
+:root[data-theme="light"]{
+  --bg: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #287094;
+  --primary-contrast: #ffffff;
+  --card: #ffffff;
+  --border: rgba(0,0,0,.08);
+}
+:root[data-theme="dark"]{
+  --bg: #0f172a;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #2a88b5;
+  --primary-contrast: #101827;
+  --card: #111827;
+  --border: rgba(255,255,255,.08);
+}
+
+/* Wire the variables into real elements */
+body{ background: var(--bg); color: var(--text); }
+.navbar.bg-light{ background: var(--card)!important; border-bottom:1px solid var(--border); }
+.text-primary{ color: var(--primary)!important; }
+.btn-outline-primary{ color: var(--primary); border-color: var(--primary); }
+.btn-outline-primary:hover{ background: var(--primary); color: var(--primary-contrast); }
+.bg-primary{ background: var(--primary)!important; }
+.card{ background: var(--card); border:1px solid var(--border); }
+.service-icon{ background: var(--primary); color: var(--primary-contrast); }
+
+/* Footer contrast for both themes */
+.container-fluid.bg-primary.text-white a{ color:#fff; }
+
+/* Optional: subtle headings */
+h1,h2,h3,h4,h5{ color: var(--text); }
+p, .small, .text-muted{ color: var(--muted)!important; }
