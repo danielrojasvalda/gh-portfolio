@@ -8,17 +8,30 @@
   <meta name="keywords" content="Software developer, web development, application development, programming, coding, portfolio, projects">
   <meta name="author" content="Freddy Rojas">
 
+  <!-- Enhanced SEO Meta Tags -->
   <meta property="og:title" content="Freddy Rojas - Software Developer Portfolio">
   <meta property="og:description" content="Experienced software developer showcasing projects and expertise in web and application development.">
   <meta property="og:image" content="img/profile.jpg">
+  <meta property="og:url" content="https://danielrojasvalda.github.io/gh-portfolio">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Freddy Rojas - Software Developer Portfolio">
+  <meta name="twitter:description" content="Experienced software developer showcasing projects in web and application development.">
+  <meta name="twitter:image" content="https://danielrojasvalda.github.io/gh-portfolio/img/profile.jpg">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://danielrojasvalda.github.io/gh-portfolio">
 
-  <!-- JSON-LD for rich results -->
+  <!-- Enhanced JSON-LD -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"Person",
     "name":"Freddy Daniel Rojas",
     "jobTitle":"Software Engineer",
+    "description":"Full-stack developer with expertise in Python, Flask, JavaScript, React, and cloud technologies",
     "url":"https://danielrojasvalda.github.io/gh-portfolio",
     "image":"https://danielrojasvalda.github.io/gh-portfolio/img/profile.jpg",
     "sameAs":[
@@ -27,6 +40,22 @@
       "https://gitlab.com/danielrojasvalda"
     ],
     "knowsLanguage":["es","en"],
+    "knowsAbout":["Python","Flask","JavaScript","React","AWS","SQL","DevOps"],
+    "hasCredential":{
+      "@type":"EducationalOccupationalCredential",
+      "credentialCategory":"Certification",
+      "name":"Cisco Certified Network Associate (CCNA)"
+    },
+    "alumniOf":[
+      {
+        "@type":"EducationalOrganization",
+        "name":"University of South Florida"
+      },
+      {
+        "@type":"EducationalOrganization",
+        "name":"Bolivian Catholic University"
+      }
+    ],
     "workLocation":{
       "@type":"Place",
       "address":{
@@ -42,13 +71,21 @@
   <!-- Favicon -->
   <link href="img/favicon.ico" rel="icon">
 
-  <!-- Google Web Fonts -->
+  <!-- Performance: Preconnect & DNS Prefetch -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Google Web Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+  <!-- AOS - Animate On Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
   <!-- Libraries Stylesheet -->
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -58,7 +95,19 @@
   <link href="css/style.css" rel="stylesheet">
 
   <style>
-    .portfolio-item img { width: 100%; height: 220px; object-fit: cover; }
+    /* Smooth transitions */
+    * { transition: background-color 0.3s ease, color 0.3s ease; }
+    
+    .portfolio-item img { 
+      width: 100%; 
+      height: 220px; 
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+    }
 
     /* Services: consistent icon sizing/alignment */
     .service-item { text-align:center; }
@@ -67,8 +116,69 @@
       display:inline-flex; align-items:center; justify-content:center;
       font-size:28px; background:#2b6f8f; color:#fff;
       box-shadow: 0 2px 8px rgba(0,0,0,.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-item:hover .service-icon {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
     }
     .service-title { margin-top:.75rem; font-weight:700; }
+
+    /* Button hover effects */
+    .btn {
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+    }
+    body.dark-mode .bg-light { 
+      background-color: #2d2d2d !important; 
+    }
+    body.dark-mode .bg-primary {
+      background-color: #1e5570 !important;
+    }
+    body.dark-mode .text-white { 
+      color: #e0e0e0 !important; 
+    }
+    body.dark-mode .navbar {
+      background-color: #2d2d2d !important;
+    }
+    body.dark-mode .card {
+      background-color: #2d2d2d;
+      color: #e0e0e0;
+    }
+    body.dark-mode .service-icon {
+      background: #1e5570;
+    }
+
+    /* Theme Toggle Button */
+    #theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10000;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 2px solid #2b6f8f;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    body.dark-mode #theme-toggle {
+      background: #2d2d2d;
+      border-color: #4a90b5;
+    }
 
     /* AI Widget */
     :root{ --ai-accent:#0078ff; --ai-contrast:#ffffff; }
@@ -78,26 +188,102 @@
       background:#ffffff; color:var(--ai-accent); font-weight:600;
       box-shadow:0 8px 24px rgba(0,0,0,.18); cursor:pointer; z-index:9999;
     }
-    #ai-btn:hover{ filter:brightness(0.98); }
+    #ai-btn:hover{ filter:brightness(0.98); transform: translateY(-2px); }
     #ai-box{
       position:fixed; right:20px; bottom:80px; width:320px; max-height:60vh;
       display:none; background:#fff; border-radius:16px;
       box-shadow:0 10px 30px rgba(0,0,0,.2); overflow:hidden; z-index:9999;
       border:1px solid rgba(0,0,0,.06)
     }
+    body.dark-mode #ai-box {
+      background: #2d2d2d;
+      border-color: #444;
+    }
+    body.dark-mode #ai-btn {
+      background: #2d2d2d;
+      color: #4a90b5;
+      border-color: #4a90b5;
+    }
     #ai-head{ padding:12px 14px; font-weight:600; border-bottom:1px solid #eee;
       background:var(--ai-accent); color:var(--ai-contrast) }
+    body.dark-mode #ai-head {
+      background: #1e5570;
+    }
     #ai-log{ padding:12px; height:320px; overflow-y:auto; font-size:14px; line-height:1.4 }
-    #ai-log .m{ margin-bottom:10px } #ai-log .you{ text-align:right; color:var(--ai-accent) } #ai-log .bot{ text-align:left }
+    #ai-log .m{ margin-bottom:10px } 
+    #ai-log .you{ text-align:right; color:var(--ai-accent) } 
+    #ai-log .bot{ text-align:left }
     #ai-form{ display:flex; gap:8px; padding:10px; border-top:1px solid #eee }
-    #ai-form input{ flex:1; padding:10px; border:1px solid #ddd; border-radius:10px }
+    body.dark-mode #ai-form {
+      border-top-color: #444;
+    }
+    #ai-form input{ 
+      flex:1; padding:10px; border:1px solid #ddd; border-radius:10px;
+      background: #fff;
+      color: #333;
+    }
+    body.dark-mode #ai-form input {
+      background: #1a1a1a;
+      color: #e0e0e0;
+      border-color: #444;
+    }
     #ai-form button{ padding:10px 14px; border:0; border-radius:10px; cursor:pointer;
       background:var(--ai-accent); color:var(--ai-contrast) }
     #ai-status{ font-size:12px; opacity:.75; margin-left:8px }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      #theme-toggle {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+      }
+      #ai-btn {
+        right: 10px;
+        bottom: 70px;
+        padding: 10px 14px;
+        font-size: 14px;
+      }
+      #ai-box {
+        right: 10px;
+        bottom: 130px;
+        width: calc(100vw - 20px);
+      }
+    }
+
+    /* Skills Section */
+    .skill-item {
+      padding: 1.5rem;
+      border-radius: 10px;
+      background: #f8f9fa;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    body.dark-mode .skill-item {
+      background: #2d2d2d;
+    }
+    .skill-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .skill-category {
+      font-weight: 700;
+      color: #2b6f8f;
+      margin-bottom: 0.5rem;
+    }
+    body.dark-mode .skill-category {
+      color: #4a90b5;
+    }
   </style>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
+  <!-- Theme Toggle Button -->
+  <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
   <!-- Navbar Start -->
   <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
     <a href="index.html" class="navbar-brand ml-lg-3" aria-label="Home">
@@ -120,12 +306,12 @@
   </nav>
   <!-- Navbar End -->
 
-  <!-- Header Start (rolled back to your original look) -->
+  <!-- Header Start (kept original animation) -->
   <div class="container-fluid bg-primary d-flex align-items-center mb-5 py-5" id="home" style="min-height: 100vh;">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-5 px-5 pl-lg-0 pb-5 pb-lg-0">
-          <img class="img-fluid w-100 rounded-circle shadow-sm" src="img/profile.jpg" alt="Profile photo">
+          <img class="img-fluid w-100 rounded-circle shadow-sm" src="img/profile.jpg" alt="Profile photo" loading="eager">
         </div>
         <div class="col-lg-7 text-center text-lg-left">
           <h3 class="text-white font-weight-normal mb-3">I'm</h3>
@@ -133,10 +319,10 @@
           <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
           <div class="typed-text d-none">Web Designer, Web Developer, FrontEnd Developer, BackEnd Developer, Apps Developer</div>
           <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-            <a href="files/Resume-Freddy-Rojas.pdf" download class="btn btn-outline-light mr-5" aria-label="Download resume">Resume</a>
-            <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-            <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
-            <a class="btn btn-light btn-social mr-2" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener" aria-label="GitLab profile">
+            <a href="files/Resume-Freddy-Rojas.pdf" download class="btn btn-outline-light mr-5" aria-label="Download resume">Download Resume</a>
+            <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
+            <a class="btn btn-light btn-social mr-2" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener noreferrer" aria-label="GitLab profile">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 512 512" role="img" aria-hidden="true">
                 <path d="M494.9 229.5L448 97.1c-2.6-7.3-12.8-7.3-15.4 0L384 229.5H128l-48.6-132.4c-2.6-7.3-12.8-7.3-15.4 0L17.1 229.5c-2.4 6.5.2 13.8 6.1 17.6L256 417.7l232.8-170.6c5.9-3.8 8.5-11.1 6.1-17.6z"/>
               </svg>
@@ -151,17 +337,17 @@
   <!-- About Start -->
   <div class="container-fluid py-5" id="about">
     <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
+      <div class="position-relative d-flex align-items-center justify-content-center" data-aos="fade-up">
         <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
         <h1 class="position-absolute text-uppercase text-primary">About Me</h1>
       </div>
       <div class="row align-items-center">
-        <div class="col-lg-5 pb-4 pb-lg-0">
-          <img class="img-fluid rounded w-100" src="img/about.jpg" alt="About photo" loading="lazy">
+        <div class="col-lg-5 pb-4 pb-lg-0" data-aos="fade-right">
+          <img class="img-fluid rounded w-100" src="img/about.jpg" alt="About photo" loading="lazy" decoding="async">
         </div>
-        <div class="col-lg-7">
+        <div class="col-lg-7" data-aos="fade-left">
           <h3 class="mb-4">Software Developer</h3>
-          <p>I’m a systems engineer originally from Bolivia with hands-on experience building specialized applications. After relocating to the U.S., I continued expanding my skill set while staying focused on software development.</p>
+          <p>I'm a systems engineer originally from Bolivia with hands-on experience building specialized applications. After relocating to the U.S., I continued expanding my skill set while staying focused on software development.</p>
           <p>I completed a comprehensive Software Engineering Bootcamp at the University of South Florida (USF), where I gained hands-on experience with modern front-end and back-end technologies. This journey sharpened my skills in building scalable web applications and deepened my understanding of full-stack development best practices.</p>
           <p>As a developer, I deliver quality results across the stack using JavaScript, CSS, PHP, Python/Flask, and more to create dynamic and engaging web applications. I solve bugs, drive innovation, and work with DevOps tools and practices, including AWS, to streamline deployment and infrastructure management.</p>
           <div class="row mb-3">
@@ -180,12 +366,12 @@
   <!-- Qualification Start -->
   <div class="container-fluid py-5" id="qualification">
     <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
+      <div class="position-relative d-flex align-items-center justify-content-center" data-aos="fade-up">
         <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Qualifications</h1>
         <h1 class="position-absolute text-uppercase text-primary">Education &amp; Experience</h1>
       </div>
       <div class="row align-items-center">
-        <div class="col-lg-6">
+        <div class="col-lg-6" data-aos="fade-right">
           <h3 class="mb-4">My Education</h3>
           <div class="border-left border-primary pt-2 pl-4 ml-2">
             <div class="position-relative mb-4">
@@ -206,7 +392,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" data-aos="fade-left">
           <h3 class="mb-4">My Experience</h3>
           <div class="border-left border-primary pt-2 pl-4 ml-2">
             <div class="position-relative mb-4">
@@ -214,9 +400,6 @@
               <h5 class="font-weight-bold mb-1">Back End Developer</h5>
               <p class="mb-2"><strong>ZYSC Software LLC, Tampa, Florida, USA</strong> | <small>Mar 2025 - Present</small></p>
               <p>Designed and implemented modular RESTful APIs using Python, Flask, and SQLAlchemy, focusing on scalability and maintainability.</p>
-              <p>Enhanced backend architecture with new models, schemas, routes, and reusable utilities, maintaining clean documentation and Postman/Swagger testing.</p>
-              <p>Collaborated with frontend and leadership to align backend functionality with business goals and UI expectations.</p>
-              <p>Maintained secure database access to AWS RDS via SSH tunnels and Docker-based dev environments.</p>
             </div>
 
             <div class="position-relative mb-4">
@@ -228,22 +411,6 @@
 
             <div class="position-relative mb-4">
               <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Quality Assurance Engineer (Cross-training)</h5>
-              <p class="mb-2"><strong>ID.me, Tampa, Florida, USA</strong> | <small>May 2024 – Jul 2024</small></p>
-              <p>Developed and executed test matrices and test cases for Marketplace web, browser extensions, and mobile apps.
-                Used JIRA, Confluence, Sentry, GitHub, and Harness for collaboration, tracking, and error monitoring.
-                Prioritized effectively despite limited environments and tight timelines.</p>
-            </div>
-
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Classroom Monitor / IT Help Desk</h5>
-              <p class="mb-2"><strong>FCPS, Fairfax, Virginia, USA</strong> | <small>Feb 2021 – Jun 2021</small></p>
-              <p>Provided in-person classroom assistance and technical support to 50+ teachers and 300+ students weekly.</p>
-            </div>
-
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
               <h5 class="font-weight-bold mb-1">Software Development Specialist</h5>
               <p class="mb-2"><strong>Fortaleza Bank, La Paz, Bolivia</strong> | <small>Nov 2019 - Aug 2020</small></p>
               <p>Built and integrated 4GL/PHP/JS backend modules for Netbank; improved performance with EJB and Spring Boot.</p>
@@ -251,23 +418,9 @@
 
             <div class="position-relative mb-4">
               <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Full-Stack Developer</h5>
-              <p class="mb-2"><strong>Red Solutions</strong> | <small>Jun 2019 – Jun 2021</small></p>
-              <p>Launched a startup, led SMB tech support, and delivered websites using modern stacks.</p>
-            </div>
-
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
               <h5 class="font-weight-bold mb-1">Head of IT / Network &amp; Communications</h5>
               <p class="mb-2"><strong>Quipus Public Enterprise, La Paz, Bolivia</strong> | <small>Apr 2015 - Jul 2019</small></p>
               <p>Revamped web stack, boosted availability and performance, and automated ops for 800+ units.</p>
-            </div>
-
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Backend Software Developer</h5>
-              <p class="mb-2"><strong>ProcessMaker, La Paz, Bolivia</strong> | <small>Apr 2013 - Mar 2015</small></p>
-              <p>Resolved PM2.x bugs, API testing, unit tests, and front-end testing with Selenium; supported Scrum delivery.</p>
             </div>
           </div>
         </div>
@@ -279,68 +432,107 @@
   <!-- Skill Start -->
   <div class="container-fluid py-5" id="skill">
     <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
+      <div class="position-relative d-flex align-items-center justify-content-center" data-aos="fade-up">
         <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Skills</h1>
         <h1 class="position-absolute text-uppercase text-primary">My Skills</h1>
       </div>
       <div class="row align-items-center">
-        <ul>
-          <li>Tools &amp; methodologies: Scrum/Agile, GIT, SVN, UI/UX technologies</li>
-          <li>Operating systems: Linux and Windows</li>
-          <li>Web technologies: HTML, CSS, Bootstrap, JavaScript, React, JQuery, C#, Java, PHP, Python, Flask, .NET</li>
-          <li>Databases: Oracle, Microsoft SQL Server, PostgreSQL, MySQL</li>
-          <li>Cisco Certified Network Associate (CCNA)</li>
-          <li>Languages
-            <ul>
-              <li>Spanish (Native)</li>
-              <li>English (Proficient)</li>
-            </ul>
-          </li>
-        </ul>
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="skill-item">
+            <div class="skill-category">Backend Development</div>
+            <p class="mb-0">Python, Flask, SQLAlchemy, RESTful APIs, Node.js, PHP</p>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-category">Frontend Development</div>
+            <p class="mb-0">JavaScript, React, HTML5, CSS3, Bootstrap, jQuery</p>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-category">Database Management</div>
+            <p class="mb-0">PostgreSQL, MySQL, Oracle, Microsoft SQL Server</p>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-category">DevOps & Cloud</div>
+            <p class="mb-0">AWS (RDS, EC2), Docker, Git, CI/CD pipelines</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="skill-item">
+            <div class="skill-category">Development Tools</div>
+            <p class="mb-0">Git, SVN, JIRA, Confluence, Postman, Swagger</p>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-category">Methodologies</div>
+            <p class="mb-0">Agile/Scrum, Test-Driven Development, UI/UX best practices</p>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-category">Additional Technologies</div>
+            <p class="mb-0">C#, .NET, Java, Spring Boot, EJB</p>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-category">Systems & Networking</div>
+            <p class="mb-0">Linux (Ubuntu, CentOS), Windows Server, CCNA Certified</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-4" data-aos="fade-up">
+        <div class="col-12">
+          <div class="skill-item">
+            <div class="skill-category">Languages</div>
+            <p class="mb-0">Spanish (Native) • English (Proficient)</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <!-- Skill End -->
 
-  <!-- Services Start (aligned icons) -->
+  <!-- Services Start -->
   <div class="container-fluid pt-5" id="service">
     <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
+      <div class="position-relative d-flex align-items-center justify-content-center" data-aos="fade-up">
         <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Service</h1>
         <h1 class="position-absolute text-uppercase text-primary">My Services</h1>
       </div>
       <div class="row pt-3">
-        <div class="col-md-4 mb-5">
+        <div class="col-md-4 mb-5" data-aos="fade-up" data-aos-delay="100">
           <div class="service-item h-100">
             <div class="service-icon"><i class="fa fa-laptop"></i></div>
             <div class="service-title">Web Design</div>
           </div>
         </div>
-        <div class="col-md-4 mb-5">
+        <div class="col-md-4 mb-5" data-aos="fade-up" data-aos-delay="200">
           <div class="service-item h-100">
             <div class="service-icon"><i class="fa fa-laptop-code"></i></div>
             <div class="service-title">Web Development</div>
           </div>
         </div>
-        <div class="col-md-4 mb-5">
+        <div class="col-md-4 mb-5" data-aos="fade-up" data-aos-delay="300">
           <div class="service-item h-100">
             <div class="service-icon"><i class="fab fa-android"></i></div>
             <div class="service-title">App Design</div>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="service-item h-100">
             <div class="service-icon"><i class="fab fa-apple"></i></div>
             <div class="service-title">App Development</div>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
           <div class="service-item h-100">
             <div class="service-icon"><i class="fa fa-search"></i></div>
             <div class="service-title">SEO</div>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="service-item h-100">
             <div class="service-icon"><i class="fa fa-edit"></i></div>
             <div class="service-title">Content Creation</div>
@@ -354,7 +546,7 @@
   <!-- Portfolio Start -->
   <div class="container-fluid pt-5 pb-3" id="portfolio">
     <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
+      <div class="position-relative d-flex align-items-center justify-content-center" data-aos="fade-up">
         <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Gallery</h1>
         <h1 class="position-absolute text-uppercase text-primary">My Portfolio</h1>
       </div>
@@ -369,61 +561,61 @@
         </div>
       </div>
       <div class="row portfolio-container">
-        <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+        <div class="col-lg-4 col-md-6 mb-4 portfolio-item first" data-aos="zoom-in" data-aos-delay="100">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-1.jpg" alt="SICOES" loading="lazy">
+            <img class="img-fluid rounded w-100" src="img/portfolio-1.jpg" alt="SICOES" loading="lazy" decoding="async">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://www.sicoes.gob.bo/portal/index.php" target="_blank" rel="noopener" aria-label="Open SICOES">
+              <a href="https://www.sicoes.gob.bo/portal/index.php" target="_blank" rel="noopener noreferrer" aria-label="Open SICOES">
                 <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
               </a>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
+        <div class="col-lg-4 col-md-6 mb-4 portfolio-item second" data-aos="zoom-in" data-aos-delay="200">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-2.jpg" alt="Banco Fortaleza" loading="lazy">
+            <img class="img-fluid rounded w-100" src="img/portfolio-2.jpg" alt="Banco Fortaleza" loading="lazy" decoding="async">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://www.bancofortaleza.com.bo/" target="_blank" rel="noopener" aria-label="Open Banco Fortaleza">
+              <a href="https://www.bancofortaleza.com.bo/" target="_blank" rel="noopener noreferrer" aria-label="Open Banco Fortaleza">
                 <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
               </a>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+        <div class="col-lg-4 col-md-6 mb-4 portfolio-item first" data-aos="zoom-in" data-aos-delay="300">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-3.jpg" alt="SIGEP" loading="lazy">
+            <img class="img-fluid rounded w-100" src="img/portfolio-3.jpg" alt="SIGEP" loading="lazy" decoding="async">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://sigep.gob.bo/seguridad/faces/ingreso.jspx" target="_blank" rel="noopener" aria-label="Open SIGEP">
+              <a href="https://sigep.gob.bo/seguridad/faces/ingreso.jspx" target="_blank" rel="noopener noreferrer" aria-label="Open SIGEP">
                 <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
               </a>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+        <div class="col-lg-4 col-md-6 mb-4 portfolio-item third" data-aos="zoom-in" data-aos-delay="100">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-4.jpg" alt="Quipus" loading="lazy">
+            <img class="img-fluid rounded w-100" src="img/portfolio-4.jpg" alt="Quipus" loading="lazy" decoding="async">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://www.quipus.gob.bo/" target="_blank" rel="noopener" aria-label="Open Quipus">
+              <a href="https://www.quipus.gob.bo/" target="_blank" rel="noopener noreferrer" aria-label="Open Quipus">
                 <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
               </a>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+        <div class="col-lg-4 col-md-6 mb-4 portfolio-item third" data-aos="zoom-in" data-aos-delay="200">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-5.jpg" alt="Wedding app" loading="lazy">
+            <img class="img-fluid rounded w-100" src="img/portfolio-5.jpg" alt="Wedding app" loading="lazy" decoding="async">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://danielrojasvalda.github.io/wedding-app/" target="_blank" rel="noopener" aria-label="Open Wedding App">
+              <a href="https://danielrojasvalda.github.io/wedding-app/" target="_blank" rel="noopener noreferrer" aria-label="Open Wedding App">
                 <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
               </a>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+        <div class="col-lg-4 col-md-6 mb-4 portfolio-item third" data-aos="zoom-in" data-aos-delay="300">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-6.jpg" alt="Nucci Medical" loading="lazy">
+            <img class="img-fluid rounded w-100" src="img/portfolio-6.jpg" alt="Nucci Medical" loading="lazy" decoding="async">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://nuccimedical.com/" target="_blank" rel="noopener" aria-label="Open Nucci Medical">
+              <a href="https://nuccimedical.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Nucci Medical">
                 <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
               </a>
             </div>
@@ -437,13 +629,13 @@
   <!-- Contact Start -->
   <div class="container-fluid py-5 bg-light" id="contact">
     <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
+      <div class="position-relative d-flex align-items-center justify-content-center" data-aos="fade-up">
         <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Contact</h1>
         <h1 class="position-absolute text-uppercase text-primary">Get in touch</h1>
       </div>
 
       <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
+        <div class="col-lg-8 text-center" data-aos="fade-up" data-aos-delay="100">
           <p class="mb-4">No form here—use email or LinkedIn to reach me quickly.</p>
 
           <a href="mailto:danielrojasvalda@gmail.com?subject=Portfolio%20inquiry&body=Hi%20Freddy%2C%0A"
@@ -452,13 +644,13 @@
           </a>
 
           <a class="btn btn-outline-primary mr-2"
-             href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener" aria-label="Open LinkedIn">
+             href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn">
             <i class="fab fa-linkedin-in mr-1"></i> LinkedIn
           </a>
 
           <a class="btn btn-outline-primary"
              href="https://wa.me/13219457729?text=Hi%20Freddy%2C%20I%20saw%20your%20portfolio..."
-             target="_blank" rel="noopener" aria-label="Open WhatsApp chat">
+             target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp chat">
             <i class="fab fa-whatsapp mr-1"></i> WhatsApp
           </a>
         </div>
@@ -470,13 +662,13 @@
   <!-- ===== Revenue & Cost Playground (Showcase) ===== -->
   <div class="container-fluid py-5 bg-light" id="playground">
     <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
+      <div class="position-relative d-flex align-items-center justify-content-center" data-aos="fade-up">
         <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Play</h1>
         <h1 class="position-absolute text-uppercase text-primary">Revenue & Cost Playground</h1>
       </div>
 
       <div class="row">
-        <div class="col-lg-6 mb-4">
+        <div class="col-lg-6 mb-4" data-aos="fade-right">
           <div class="card shadow-sm border-0">
             <div class="card-body">
               <h5 class="card-title mb-3">Adjust assumptions</h5>
@@ -513,7 +705,7 @@
           </div>
         </div>
 
-        <div class="col-lg-6 mb-4">
+        <div class="col-lg-6 mb-4" data-aos="fade-left">
           <div class="card shadow-sm border-0">
             <div class="card-body">
               <h5 class="card-title mb-3">Monthly snapshot</h5>
@@ -540,67 +732,11 @@
         </div>
       </div>
 
-      <div class="text-center mt-2">
+      <div class="text-center mt-2" data-aos="fade-up">
         <a href="#contact" class="btn btn-outline-primary">Want a custom calculator for your practice?</a>
       </div>
     </div>
   </div>
-
-  <!-- Chart.js (defer ok) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
-
-  <script>
-    window.addEventListener('load', function(){
-      // Typed animation (same behavior as your original template)
-      if (document.querySelector('.typed-text-output') && window.Typed) {
-        var typed_strings = document.querySelector('.typed-text').textContent;
-        new Typed('.typed-text-output', {
-          strings: typed_strings.split(', '),
-          typeSpeed: 100,
-          backSpeed: 20,
-          smartBackspace: false,
-          loop: true
-        });
-      }
-
-      // Playground math
-      const $ = (id) => document.getElementById(id);
-      const f = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
-      const inQty = $('inQty'), outQty = $('outQty');
-      const inAllowed = $('inAllowed'), outAllowed = $('outAllowed');
-      const inLabor = $('inLabor'), outLabor = $('outLabor');
-      const inSup = $('inSup'), outSup = $('outSup');
-      const inReal = $('inReal'), outReal = $('outReal');
-      const outRev = $('outRev'), outCost = $('outCost'), outProfit = $('outProfit');
-
-      const ctx = document.getElementById('rcChart');
-      const chart = new Chart(ctx, {
-        type: 'bar',
-        data: { labels: ['Revenue','Cost','Profit'], datasets: [{ label: 'USD', data: [0,0,0] }] },
-        options: {
-          responsive: true,
-          plugins: { legend: { display: false } },
-          scales: { y: { ticks: { callback: (v)=>'$'+f.format(v) } } }
-        }
-      });
-
-      function fmt(n){ return '$' + n.toLocaleString('en-US'); }
-      function recompute(){
-        const qty=+inQty.value, allowed=+inAllowed.value, labor=+inLabor.value, sup=+inSup.value, real=(+inReal.value)/100;
-        const correctedRevenue = qty*allowed*real;
-        const totalCost = qty*(labor+sup);
-        const profit = correctedRevenue-totalCost;
-        chart.data.datasets[0].data = [correctedRevenue,totalCost,profit];
-        chart.update('none');
-        outQty.textContent=qty; outAllowed.textContent=allowed.toLocaleString('en-US');
-        outLabor.textContent=labor.toLocaleString('en-US'); outSup.textContent=sup.toLocaleString('en-US');
-        outReal.textContent=Math.round(real*100);
-        outRev.textContent=fmt(correctedRevenue); outCost.textContent=fmt(totalCost); outProfit.textContent=fmt(profit);
-      }
-      [inQty,inAllowed,inLabor,inSup,inReal].forEach(el=>el.addEventListener('input',recompute));
-      recompute();
-    });
-  </script>
 
   <!-- Footer Start -->
   <div class="container-fluid bg-primary text-white mt-5 py-4 px-sm-3 px-md-5">
@@ -608,9 +744,9 @@
       <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
         <!-- Social -->
         <div class="mb-3 mb-md-0 mr-md-3">
-          <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-          <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-          <a class="btn btn-light btn-social mr-2" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener" aria-label="GitLab profile">
+          <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a class="btn btn-light btn-social mr-2" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener noreferrer" aria-label="GitLab profile">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 512 512" role="img" aria-hidden="true">
               <path d="M494.9 229.5L448 97.1c-2.6-7.3-12.8-7.3-15.4 0L384 229.5H128l-48.6-132.4c-2.6-7.3-12.8-7.3-15.4 0L17.1 229.5c-2.4 6.5.2 13.8 6.1 17.6L256 417.7l232.8-170.6c5.9-3.8 8.5-11.1 6.1-17.6z"/>
             </svg>
@@ -628,7 +764,7 @@
         </iframe>
       </div>
 
-      <p class="m-0 mt-3 small">&copy; <a class="text-white font-weight-bold" href="#">danielrojas</a>. All Rights Reserved.</p>
+      <p class="m-0 mt-3 small">&copy; <a class="text-white font-weight-bold" href="#">freddyrojas</a>. All Rights Reserved.</p>
     </div>
   </div>
   <!-- Footer End -->
@@ -641,7 +777,7 @@
       var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
       try {
         var url = new URL(frame.src);
-        url.searchParams.set('theme', prefersLight ? '1' : '0'); // 1 = light, 0 = dark
+        url.searchParams.set('theme', prefersLight ? '1' : '0');
         frame.src = url.toString();
       } catch(e) {}
     })();
@@ -653,7 +789,7 @@
   <!-- Back to Top -->
   <a href="#" class="btn btn-outline-dark px-0 back-to-top" aria-label="Back to top"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
 
-  <!-- JavaScript Libraries (deferred) -->
+  <!-- JavaScript Libraries -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" defer></script>
   <script src="lib/typed/typed.min.js" defer></script>
@@ -663,19 +799,68 @@
   <script src="lib/isotope/isotope.pkgd.min.js" defer></script>
   <script src="lib/lightbox/js/lightbox.min.js" defer></script>
   <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js" defer></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
 
-  <!-- Template init (Isotope filters) -->
+  <!-- Main JavaScript -->
   <script>
-    window.addEventListener('load', function () {
+    window.addEventListener('load', function(){
+      // Initialize AOS
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 800,
+          once: true,
+          offset: 100
+        });
+      }
+
+      // Typed animation
+      if (document.querySelector('.typed-text-output') && window.Typed) {
+        var typed_strings = document.querySelector('.typed-text').textContent;
+        new Typed('.typed-text-output', {
+          strings: typed_strings.split(', '),
+          typeSpeed: 100,
+          backSpeed: 20,
+          smartBackspace: false,
+          loop: true
+        });
+      }
+
+      // Dark Mode Toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = themeToggle.querySelector('i');
+      const savedTheme = localStorage.getItem('theme');
+      
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.className = 'fas fa-sun';
+      }
+      
+      themeToggle.onclick = () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      };
+
+      // Skills animation removed - no progress bars to animate
+
+      // Isotope Portfolio Filter
       var grid = document.querySelector('.portfolio-container');
       if (grid && window.imagesLoaded && window.Isotope) {
         imagesLoaded(grid, function () {
-          var iso = new Isotope(grid, { itemSelector: '.portfolio-item', layoutMode: 'fitRows' });
+          var iso = new Isotope(grid, { 
+            itemSelector: '.portfolio-item', 
+            layoutMode: 'fitRows' 
+          });
+          
           var filters = document.getElementById('portfolio-flters');
           if (filters) {
             filters.addEventListener('click', function (e) {
               if (e.target && e.target.matches('li')) {
-                Array.from(this.children).forEach(function (li) { li.classList.remove('active'); });
+                Array.from(this.children).forEach(function (li) { 
+                  li.classList.remove('active'); 
+                });
                 e.target.classList.add('active');
                 iso.arrange({ filter: e.target.getAttribute('data-filter') });
               }
@@ -683,10 +868,69 @@
           }
         });
       }
+
+      // Playground Calculator
+      const $ = (id) => document.getElementById(id);
+      const f = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+      const inQty = $('inQty'), outQty = $('outQty');
+      const inAllowed = $('inAllowed'), outAllowed = $('outAllowed');
+      const inLabor = $('inLabor'), outLabor = $('outLabor');
+      const inSup = $('inSup'), outSup = $('outSup');
+      const inReal = $('inReal'), outReal = $('outReal');
+      const outRev = $('outRev'), outCost = $('outCost'), outProfit = $('outProfit');
+
+      const ctx = document.getElementById('rcChart');
+      const chart = new Chart(ctx, {
+        type: 'bar',
+        data: { 
+          labels: ['Revenue','Cost','Profit'], 
+          datasets: [{ 
+            label: 'USD', 
+            data: [0,0,0],
+            backgroundColor: ['#2b6f8f', '#dc3545', '#28a745']
+          }] 
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { 
+            y: { 
+              ticks: { callback: (v)=>'+f.format(v) },
+              beginAtZero: true
+            } 
+          }
+        }
+      });
+
+      function fmt(n){ return ' + n.toLocaleString('en-US'); }
+      
+      function recompute(){
+        const qty=+inQty.value, allowed=+inAllowed.value, labor=+inLabor.value, 
+              sup=+inSup.value, real=(+inReal.value)/100;
+        const correctedRevenue = qty*allowed*real;
+        const totalCost = qty*(labor+sup);
+        const profit = correctedRevenue-totalCost;
+        
+        chart.data.datasets[0].data = [correctedRevenue,totalCost,profit];
+        chart.update('none');
+        
+        outQty.textContent=qty; 
+        outAllowed.textContent=allowed.toLocaleString('en-US');
+        outLabor.textContent=labor.toLocaleString('en-US'); 
+        outSup.textContent=sup.toLocaleString('en-US');
+        outReal.textContent=Math.round(real*100);
+        outRev.textContent=fmt(correctedRevenue); 
+        outCost.textContent=fmt(totalCost); 
+        outProfit.textContent=fmt(profit);
+      }
+      
+      [inQty,inAllowed,inLabor,inSup,inReal].forEach(el=>el.addEventListener('input',recompute));
+      recompute();
     });
   </script>
 
-  <!-- ===== AI Widget ===== -->
+  <!-- AI Widget -->
   <div id="ai-box" role="dialog" aria-modal="true" aria-labelledby="ai-head" aria-hidden="true">
     <div id="ai-head">Portfolio AI <span id="ai-status"></span></div>
     <div id="ai-log" aria-live="polite"></div>
@@ -699,7 +943,9 @@
 
   <script>
     (function(){
-      const probe=document.createElement('span'); probe.className='text-primary'; probe.style.display='none';
+      const probe=document.createElement('span'); 
+      probe.className='text-primary'; 
+      probe.style.display='none';
       document.body.appendChild(probe);
       const c=getComputedStyle(probe).color;
       if(c) document.documentElement.style.setProperty('--ai-accent', c);
@@ -718,6 +964,7 @@
       const open = box.style.display === 'block';
       box.style.display = open ? 'none' : 'block';
       btn.setAttribute('aria-expanded', String(!open));
+      box.setAttribute('aria-hidden', String(open));
       if (!open) setTimeout(() => input.focus(), 40);
     };
 
@@ -728,12 +975,14 @@
       log.appendChild(div);
       log.scrollTop=log.scrollHeight;
     }
+    
     function setStatus(t){ statusEl.textContent = t ? ` · ${t}` : ''; }
 
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
       const q = input.value.trim();
       if(!q) return;
+      
       addMessage(q,'you');
       input.value='';
       addMessage('…','bot');
@@ -749,11 +998,22 @@
         const data = await r.json();
         log.lastChild.textContent = data?.answer || data?.error || 'No response.';
       }catch(err){
-        log.lastChild.textContent = 'Error contacting assistant.';
+        log.lastChild.textContent = 'Error contacting assistant. Please try again.';
       }finally{
         setStatus('');
       }
     });
+  </script>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {
+          // Service worker registration failed - no problem
+        });
+      });
+    }
   </script>
 </body>
 </html>
