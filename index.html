@@ -2,39 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Freddy Rojas Portfolio</title>
+  <title>Freddy Rojas — Software Engineer (Flask · React · QA Mindset)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Experienced software developer showcasing projects and expertise in web and application development.">
-  <meta name="keywords" content="Software developer, web development, application development, programming, coding, portfolio, projects">
-  <meta name="author" content="Freddy Rojas">
+  <meta name="description" content="Full-stack engineer in Tampa, FL. I build scalable Flask/Node APIs and React frontends, with a strong QA background (ID.me). See projects, live demos, and resume.">
+  <link rel="canonical" href="https://danielrojasvalda.github.io/gh-portfolio/">
+  <meta name="robots" content="index,follow">
 
-  <meta property="og:title" content="Freddy Rojas - Software Developer Portfolio">
-  <meta property="og:description" content="Experienced software developer showcasing projects and expertise in web and application development.">
-  <meta property="og:image" content="img/profile.jpg">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://danielrojasvalda.github.io/gh-portfolio/">
+  <meta property="og:title" content="Freddy Rojas — Software Engineer">
+  <meta property="og:description" content="Flask/React developer with QA rigor. Explore projects and the revenue & cost playground.">
+  <meta property="og:image" content="https://danielrojasvalda.github.io/gh-portfolio/img/profile.jpg">
 
-  <!-- JSON-LD for rich results -->
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Freddy Rojas — Software Engineer">
+  <meta name="twitter:description" content="Flask/React developer with QA rigor. Explore projects and the revenue & cost playground.">
+  <meta name="twitter:image" content="https://danielrojasvalda.github.io/gh-portfolio/img/profile.jpg">
+
+  <!-- JSON-LD: Person + WebSite -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Freddy Daniel Rojas",
-    "jobTitle":"Software Engineer",
-    "url":"https://danielrojasvalda.github.io/gh-portfolio",
-    "image":"https://danielrojasvalda.github.io/gh-portfolio/img/profile.jpg",
-    "sameAs":[
-      "https://www.linkedin.com/in/freddyrojasv/",
-      "https://github.com/danielrojasvalda/"
-    ],
-    "knowsLanguage":["es","en"],
-    "workLocation":{
-      "@type":"Place",
-      "address":{
-        "@type":"PostalAddress",
-        "addressLocality":"Tampa",
-        "addressRegion":"FL",
-        "addressCountry":"US"
+    "@graph":[
+      {
+        "@type":"Person",
+        "name":"Freddy Daniel Rojas",
+        "jobTitle":"Software Engineer",
+        "url":"https://danielrojasvalda.github.io/gh-portfolio/",
+        "image":"https://danielrojasvalda.github.io/gh-portfolio/img/profile.jpg",
+        "sameAs":[
+          "https://www.linkedin.com/in/freddyrojasv/",
+          "https://github.com/danielrojasvalda/",
+          "https://gitlab.com/danielrojasvalda"
+        ],
+        "knowsLanguage":["es","en"],
+        "address":{
+          "@type":"PostalAddress",
+          "addressLocality":"Tampa",
+          "addressRegion":"FL",
+          "addressCountry":"US"
+        }
+      },
+      {
+        "@type":"WebSite",
+        "url":"https://danielrojasvalda.github.io/gh-portfolio/",
+        "name":"Freddy Rojas Portfolio",
+        "potentialAction":{
+          "@type":"SearchAction",
+          "target":"https://danielrojasvalda.github.io/gh-portfolio/?q={search_term_string}",
+          "query-input":"required name=search_term_string"
+        }
       }
-    }
+    ]
   }
   </script>
 
@@ -42,9 +63,11 @@
   <link href="img/favicon.ico" rel="icon">
 
   <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <!-- (Optional) Preload a core font file to reduce FOUT -->
+  <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -58,6 +81,8 @@
 
   <style>
     .portfolio-item img { width: 100%; height: 220px; object-fit: cover; }
+    /* small utility for badge gaps (Bootstrap 4 doesn't have gap utilities) */
+    .gap-2 { gap: .5rem; }
 
     /* ==== AI Widget (white trigger, accent from .text-primary) ==== */
     :root{ --ai-accent:#0078ff; --ai-contrast:#ffffff; }
@@ -90,6 +115,7 @@
   <!-- Navbar Start -->
   <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
     <a href="index.html" class="navbar-brand ml-lg-3" aria-label="Home">
+      <!-- One true H1 lives here -->
       <h1 class="m-0 display-5"><span class="text-primary">Freddy</span>Rojas</h1>
     </a>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,8 +125,9 @@
       <div class="navbar-nav m-auto py-0">
         <a href="#home" class="nav-item nav-link active">Home</a>
         <a href="#about" class="nav-item nav-link">About</a>
+        <a href="#projects" class="nav-item nav-link">Projects</a>
         <a href="#qualification" class="nav-item nav-link">Qualifications</a>
-        <a href="#skill" class="nav-item nav-link">Skills</a>
+        <a href="#skill" class="nav-item nav-link">Tech Stack</a>
         <a href="#service" class="nav-item nav-link">Service</a>
         <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
         <a href="#contact" class="nav-item nav-link">Contact</a>
@@ -114,23 +141,25 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-5 px-5 pl-lg-0 pb-5 pb-lg-0">
-          <img class="img-fluid w-100 rounded-circle shadow-sm" src="img/profile.jpg" alt="Profile photo">
+          <img class="img-fluid w-100 rounded-circle shadow-sm"
+               src="img/profile.jpg" alt="Headshot of Freddy Rojas"
+               width="480" height="480">
         </div>
         <div class="col-lg-7 text-center text-lg-left">
-          <h3 class="text-white font-weight-normal mb-3">I'm</h3>
-          <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 2px #ffffff;">Freddy Rojas</h1>
-          <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
-          <div class="typed-text d-none">Web Designer, Web Developer, FrontEnd Developer, BackEnd Developer, Apps Developer</div>
-          <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-            <a href="files/Resume-Freddy-Rojas.pdf" download class="btn btn-outline-light mr-5" aria-label="Download resume">Resume</a>
-            <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-            <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
-            <a class="btn btn-light btn-social mr-2" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener" aria-label="GitLab profile">
+          <p class="text-white-50 mb-2">I'm</p>
+          <p class="lead text-white-50 mt-3">
+            Full-stack engineer (Flask/React) with a QA mindset — I ship fast, testable features and measurable results.
+          </p>
+          <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-4">
+            <a href="files/Resume-Freddy-Rojas.pdf" download class="btn btn-outline-light mr-4" aria-label="Download resume">Resume</a>
+            <a class="btn btn-light btn-social mr-2" rel="me" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+            <a class="btn btn-light btn-social mr-2" rel="me" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
+            <a class="btn btn-light btn-social mr-2" rel="me" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener" aria-label="GitLab profile">
               <!-- GitLab SVG -->
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 512 512" role="img" aria-hidden="true">
-              <path d="M494.9 229.5L448 97.1c-2.6-7.3-12.8-7.3-15.4 0L384 229.5H128l-48.6-132.4c-2.6-7.3-12.8-7.3-15.4 0L17.1 229.5c-2.4 6.5.2 13.8 6.1 17.6L256 417.7l232.8-170.6c5.9-3.8 8.5-11.1 6.1-17.6z"/>
+                <path d="M494.9 229.5L448 97.1c-2.6-7.3-12.8-7.3-15.4 0L384 229.5H128l-48.6-132.4c-2.6-7.3-12.8-7.3-15.4 0L17.1 229.5c-2.4 6.5.2 13.8 6.1 17.6L256 417.7l232.8-170.6c5.9-3.8 8.5-11.1 6.1-17.6z"/>
               </svg>
-             </a>
+            </a>
           </div>
         </div>
       </div>
@@ -142,12 +171,12 @@
   <div class="container-fluid py-5" id="about">
     <div class="container">
       <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
-        <h1 class="position-absolute text-uppercase text-primary">About Me</h1>
+        <div class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</div>
+        <h2 class="position-absolute text-uppercase text-primary">About Me</h2>
       </div>
       <div class="row align-items-center">
         <div class="col-lg-5 pb-4 pb-lg-0">
-          <img class="img-fluid rounded w-100" src="img/about.jpg" alt="About photo" loading="lazy">
+          <img class="img-fluid rounded w-100" src="img/about.jpg" alt="Freddy at work on a laptop" width="720" height="480" loading="lazy">
         </div>
         <div class="col-lg-7">
           <h3 class="mb-4">Software Developer</h3>
@@ -167,12 +196,57 @@
   </div>
   <!-- About End -->
 
+  <!-- Featured Projects (Case Studies) -->
+  <section class="container py-5" id="projects">
+    <div class="text-center mb-4">
+      <h2 class="text-uppercase text-primary">Featured Projects</h2>
+      <p class="text-muted">Impact-focused work with live links and repos.</p>
+    </div>
+    <div class="row">
+      <!-- Project 1 -->
+      <article class="col-md-6 mb-4" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-body">
+            <h3 class="h5" itemprop="name">ASC Profit — Revenue & Cost Model</h3>
+            <p class="mb-2" itemprop="description">
+              Flask/Chart.js mini-app modeling collections & costs. Built reusable calc modules; demo embedded below.
+            </p>
+            <ul class="small text-muted mb-3">
+              <li>Result: instant what-if scenarios; reusable domain logic.</li>
+              <li>Stack: Flask, SQLAlchemy, Chart.js, Docker.</li>
+            </ul>
+            <a class="btn btn-sm btn-outline-primary mr-2" href="#playground">Live demo</a>
+            <a class="btn btn-sm btn-outline-secondary" itemprop="codeRepository" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <meta itemprop="programmingLanguage" content="Python">
+      </article>
+      <!-- Project 2 -->
+      <article class="col-md-6 mb-4" itemscope itemtype="https://schema.org/SoftwareSourceCode">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-body">
+            <h3 class="h5" itemprop="name">QA Toolkit — Test Matrix + CI Hooks</h3>
+            <p class="mb-2" itemprop="description">
+              Reproducible test matrix templates with JIRA links; CI step posts Sentry IDs to PRs.
+            </p>
+            <ul class="small text-muted mb-3">
+              <li>Result: re-test time ↓ ~30%, defect leakage ↓.</li>
+              <li>Stack: GitHub Actions, Node, JIRA API, Sentry.</li>
+            </ul>
+            <a class="btn btn-sm btn-outline-secondary" itemprop="codeRepository" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener">GitLab</a>
+          </div>
+        </div>
+        <meta itemprop="programmingLanguage" content="JavaScript">
+      </article>
+    </div>
+  </section>
+
   <!-- Qualification Start -->
   <div class="container-fluid py-5" id="qualification">
     <div class="container">
       <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Qualifications</h1>
-        <h1 class="position-absolute text-uppercase text-primary">Education &amp; Experience</h1>
+        <div class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Qualifications</div>
+        <h2 class="position-absolute text-uppercase text-primary">Education &amp; Experience</h2>
       </div>
       <div class="row align-items-center">
         <div class="col-lg-6">
@@ -221,7 +295,7 @@
               <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;" aria-hidden="true"></i>
               <h5 class="font-weight-bold mb-1">Quality Assurance Engineer (Cross-training)</h5>
               <p class="mb-2"><strong>ID.me, Tampa, Florida, USA</strong> | <small>May 2024 – Jul 2024</small></p>
-                <p>Developed and executed test matrices and test cases for Marketplace web, browser extensions, and mobile apps.
+              <p>Developed and executed test matrices and test cases for Marketplace web, browser extensions, and mobile apps.
                 Used JIRA, Confluence, Sentry, GitHub, and Harness for collaboration, tracking, and error monitoring.
                 Prioritized effectively despite limited environments and tight timelines.</p>
             </div>
@@ -267,38 +341,57 @@
   </div>
   <!-- Qualification End -->
 
-  <!-- Skill Start -->
+  <!-- Tech Stack Start -->
   <div class="container-fluid py-5" id="skill">
     <div class="container">
       <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Skills</h1>
-        <h1 class="position-absolute text-uppercase text-primary">My Skills</h1>
+        <div class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Stack</div>
+        <h2 class="position-absolute text-uppercase text-primary">Tech Stack</h2>
       </div>
-      <div class="row align-items-center">
-        <ul>
-          <li>Tools &amp; methodologies: Scrum/Agile, GIT, SVN, UI/UX technologies</li>
-          <li>Operating systems: Linux and Windows</li>
-          <li>Web technologies: HTML, CSS, Bootstrap, JavaScript, React, JQuery, C#, Java, PHP, Python, Flask, .NET</li>
-          <li>Databases: Oracle, Microsoft SQL Server, PostgreSQL, MySQL</li>
-          <li>Cisco Certified Network Associate (CCNA)</li>
-          <li>Languages
-            <ul>
-              <li>Spanish (Native)</li>
-              <li>English (Proficient)</li>
-            </ul>
-          </li>
-        </ul>
+
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <h3 class="h5">Core</h3>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-primary">Python</span>
+            <span class="badge badge-primary">Flask</span>
+            <span class="badge badge-primary">Node.js</span>
+            <span class="badge badge-primary">React</span>
+            <span class="badge badge-primary">SQLAlchemy</span>
+            <span class="badge badge-primary">PostgreSQL</span>
+            <span class="badge badge-primary">MySQL</span>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+          <h3 class="h5">QA / DevOps</h3>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge badge-secondary">JIRA</span>
+            <span class="badge badge-secondary">Sentry</span>
+            <span class="badge badge-secondary">GitHub Actions</span>
+            <span class="badge badge-secondary">CI/CD</span>
+            <span class="badge badge-secondary">Docker</span>
+            <span class="badge badge-secondary">AWS</span>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-2">
+          <h3 class="h5">Languages</h3>
+          <div>Spanish (Native), English (Proficient)</div>
+        </div>
+        <div class="col-lg-6 mb-2">
+          <h3 class="h5">Certifications</h3>
+          <div>Cisco CCNA</div>
+        </div>
       </div>
     </div>
   </div>
-  <!-- Skill End -->
+  <!-- Tech Stack End -->
 
   <!-- Services Start -->
   <div class="container-fluid pt-5" id="service">
     <div class="container">
       <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Service</h1>
-        <h1 class="position-absolute text-uppercase text-primary">My Services</h1>
+        <div class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Service</div>
+        <h2 class="position-absolute text-uppercase text-primary">My Services</h2>
       </div>
       <div class="row pb-3">
         <div class="col-lg-4 col-md-6 text-center mb-5">
@@ -346,8 +439,8 @@
   <div class="container-fluid pt-5 pb-3" id="portfolio">
     <div class="container">
       <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Gallery</h1>
-        <h1 class="position-absolute text-uppercase text-primary">My Portfolio</h1>
+        <div class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Gallery</div>
+        <h2 class="position-absolute text-uppercase text-primary">My Portfolio</h2>
       </div>
       <div class="row">
         <div class="col-12 text-center mb-2">
@@ -362,7 +455,7 @@
       <div class="row portfolio-container">
         <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-1.jpg" alt="SICOES" loading="lazy">
+            <img class="img-fluid rounded w-100" src="img/portfolio-1.jpg" alt="SICOES procurement portal" width="640" height="420" loading="lazy">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
               <a href="https://www.sicoes.gob.bo/portal/index.php" target="_blank" rel="noopener" aria-label="Open SICOES">
                 <i class="fa fa-plus text-white" style="font-size: 60px;" aria-hidden="true"></i>
@@ -372,7 +465,7 @@
         </div>
         <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-2.jpg" alt="Banco Fortaleza" loading="lazy">
+            <img class="img-fluid rounded w-100" src="img/portfolio-2.jpg" alt="Banco Fortaleza website" width="640" height="420" loading="lazy">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
               <a href="https://www.bancofortaleza.com.bo/" target="_blank" rel="noopener" aria-label="Open Banco Fortaleza">
                 <i class="fa fa-plus text-white" style="font-size: 60px;" aria-hidden="true"></i>
@@ -382,7 +475,7 @@
         </div>
         <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-3.jpg" alt="SIGEP" loading="lazy">
+            <img class="img-fluid rounded w-100" src="img/portfolio-3.jpg" alt="SIGEP government finance login" width="640" height="420" loading="lazy">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
               <a href="https://sigep.gob.bo/seguridad/faces/ingreso.jspx" target="_blank" rel="noopener" aria-label="Open SIGEP">
                 <i class="fa fa-plus text-white" style="font-size: 60px;" aria-hidden="true"></i>
@@ -392,7 +485,7 @@
         </div>
         <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-4.jpg" alt="Quipus" loading="lazy">
+            <img class="img-fluid rounded w-100" src="img/portfolio-4.jpg" alt="Quipus public enterprise website" width="640" height="420" loading="lazy">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
               <a href="https://www.quipus.gob.bo/" target="_blank" rel="noopener" aria-label="Open Quipus">
                 <i class="fa fa-plus text-white" style="font-size: 60px;" aria-hidden="true"></i>
@@ -402,7 +495,7 @@
         </div>
         <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-5.jpg" alt="Wedding app" loading="lazy">
+            <img class="img-fluid rounded w-100" src="img/portfolio-5.jpg" alt="Wedding app demo" width="640" height="420" loading="lazy">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
               <a href="https://danielrojasvalda.github.io/wedding-app/" target="_blank" rel="noopener" aria-label="Open Wedding App">
                 <i class="fa fa-plus text-white" style="font-size: 60px;" aria-hidden="true"></i>
@@ -412,7 +505,7 @@
         </div>
         <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
           <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-6.jpg" alt="Nucci Medical" loading="lazy">
+            <img class="img-fluid rounded w-100" src="img/portfolio-6.jpg" alt="Nucci Medical site" width="640" height="420" loading="lazy">
             <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
               <a href="https://nuccimedical.com/" target="_blank" rel="noopener" aria-label="Open Nucci Medical">
                 <i class="fa fa-plus text-white" style="font-size: 60px;" aria-hidden="true"></i>
@@ -429,8 +522,8 @@
   <div class="container-fluid py-5 bg-light" id="contact">
     <div class="container">
       <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Contact</h1>
-        <h1 class="position-absolute text-uppercase text-primary">Get in touch</h1>
+        <div class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Contact</div>
+        <h2 class="position-absolute text-uppercase text-primary">Get in touch</h2>
       </div>
 
       <div class="row justify-content-center">
@@ -458,195 +551,190 @@
   </div>
   <!-- Contact End -->
 
-<!-- ===== Revenue & Cost Playground (Showcase) ===== -->
-<div class="container-fluid py-5 bg-light" id="playground">
-  <div class="container">
-    <div class="position-relative d-flex align-items-center justify-content-center">
-      <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Play</h1>
-      <h1 class="position-absolute text-uppercase text-primary">Revenue & Cost Playground</h1>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-6 mb-4">
-        <div class="card shadow-sm border-0">
-          <div class="card-body">
-            <h5 class="card-title mb-3">Adjust assumptions</h5>
-
-            <label class="d-block">Procedures per month
-              <input id="inQty" type="range" min="10" max="200" value="80" class="custom-range">
-            </label>
-            <div class="small mb-3"><span id="outQty">80</span></div>
-
-            <label class="d-block">Allowed amount per procedure ($)
-              <input id="inAllowed" type="range" min="200" max="8000" value="1800" step="50" class="custom-range">
-            </label>
-            <div class="small mb-3">$<span id="outAllowed">1,800</span></div>
-
-            <label class="d-block">Average labor cost per case ($)
-              <input id="inLabor" type="range" min="50" max="2000" value="450" step="10" class="custom-range">
-            </label>
-            <div class="small mb-3">$<span id="outLabor">450</span></div>
-
-            <label class="d-block">Supplies / implants / meds per case ($)
-              <input id="inSup" type="range" min="0" max="4000" value="300" step="10" class="custom-range">
-            </label>
-            <div class="small mb-3">$<span id="outSup">300</span></div>
-
-            <label class="d-block">Collections realization (% of allowed)
-              <input id="inReal" type="range" min="50" max="100" value="92" step="1" class="custom-range">
-            </label>
-            <div class="small mb-2"><span id="outReal">92</span>%</div>
-
-            <p class="text-muted mb-0">
-              *Demo model. In production I calculate by submodule (Professional, Surgery Center, Anesthesia, Ancillary) and auto-reconcile totals.
-            </p>
-          </div>
-        </div>
+  <!-- ===== Revenue & Cost Playground (Showcase) ===== -->
+  <div class="container-fluid py-5 bg-light" id="playground">
+    <div class="container">
+      <div class="position-relative d-flex align-items-center justify-content-center">
+        <div class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Play</div>
+        <h2 class="position-absolute text-uppercase text-primary">Revenue & Cost Playground</h2>
       </div>
 
-      <div class="col-lg-6 mb-4">
-        <div class="card shadow-sm border-0">
-          <div class="card-body">
-            <h5 class="card-title mb-3">Monthly snapshot</h5>
-            <canvas id="rcChart" height="240" aria-label="Revenue vs Cost chart"></canvas>
-            <div class="mt-3">
-              <div class="d-flex justify-content-between">
-                <span>Corrected Revenue</span>
-                <strong id="outRev">$0</strong>
-              </div>
-              <div class="d-flex justify-content-between">
-                <span>Total Cost</span>
-                <strong id="outCost">$0</strong>
-              </div>
-              <div class="d-flex justify-content-between">
-                <span>Profit</span>
-                <strong id="outProfit">$0</strong>
-              </div>
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow-sm border-0">
+            <div class="card-body">
+              <h5 class="card-title mb-3">Adjust assumptions</h5>
+
+              <label class="d-block">Procedures per month
+                <input id="inQty" type="range" min="10" max="200" value="80" class="custom-range">
+              </label>
+              <div class="small mb-3"><span id="outQty">80</span></div>
+
+              <label class="d-block">Allowed amount per procedure ($)
+                <input id="inAllowed" type="range" min="200" max="8000" value="1800" step="50" class="custom-range">
+              </label>
+              <div class="small mb-3">$<span id="outAllowed">1,800</span></div>
+
+              <label class="d-block">Average labor cost per case ($)
+                <input id="inLabor" type="range" min="50" max="2000" value="450" step="10" class="custom-range">
+              </label>
+              <div class="small mb-3">$<span id="outLabor">450</span></div>
+
+              <label class="d-block">Supplies / implants / meds per case ($)
+                <input id="inSup" type="range" min="0" max="4000" value="300" step="10" class="custom-range">
+              </label>
+              <div class="small mb-3">$<span id="outSup">300</span></div>
+
+              <label class="d-block">Collections realization (% of allowed)
+                <input id="inReal" type="range" min="50" max="100" value="92" step="1" class="custom-range">
+              </label>
+              <div class="small mb-2"><span id="outReal">92</span>%</div>
+
+              <p class="text-muted mb-0">
+                *Demo model. In production I calculate by submodule (Professional, Surgery Center, Anesthesia, Ancillary) and auto-reconcile totals.
+              </p>
             </div>
-            <p class="small text-muted mt-3 mb-0">
-              Formulas mirror my ASC Profit backend patterns (e.g., corrected revenue = qty × allowed × realization; cost = qty × (labor + supplies)).
-            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow-sm border-0">
+            <div class="card-body">
+              <h5 class="card-title mb-3">Monthly snapshot</h5>
+              <canvas id="rcChart" height="240" aria-label="Revenue vs Cost chart"></canvas>
+              <div class="mt-3">
+                <div class="d-flex justify-content-between">
+                  <span>Corrected Revenue</span>
+                  <strong id="outRev">$0</strong>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span>Total Cost</span>
+                  <strong id="outCost">$0</strong>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span>Profit</span>
+                  <strong id="outProfit">$0</strong>
+                </div>
+              </div>
+              <p class="small text-muted mt-3 mb-0">
+                Formulas mirror my ASC Profit backend patterns (e.g., corrected revenue = qty × allowed × realization; cost = qty × (labor + supplies)).
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="text-center mt-2">
-      <a href="#contact" class="btn btn-outline-primary">Want a custom calculator for your practice?</a>
+      <div class="text-center mt-2">
+        <a href="#contact" class="btn btn-outline-primary">Want a custom calculator for your practice?</a>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Chart.js (defer ok) -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <!-- Chart.js (defer ok) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
 
-<script>
-  window.addEventListener('load', function(){
-    const $ = (id) => document.getElementById(id);
-    const f = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+  <script>
+    window.addEventListener('load', function(){
+      const $ = (id) => document.getElementById(id);
+      const f = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
 
-    const inQty = $('inQty'), outQty = $('outQty');
-    const inAllowed = $('inAllowed'), outAllowed = $('outAllowed');
-    const inLabor = $('inLabor'), outLabor = $('outLabor');
-    const inSup = $('inSup'), outSup = $('outSup');
-    const inReal = $('inReal'), outReal = $('outReal');
+      const inQty = $('inQty'), outQty = $('outQty');
+      const inAllowed = $('inAllowed'), outAllowed = $('outAllowed');
+      const inLabor = $('inLabor'), outLabor = $('outLabor');
+      const inSup = $('inSup'), outSup = $('outSup');
+      const inReal = $('inReal'), outReal = $('outReal');
 
-    const outRev = $('outRev'), outCost = $('outCost'), outProfit = $('outProfit');
+      const outRev = $('outRev'), outCost = $('outCost'), outProfit = $('outProfit');
 
-    const ctx = document.getElementById('rcChart');
-    const chart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Revenue','Cost','Profit'],
-        datasets: [{ label: 'USD', data: [0,0,0] }]
-      },
-      options: {
-        responsive: true,
-        plugins: { legend: { display: false } },
-        scales: { y: { ticks: { callback: (v)=>'$'+f.format(v) } } }
+      const ctx = document.getElementById('rcChart');
+      const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Revenue','Cost','Profit'],
+          datasets: [{ label: 'USD', data: [0,0,0] }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { ticks: { callback: (v)=>'$'+f.format(v) } } }
+        }
+      });
+
+      function fmt(n){ return '$' + n.toLocaleString('en-US'); }
+
+      function recompute(){
+        const qty = +inQty.value;
+        const allowed = +inAllowed.value;
+        const labor = +inLabor.value;
+        const sup = +inSup.value;
+        const real = (+inReal.value)/100;
+
+        const correctedRevenue = qty * allowed * real;
+        const totalCost = qty * (labor + sup);
+        const profit = correctedRevenue - totalCost;
+
+        chart.data.datasets[0].data = [correctedRevenue, totalCost, profit];
+        chart.update('none');
+
+        outQty.textContent = qty;
+        outAllowed.textContent = allowed.toLocaleString('en-US');
+        outLabor.textContent = labor.toLocaleString('en-US');
+        outSup.textContent = sup.toLocaleString('en-US');
+        outReal.textContent = Math.round(real*100);
+
+        outRev.textContent = fmt(correctedRevenue);
+        outCost.textContent = fmt(totalCost);
+        outProfit.textContent = fmt(profit);
       }
+
+      [inQty,inAllowed,inLabor,inSup,inReal].forEach(el => el.addEventListener('input', recompute));
+      recompute();
     });
+  </script>
 
-    function fmt(n){ return '$' + n.toLocaleString('en-US'); }
-
-    function recompute(){
-      const qty = +inQty.value;
-      const allowed = +inAllowed.value;
-      const labor = +inLabor.value;
-      const sup = +inSup.value;
-      const real = (+inReal.value)/100;
-
-      const correctedRevenue = qty * allowed * real;
-      const totalCost = qty * (labor + sup);
-      const profit = correctedRevenue - totalCost;
-
-      chart.data.datasets[0].data = [correctedRevenue, totalCost, profit];
-      chart.update('none');
-
-      outQty.textContent = qty;
-      outAllowed.textContent = allowed.toLocaleString('en-US');
-      outLabor.textContent = labor.toLocaleString('en-US');
-      outSup.textContent = sup.toLocaleString('en-US');
-      outReal.textContent = Math.round(real*100);
-
-      outRev.textContent = fmt(correctedRevenue);
-      outCost.textContent = fmt(totalCost);
-      outProfit.textContent = fmt(profit);
-    }
-
-    [inQty,inAllowed,inLabor,inSup,inReal].forEach(el => el.addEventListener('input', recompute));
-    recompute();
-  });
-</script>
-
- 
-<!-- Footer Start -->
-<div class="container-fluid bg-primary text-white mt-5 py-4 px-sm-3 px-md-5">
-  <div class="container text-center">
-    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
-
-      <!-- Social -->
-      <div class="mb-3 mb-md-0 mr-md-3">
-        <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-        <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-        <a class="btn btn-light btn-social mr-2" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener" aria-label="GitLab profile">
-              <!-- GitLab SVG -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 512 512" role="img" aria-hidden="true">
+  <!-- Footer Start -->
+  <div class="container-fluid bg-primary text-white mt-5 py-4 px-sm-3 px-md-5">
+    <div class="container text-center">
+      <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
+        <!-- Social -->
+        <div class="mb-3 mb-md-0 mr-md-3">
+          <a class="btn btn-light btn-social mr-2" rel="me" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+          <a class="btn btn-light btn-social mr-2" rel="me" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+          <a class="btn btn-light btn-social mr-2" rel="me" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener" aria-label="GitLab profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 512 512" role="img" aria-hidden="true">
               <path d="M494.9 229.5L448 97.1c-2.6-7.3-12.8-7.3-15.4 0L384 229.5H128l-48.6-132.4c-2.6-7.3-12.8-7.3-15.4 0L17.1 229.5c-2.4 6.5.2 13.8 6.1 17.6L256 417.7l232.8-170.6c5.9-3.8 8.5-11.1 6.1-17.6z"/>
-              </svg>
-        </a>
+            </svg>
+          </a>
+        </div>
+        <!-- Spotify -->
+        <iframe
+          id="spotifyFooter"
+          style="border-radius:12px; max-width:320px;"
+          src="https://open.spotify.com/embed/playlist/7JRtgEBVVP4fOhZlTSCNPD?utm_source=generator&theme=0"
+          width="100%" height="80" frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy" title="Spotify playlist">
+        </iframe>
       </div>
 
-      <!-- Spotify -->
-      <iframe
-        id="spotifyFooter"
-        style="border-radius:12px; max-width:320px;"
-        src="https://open.spotify.com/embed/playlist/7JRtgEBVVP4fOhZlTSCNPD?utm_source=generator&theme=0"
-        width="100%" height="80" frameborder="0"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy" title="Spotify playlist">
-      </iframe>
+      <p class="m-0 mt-3 small">&copy; <a class="text-white font-weight-bold" href="#">danielrojas</a>. All Rights Reserved.</p>
     </div>
-
-    <p class="m-0 mt-3 small">&copy; <a class="text-white font-weight-bold" href="#">danielrojas</a>. All Rights Reserved.</p>
   </div>
-</div>
-<!-- Footer End -->
+  <!-- Footer End -->
 
-
-<!-- Auto-theme for Spotify -->
-<script>
-  (function(){
-    var frame = document.getElementById('spotifyFooter');
-    if (!frame) return;
-    var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-    try {
-      var url = new URL(frame.src);
-      url.searchParams.set('theme', prefersLight ? '1' : '0'); // 1 = light, 0 = dark
-      frame.src = url.toString();
-    } catch(e) { /* no-op */ }
-  })();
-</script>
+  <!-- Auto-theme for Spotify -->
+  <script>
+    (function(){
+      var frame = document.getElementById('spotifyFooter');
+      if (!frame) return;
+      var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      try {
+        var url = new URL(frame.src);
+        url.searchParams.set('theme', prefersLight ? '1' : '0'); // 1 = light, 0 = dark
+        frame.src = url.toString();
+      } catch(e) { /* no-op */ }
+    })();
+  </script>
 
   <!-- Scroll to Bottom -->
   <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom" aria-hidden="true"></i>
@@ -668,17 +756,7 @@
   <!-- Template init (run after deferred libs are ready) -->
   <script>
     window.addEventListener('load', function () {
-      // Typed text
-      if (document.querySelector('.typed-text-output')) {
-        var typed_strings = document.querySelector('.typed-text').textContent;
-        new Typed('.typed-text-output', {
-          strings: typed_strings.split(', '),
-          typeSpeed: 100,
-          backSpeed: 20,
-          smartBackspace: false,
-          loop: true
-        });
-      }
+      // (Removed typed rotating titles in favor of concise value prop)
 
       // Isotope after images load
       var grid = document.querySelector('.portfolio-container');
@@ -686,14 +764,17 @@
         imagesLoaded(grid, function () {
           var iso = new Isotope(grid, { itemSelector: '.portfolio-item', layoutMode: 'fitRows' });
           // Filters
-          document.getElementById('portfolio-flters').addEventListener('click', function (e) {
-            if (e.target && e.target.matches('li')) {
-              Array.from(this.children).forEach(function (li) { li.classList.remove('active'); });
-              e.target.classList.add('active');
-              var filterValue = e.target.getAttribute('data-filter');
-              iso.arrange({ filter: filterValue });
-            }
-          });
+          var filters = document.getElementById('portfolio-flters');
+          if (filters) {
+            filters.addEventListener('click', function (e) {
+              if (e.target && e.target.matches('li')) {
+                Array.from(this.children).forEach(function (li) { li.classList.remove('active'); });
+                e.target.classList.add('active');
+                var filterValue = e.target.getAttribute('data-filter');
+                iso.arrange({ filter: filterValue });
+              }
+            });
+          }
         });
       }
     });
@@ -772,14 +853,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
