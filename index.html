@@ -66,7 +66,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <!-- (Optional) Preload a core font file to reduce FOUT -->
   <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Font Awesome -->
@@ -81,8 +80,17 @@
 
   <style>
     .portfolio-item img { width: 100%; height: 220px; object-fit: cover; }
-    /* small utility for badge gaps (Bootstrap 4 doesn't have gap utilities) */
-    .gap-2 { gap: .5rem; }
+    .gap-2 { gap: .5rem; } /* tiny utility */
+
+    /* ==== Service icons: perfect alignment ==== */
+    .service-item { text-align:center; }
+    .service-icon {
+      width:72px; height:72px; border-radius:50%;
+      display:inline-flex; align-items:center; justify-content:center;
+      font-size:28px; background:#2b6f8f; color:#fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    }
+    .service-title { margin-top:.75rem; font-weight:700; }
 
     /* ==== AI Widget (white trigger, accent from .text-primary) ==== */
     :root{ --ai-accent:#0078ff; --ai-contrast:#ffffff; }
@@ -115,7 +123,6 @@
   <!-- Navbar Start -->
   <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
     <a href="index.html" class="navbar-brand ml-lg-3" aria-label="Home">
-      <!-- One true H1 lives here -->
       <h1 class="m-0 display-5"><span class="text-primary">Freddy</span>Rojas</h1>
     </a>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -147,15 +154,25 @@
         </div>
         <div class="col-lg-7 text-center text-lg-left">
           <p class="text-white-50 mb-2">I'm</p>
+
+          <!-- Typed titles -->
+          <p class="h4 text-white mb-2">
+            <span class="typed-text-output d-inline font-weight-lighter"></span>
+          </p>
+          <div class="typed-text d-none" aria-hidden="true">
+            Web Designer, Web Developer, Front-End Developer, Back-End Developer, Apps Developer
+          </div>
+
+          <!-- Value prop -->
           <p class="lead text-white-50 mt-3">
             Full-stack engineer (Flask/React) with a QA mindset — I ship fast, testable features and measurable results.
           </p>
+
           <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-4">
             <a href="files/Resume-Freddy-Rojas.pdf" download class="btn btn-outline-light mr-4" aria-label="Download resume">Resume</a>
             <a class="btn btn-light btn-social mr-2" rel="me" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
             <a class="btn btn-light btn-social mr-2" rel="me" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
             <a class="btn btn-light btn-social mr-2" rel="me" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener" aria-label="GitLab profile">
-              <!-- GitLab SVG -->
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 512 512" role="img" aria-hidden="true">
                 <path d="M494.9 229.5L448 97.1c-2.6-7.3-12.8-7.3-15.4 0L384 229.5H128l-48.6-132.4c-2.6-7.3-12.8-7.3-15.4 0L17.1 229.5c-2.4 6.5.2 13.8 6.1 17.6L256 417.7l232.8-170.6c5.9-3.8 8.5-11.1 6.1-17.6z"/>
               </svg>
@@ -196,14 +213,13 @@
   </div>
   <!-- About End -->
 
-  <!-- Featured Projects (Case Studies) -->
+  <!-- Featured Projects -->
   <section class="container py-5" id="projects">
     <div class="text-center mb-4">
       <h2 class="text-uppercase text-primary">Featured Projects</h2>
       <p class="text-muted">Impact-focused work with live links and repos.</p>
     </div>
     <div class="row">
-      <!-- Project 1 -->
       <article class="col-md-6 mb-4" itemscope itemtype="https://schema.org/SoftwareSourceCode">
         <div class="card shadow-sm border-0 h-100">
           <div class="card-body">
@@ -221,7 +237,6 @@
         </div>
         <meta itemprop="programmingLanguage" content="Python">
       </article>
-      <!-- Project 2 -->
       <article class="col-md-6 mb-4" itemscope itemtype="https://schema.org/SoftwareSourceCode">
         <div class="card shadow-sm border-0 h-100">
           <div class="card-body">
@@ -290,7 +305,6 @@
               <p>Executed 380+ weekly quality audits for IRS and partner programs, flagged fraud patterns, and drove timely resolutions using JIRA, Zendesk, and Confluence.</p>
             </div>
 
-            <!-- NEW: QA Engineer (Cross-training) -->
             <div class="position-relative mb-4">
               <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;" aria-hidden="true"></i>
               <h5 class="font-weight-bold mb-1">Quality Assurance Engineer (Cross-training)</h5>
@@ -386,48 +400,50 @@
   </div>
   <!-- Tech Stack End -->
 
-  <!-- Services Start -->
+  <!-- Services Start (aligned icons) -->
   <div class="container-fluid pt-5" id="service">
     <div class="container">
       <div class="position-relative d-flex align-items-center justify-content-center">
         <div class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Service</div>
         <h2 class="position-absolute text-uppercase text-primary">My Services</h2>
       </div>
-      <div class="row pb-3">
-        <div class="col-lg-4 col-md-6 text-center mb-5">
-          <div class="d-flex align-items-center justify-content-center mb-4">
-            <i class="fa fa-2x fa-laptop service-icon bg-primary text-white mr-3" aria-hidden="true"></i>
-            <h4 class="font-weight-bold m-0">Web Design</h4>
+
+      <div class="row pt-3">
+        <div class="col-md-4 mb-5">
+          <div class="service-item h-100">
+            <div class="service-icon"><i class="fa fa-laptop" aria-hidden="true"></i></div>
+            <div class="service-title">Web Design</div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 text-center mb-5">
-          <div class="d-flex align-items-center justify-content-center mb-4">
-            <i class="fa fa-2x fa-laptop-code service-icon bg-primary text-white mr-3" aria-hidden="true"></i>
-            <h4 class="font-weight-bold m-0">Web Development</h4>
+        <div class="col-md-4 mb-5">
+          <div class="service-item h-100">
+            <div class="service-icon"><i class="fa fa-laptop-code" aria-hidden="true"></i></div>
+            <div class="service-title">Web Development</div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 text-center mb-5">
-          <div class="d-flex align-items-center justify-content-center mb-4">
-            <i class="fab fa-2x fa-android service-icon bg-primary text-white mr-3" aria-hidden="true"></i>
-            <h4 class="font-weight-bold m-0">App Design</h4>
+        <div class="col-md-4 mb-5">
+          <div class="service-item h-100">
+            <div class="service-icon"><i class="fab fa-android" aria-hidden="true"></i></div>
+            <div class="service-title">App Design</div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 text-center mb-5">
-          <div class="d-flex align-items-center justify-content-center mb-4">
-            <i class="fab fa-2x fa-apple service-icon bg-primary text-white mr-3" aria-hidden="true"></i>
-            <h4 class="font-weight-bold m-0">App Development</h4>
+
+        <div class="col-md-4 mb-4">
+          <div class="service-item h-100">
+            <div class="service-icon"><i class="fab fa-apple" aria-hidden="true"></i></div>
+            <div class="service-title">App Development</div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 text-center mb-5">
-          <div class="d-flex align-items-center justify-content-center mb-4">
-            <i class="fa fa-2x fa-search service-icon bg-primary text-white mr-3" aria-hidden="true"></i>
-            <h4 class="font-weight-bold m-0">SEO</h4>
+        <div class="col-md-4 mb-4">
+          <div class="service-item h-100">
+            <div class="service-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
+            <div class="service-title">SEO</div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 text-center mb-5">
-          <div class="d-flex align-items-center justify-content-center mb-4">
-            <i class="fa fa-2x fa-edit service-icon bg-primary text-white mr-3" aria-hidden="true"></i>
-            <h4 class="font-weight-bold m-0">Content Creation</h4>
+        <div class="col-md-4 mb-4">
+          <div class="service-item h-100">
+            <div class="service-icon"><i class="fa fa-edit" aria-hidden="true"></i></div>
+            <div class="service-title">Content Creation</div>
           </div>
         </div>
       </div>
@@ -518,7 +534,7 @@
   </div>
   <!-- Portfolio End -->
 
-  <!-- Contact Start (no form, just buttons) -->
+  <!-- Contact Start -->
   <div class="container-fluid py-5 bg-light" id="contact">
     <div class="container">
       <div class="position-relative d-flex align-items-center justify-content-center">
@@ -551,7 +567,7 @@
   </div>
   <!-- Contact End -->
 
-  <!-- ===== Revenue & Cost Playground (Showcase) ===== -->
+  <!-- ===== Revenue & Cost Playground ===== -->
   <div class="container-fluid py-5 bg-light" id="playground">
     <div class="container">
       <div class="position-relative d-flex align-items-center justify-content-center">
@@ -635,6 +651,21 @@
 
   <script>
     window.addEventListener('load', function(){
+      // Re-enable typed animation (only if Typed.js is loaded)
+      if (document.querySelector('.typed-text-output') && window.Typed) {
+        var raw = document.querySelector('.typed-text').textContent || '';
+        var strings = raw.split(',').map(s => s.trim()).filter(Boolean);
+        new Typed('.typed-text-output', {
+          strings: strings.length ? strings : ['Full-stack Engineer'],
+          typeSpeed: 70,
+          backSpeed: 25,
+          backDelay: 1000,
+          smartBackspace: true,
+          loop: true,
+          cursorChar: '▍'
+        });
+      }
+
       const $ = (id) => document.getElementById(id);
       const f = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
 
@@ -756,14 +787,11 @@
   <!-- Template init (run after deferred libs are ready) -->
   <script>
     window.addEventListener('load', function () {
-      // (Removed typed rotating titles in favor of concise value prop)
-
       // Isotope after images load
       var grid = document.querySelector('.portfolio-container');
       if (grid && window.imagesLoaded && window.Isotope) {
         imagesLoaded(grid, function () {
           var iso = new Isotope(grid, { itemSelector: '.portfolio-item', layoutMode: 'fitRows' });
-          // Filters
           var filters = document.getElementById('portfolio-flters');
           if (filters) {
             filters.addEventListener('click', function (e) {
