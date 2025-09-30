@@ -32,16 +32,16 @@
   });
 
   /* ---------------- Typed.js ---------------- */
-  if ($('.typed-text-output').length && window.Typed) {
-    const typedStrings = $('.typed-text').text();
-    new Typed('.typed-text-output', {
-      strings: typedStrings.split(', '),
-      typeSpeed: 100,
-      backSpeed: 20,
-      smartBackspace: false,
-      loop: true
-    });
-  }
+if ($('.typed-text-output').length === 1 && window.Typed) {
+  var typed_strings = $('.typed-text').text();
+  new Typed('.typed-text-output', {
+    strings: typed_strings.split(', '),
+    typeSpeed: 100,
+    backSpeed: 20,
+    smartBackspace: false,
+    loop: true
+  });
+}
 
   /* ---------------- Modal Video ---------------- */
   $(function () {
@@ -97,28 +97,31 @@
     });
   }
 
-  /* ---------------- Theme toggle (auto + manual) ---------------- */
-  (function () {
-    const root = document.documentElement;
-    const btn = document.getElementById('themeToggle');
-    if (!btn) return;
+// ===== Theme toggle (auto + manual) =====
+(function(){
+  const root = document.documentElement;
+  const btn  = document.getElementById('themeToggle');
+  if(!btn) return;
 
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light' || saved === 'dark') {
-      root.setAttribute('data-theme', saved);
-      btn.setAttribute('aria-pressed', saved === 'dark' ? 'true' : 'false');
-      btn.innerHTML = saved === 'dark' ? '<i class="far fa-sun"></i>' : '<i class="far fa-moon"></i>';
-    }
+  // Load saved preference (or leave as-is if none)
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light' || saved === 'dark') {
+    root.setAttribute('data-theme', saved);
+    btn.setAttribute('aria-pressed', saved === 'dark' ? 'true' : 'false');
+    btn.innerHTML = saved === 'dark' ? '<i class="far fa-sun"></i>' : '<i class="far fa-moon"></i>';
+  }
 
-    btn.addEventListener('click', () => {
-      const next = (root.getAttribute('data-theme') === 'dark') ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      btn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
-      btn.innerHTML = next === 'dark' ? '<i class="far fa-sun"></i>' : '<i class="far fa-moon"></i>';
-    });
-  })();
-
+  // Toggle & persist
+  btn.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    btn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+    btn.innerHTML = next === 'dark' ? '<i class="far fa-sun"></i>' : '<i class="far fa-moon"></i>';
+  });
+})();
+  
   /* ---------------- Revenue & Cost chart (if present) ---------------- */
   (function () {
     if (!window.Chart) return;
@@ -170,3 +173,4 @@
   })();
 
 })(jQuery);
+
