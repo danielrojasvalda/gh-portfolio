@@ -153,3 +153,91 @@ input[type="range"]{
 :root[data-theme="dark"] #playground{
   color: var(--text);
 }
+
+/* ===== THEME TOKENS (safe) ===== */
+:root{
+  --bg: #ffffff;
+  --text: #1b1f24;
+  --muted: #6b7280;
+  --surface: #f5f7fa;      /* used for bg-light sections in light */
+  --surface-dark: #102733;  /* used for bg-light sections in dark */
+  --primary: #2b6f8f;
+  --primary-contrast: #ffffff;
+  --ring: 0 2px 12px rgba(0,0,0,.08);
+}
+
+:root[data-theme="dark"]{
+  --bg: #0f2d3a;
+  --text: #e6edf3;
+  --muted: #a7b2ba;
+  --primary: #3ea2d4;
+  --primary-contrast: #0b1b23;
+}
+
+/* Body & base text (don’t touch Bootstrap color utilities) */
+body{ background: var(--bg); color: var(--text); }
+
+/* Make hero name outline readable on both themes */
+#home .display-3{ -webkit-text-stroke: 2px #ffffff; }
+
+/* Typed line readability */
+.typed-text-output{
+  min-height: 2.6rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+/* Sections that use .bg-light in the markup should look dark in dark mode */
+:root[data-theme="dark"] #contact,
+:root[data-theme="dark"] #playground{
+  background: var(--surface-dark) !important;
+  color: var(--text);
+}
+
+/* Navbar: when dark theme is active, the bg-light navbar needs a darker background */
+:root[data-theme="dark"] .navbar.bg-light{
+  background-color: #0f2530 !important;
+}
+:root[data-theme="dark"] .navbar-light .navbar-nav .nav-link{
+  color: var(--text);
+}
+
+/* Header social buttons – visible in both themes */
+#home .btn.btn-light.btn-social{
+  background: rgba(255,255,255,.95);
+  color:#16313d;
+  border:0;
+  box-shadow: var(--ring);
+}
+#home .btn.btn-light.btn-social:hover{ filter:brightness(.96); }
+
+/* Footer block with safe styling that doesn’t rely on Bootstrap bg helpers */
+.site-footer{
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+.site-footer .btn-social{
+  width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center;
+  border-radius:50%;
+  margin: 0 .35rem;
+  background: rgba(255,255,255,.9);
+  color:#16313d;
+  border:0;
+}
+:root[data-theme="dark"] .site-footer .btn-social{
+  background: rgba(255,255,255,.12);
+  color:#ffffff;
+}
+
+/* Card surfaces in playground respect theme */
+.card{
+  background: var(--bg);
+  box-shadow: var(--ring);
+  border: 1px solid rgba(0,0,0,.05);
+}
+:root[data-theme="dark"] .card{
+  background: #0f2530;
+  border-color: rgba(255,255,255,.08);
+}
+
+/* Keep portfolio images tidy */
+.portfolio-item img{ width:100%; height:220px; object-fit:cover; }
