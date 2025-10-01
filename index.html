@@ -552,126 +552,6 @@
   <!-- Chart.js (defer ok) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
 
-  <script>
-    window.addEventListener('load', function(){
-      // Typed animation (same behavior as your original template)
-      if (document.querySelector('.typed-text-output') && window.Typed) {
-        var typed_strings = document.querySelector('.typed-text').textContent;
-        new Typed('.typed-text-output', {
-          strings: typed_strings.split(', '),
-          typeSpeed: 100,
-          backSpeed: 20,
-          smartBackspace: false,
-          loop: true
-        });
-      }
-
-      // Playground math
-      const $ = (id) => document.getElementById(id);
-      const f = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
-      const inQty = $('inQty'), outQty = $('outQty');
-      const inAllowed = $('inAllowed'), outAllowed = $('outAllowed');
-      const inLabor = $('inLabor'), outLabor = $('outLabor');
-      const inSup = $('inSup'), outSup = $('outSup');
-      const inReal = $('inReal'), outReal = $('outReal');
-      const outRev = $('outRev'), outCost = $('outCost'), outProfit = $('outProfit');
-
-      const ctx = document.getElementById('rcChart');
-      const chart = new Chart(ctx, {
-        type: 'bar',
-        data: { labels: ['Revenue','Cost','Profit'], datasets: [{ label: 'USD', data: [0,0,0] }] },
-        options: {
-          responsive: true,
-          plugins: { legend: { display: false } },
-          scales: { y: { ticks: { callback: (v)=>'$'+f.format(v) } } }
-        }
-      });
-
-      function fmt(n){ return '$' + n.toLocaleString('en-US'); }
-      function recompute(){
-        const qty=+inQty.value, allowed=+inAllowed.value, labor=+inLabor.value, sup=+inSup.value, real=(+inReal.value)/100;
-        const correctedRevenue = qty*allowed*real;
-        const totalCost = qty*(labor+sup);
-        const profit = correctedRevenue-totalCost;
-        chart.data.datasets[0].data = [correctedRevenue,totalCost,profit];
-        chart.update('none');
-        outQty.textContent=qty; outAllowed.textContent=allowed.toLocaleString('en-US');
-        outLabor.textContent=labor.toLocaleString('en-US'); outSup.textContent=sup.toLocaleString('en-US');
-        outReal.textContent=Math.round(real*100);
-        outRev.textContent=fmt(correctedRevenue); outCost.textContent=fmt(totalCost); outProfit.textContent=fmt(profit);
-      }
-      [inQty,inAllowed,inLabor,inSup,inReal].forEach(el=>el.addEventListener('input',recompute));
-      recompute();
-    });
-  </script>
-
-  <!-- Footer Start -->
-  <div class="container-fluid bg-primary text-white mt-5 py-4 px-sm-3 px-md-5">
-    <div class="container text-center">
-      <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
-        <!-- Social -->
-        <div class="mb-3 mb-md-0 mr-md-3">
-          <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-          <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-          <a class="btn btn-light btn-social mr-2" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener" aria-label="GitLab profile">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 512 512" role="img" aria-hidden="true">
-              <path d="M494.9 229.5L448 97.1c-2.6-7.3-12.8-7.3-15.4 0L384 229.5H128l-48.6-132.4c-2.6-7.3-12.8-7.3-15.4 0L17.1 229.5c-2.4 6.5.2 13.8 6.1 17.6L256 417.7l232.8-170.6c5.9-3.8 8.5-11.1 6.1-17.6z"/>
-            </svg>
-          </a>
-        </div>
-
-        <!-- Spotify -->
-        <iframe
-          id="spotifyFooter"
-          style="border-radius:12px; max-width:320px;"
-          src="https://open.spotify.com/embed/playlist/7JRtgEBVVP4fOhZlTSCNPD?utm_source=generator&theme=0"
-          width="100%" height="80" frameborder="0"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy" title="Spotify playlist">
-        </iframe>
-      </div>
-
-      <p class="m-0 mt-3 small">&copy; <a class="text-white font-weight-bold" href="#">danielrojas</a>. All Rights Reserved.</p>
-    </div>
-  </div>
-  <!-- Footer End -->
-
-  <!-- Auto-theme for Spotify -->
-<script>
-  (function(){
-    const frame = document.getElementById('spotifyFooter');
-    if(!frame) return;
-
-    function setSpotifyTheme(theme){
-      try{
-        const url = new URL(frame.src);
-        // Spotify: theme=0 (dark), theme=1 (light)
-        url.searchParams.set('theme', theme === 'dark' ? '0' : '1');
-        frame.src = url.toString();
-      }catch(e){}
-    }
-
-    // Initial based on current data-theme (or fallback to prefers-color-scheme)
-    const root = document.documentElement;
-    const initial = root.getAttribute('data-theme') ||
-       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    setSpotifyTheme(initial);
-
-    // Watch for changes triggered by the toggle
-    const obs = new MutationObserver(() => {
-      const t = root.getAttribute('data-theme') || 'light';
-      setSpotifyTheme(t);
-    });
-    obs.observe(root, { attributes:true, attributeFilter:['data-theme'] });
-  })();
-</script>
-
-  <!-- Scroll to Bottom -->
-  <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom" aria-hidden="true"></i>
-
-  <!-- Back to Top -->
-  <a href="#" class="btn btn-outline-dark px-0 back-to-top" aria-label="Back to top"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
-
   <!-- JavaScript Libraries (deferred) -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" defer></script>
@@ -683,39 +563,67 @@
   <script src="lib/lightbox/js/lightbox.min.js" defer></script>
   <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js" defer></script>
 
-  <!-- Template init (Isotope filters) -->
+  <!-- Playground chart logic -->
   <script>
-    window.addEventListener('load', function () {
-      var grid = document.querySelector('.portfolio-container');
-      if (grid && window.imagesLoaded && window.Isotope) {
-        imagesLoaded(grid, function () {
-          var iso = new Isotope(grid, { itemSelector: '.portfolio-item', layoutMode: 'fitRows' });
-          var filters = document.getElementById('portfolio-flters');
-          if (filters) {
-            filters.addEventListener('click', function (e) {
-              if (e.target && e.target.matches('li')) {
-                Array.from(this.children).forEach(function (li) { li.classList.remove('active'); });
-                e.target.classList.add('active');
-                iso.arrange({ filter: e.target.getAttribute('data-filter') });
-              }
-            });
-          }
-        });
+    window.addEventListener('load', function(){
+      const $ = (id) => document.getElementById(id);
+      const nf = new Intl.NumberFormat('en-US');
+      const ctx = $('rcChart');
+
+      const chart = new Chart(ctx, {
+        type: 'bar',
+        data: { labels: ['Revenue','Cost','Profit'], datasets: [{ label: 'USD', data: [0,0,0] }] },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { ticks: { callback: (v)=>'$'+nf.format(v) } } }
+        }
+      });
+
+      const inQty=$('inQty'), outQty=$('outQty');
+      const inAllowed=$('inAllowed'), outAllowed=$('outAllowed');
+      const inLabor=$('inLabor'), outLabor=$('outLabor');
+      const inSup=$('inSup'), outSup=$('outSup');
+      const inReal=$('inReal'), outReal=$('outReal');
+      const outRev=$('outRev'), outCost=$('outCost'), outProfit=$('outProfit');
+
+      function fmt(n){ return '$' + n.toLocaleString('en-US'); }
+      function recompute(){
+        const qty=+inQty.value, allowed=+inAllowed.value, labor=+inLabor.value, sup=+inSup.value, real=(+inReal.value)/100;
+        const rev=qty*allowed*real, cost=qty*(labor+sup), profit=rev-cost;
+        chart.data.datasets[0].data=[rev,cost,profit]; chart.update('none');
+        outQty.textContent=qty; outAllowed.textContent=allowed.toLocaleString('en-US');
+        outLabor.textContent=labor.toLocaleString('en-US'); outSup.textContent=sup.toLocaleString('en-US');
+        outReal.textContent=Math.round(real*100);
+        outRev.textContent=fmt(rev); outCost.textContent=fmt(cost); outProfit.textContent=fmt(profit);
       }
+      [inQty,inAllowed,inLabor,inSup,inReal].forEach(el=>el.addEventListener('input',recompute));
+      recompute();
     });
   </script>
 
-  <!-- ===== AI Widget ===== -->
-  <div id="ai-box" role="dialog" aria-modal="true" aria-labelledby="ai-head" aria-hidden="true">
-    <div id="ai-head">Portfolio AI <span id="ai-status"></span></div>
-    <div id="ai-log" aria-live="polite"></div>
-    <form id="ai-form">
-      <input id="ai-input" type="text" placeholder="Ask about my skills, projects." autocomplete="off" />
-      <button type="submit">Send</button>
-    </form>
-  </div>
-  <button id="ai-btn" aria-expanded="false" aria-controls="ai-box"><i class="far fa-comments mr-1" aria-hidden="true"></i> Ask AI</button>
+  <!-- Spotify auto-theme -->
+  <script>
+    (function(){
+      const frame = document.getElementById('spotifyFooter');
+      if(!frame) return;
+      function setSpotifyTheme(theme){
+        try{
+          const url = new URL(frame.src);
+          url.searchParams.set('theme', theme==='dark'?'0':'1');
+          frame.src=url.toString();
+        }catch(e){}
+      }
+      const root=document.documentElement;
+      const initial=root.getAttribute('data-theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      setSpotifyTheme(initial);
+      const obs=new MutationObserver(()=>setSpotifyTheme(root.getAttribute('data-theme')||'light'));
+      obs.observe(root,{attributes:true,attributeFilter:['data-theme']});
+    })();
+  </script>
 
+  <!-- AI Widget -->
   <script>
     (function(){
       const probe=document.createElement('span'); probe.className='text-primary'; probe.style.display='none';
@@ -725,59 +633,51 @@
       probe.remove();
     })();
 
-    const WORKER_URL = "https://portfolio-ai.danielrojasvalda.workers.dev/chat";
-    const btn = document.getElementById('ai-btn');
-    const box = document.getElementById('ai-box');
-    const log = document.getElementById('ai-log');
-    const form = document.getElementById('ai-form');
-    const input = document.getElementById('ai-input');
-    const statusEl = document.getElementById('ai-status');
+    const WORKER_URL="https://portfolio-ai.danielrojasvalda.workers.dev/chat";
+    const btn=document.getElementById('ai-btn');
+    const box=document.getElementById('ai-box');
+    const log=document.getElementById('ai-log');
+    const form=document.getElementById('ai-form');
+    const input=document.getElementById('ai-input');
+    const statusEl=document.getElementById('ai-status');
 
-    btn.onclick = () => {
-      const open = box.style.display === 'block';
-      box.style.display = open ? 'none' : 'block';
-      btn.setAttribute('aria-expanded', String(!open));
-      if (!open) setTimeout(() => input.focus(), 40);
+    btn.onclick=()=>{
+      const open=box.style.display==='block';
+      box.style.display=open?'none':'block';
+      btn.setAttribute('aria-expanded',String(!open));
+      if(!open) setTimeout(()=>input.focus(),40);
     };
 
-    function addMessage(text, who){
+    function addMessage(text,who){
       const div=document.createElement('div');
       div.className=`m ${who}`;
       div.textContent=text;
       log.appendChild(div);
       log.scrollTop=log.scrollHeight;
     }
-    function setStatus(t){ statusEl.textContent = t ? ` · ${t}` : ''; }
+    function setStatus(t){ statusEl.textContent=t?` · ${t}`:''; }
 
-    form.addEventListener('submit', async (e)=>{
+    form.addEventListener('submit',async(e)=>{
       e.preventDefault();
-      const q = input.value.trim();
-      if(!q) return;
-      addMessage(q,'you');
-      input.value='';
-      addMessage('…','bot');
-      setStatus('typing');
-
+      const q=input.value.trim(); if(!q) return;
+      addMessage(q,'you'); input.value='';
+      addMessage('…','bot'); setStatus('typing');
       try{
-        const lang = /[¿¡ñáéíóúü]/i.test(q) ? 'es' : 'en';
-        const r = await fetch(WORKER_URL, {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({ message:q, lang })
-        });
-        const data = await r.json();
-        log.lastChild.textContent = data?.answer || data?.error || 'No response.';
+        const lang=/[¿¡ñáéíóúü]/i.test(q)?'es':'en';
+        const r=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q,lang})});
+        const data=await r.json();
+        log.lastChild.textContent=data?.answer||data?.error||'No response.';
       }catch(err){
-        log.lastChild.textContent = 'Error contacting assistant.';
-      }finally{
-        setStatus('');
-      }
+        log.lastChild.textContent='Error contacting assistant.';
+      }finally{ setStatus(''); }
     });
   </script>
-  <script src="js/main.js" defer></script>
 
+  <!-- Unified template logic -->
+  <script src="js/main.js" defer></script>
 </body>
 </html>
+
 
 
 
