@@ -32,16 +32,19 @@
   });
 
   /* ---------------- Typed.js ---------------- */
-if ($('.typed-text-output').length === 1 && window.Typed) {
-  var typed_strings = $('.typed-text').text();
-  new Typed('.typed-text-output', {
-    strings: typed_strings.split(', '),
-    typeSpeed: 100,
-    backSpeed: 20,
-    smartBackspace: false,
-    loop: true
-  });
-}
+    // Typed Initiate
+    if ($('.typed-text-output').length == 1) {
+        var typed_strings = $('.typed-text').text();
+        var typed = new Typed('.typed-text-output', {
+            strings: typed_strings.split(', '),
+            typeSpeed: 80,        // CHANGED: was 100
+            backSpeed: 50,        // CHANGED: was 20
+            backDelay: 2500,      // ADDED: 2.5 second pause before deleting
+            startDelay: 500,      // ADDED: 0.5 second before starting
+            smartBackspace: false,
+            loop: true
+      });
+    }
 
   /* ---------------- Modal Video ---------------- */
   $(function () {
@@ -139,13 +142,19 @@ if ($('.typed-text-output').length === 1 && window.Typed) {
     const inReal = $id('inReal'), outReal = $id('outReal');
     const outRev = $id('outRev'), outCost = $id('outCost'), outProfit = $id('outProfit');
 
-    const chart = new Chart(ctx, {
+    const existingChart = Chart.getChart(ctx);
+    if (existingChart) {
+      existingChart.destroy();
+    }
+
+    const chart = new Chart(ctx, {      
       type: 'bar',
       data: { labels: ['Revenue','Cost','Profit'], datasets: [{ label: 'USD', data: [0,0,0] }] },
       options: {
         responsive: true,
+        maintainAspectRatio: false,        
         plugins: { legend: { display: false } },
-        scales: { y: { ticks: { callback: (v) => '$' + f.format(v) } } }
+        scales: { y: { type: 'linear', beginAtZero: true, ticks: { callback: (v) => '$' + f.format(v) } } }
       }
     });
 
