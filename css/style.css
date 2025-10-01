@@ -10042,3 +10042,84 @@ body{ background: var(--bg); color: var(--text); }
 /* Optional: subtle headings */
 h1,h2,h3,h4,h5{ color: var(--text); }
 p, .small, .text-muted{ color: var(--muted)!important; }
+
+/* ===== THEME VARIABLES ===== */
+:root{
+  --page-bg: #f8fafc;
+  --text: #0b1a24;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --border: #e3e8ef;
+  --primary: #287094;    /* your blue */
+}
+
+html[data-theme="dark"]{
+  --page-bg: #0f1720;
+  --text: #e6edf5;
+  --surface: #111a23;    /* replaces bg-light */
+  --surface-2: #0b131b;
+  --border: #223244;
+}
+
+/* Base body color swap */
+html[data-theme="dark"] body{
+  background: var(--page-bg);
+  color: var(--text);
+}
+
+/* Swap the common “light” containers used in your page */
+html[data-theme="dark"] .bg-light{
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
+}
+
+/* Cards & panels (playground cards, etc.) */
+html[data-theme="dark"] .card{
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+/* Navbar (you’re using bg-light there) */
+html[data-theme="dark"] .navbar.bg-light{
+  background-color: var(--surface) !important;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Footer – keep your brand blue but make inner text readable */
+.footer-primary,
+.container-fluid.bg-primary{
+  background-color: var(--primary) !important;
+}
+html[data-theme="dark"] .container-fluid.bg-primary{
+  background-color: #1d4256 !important; /* darker variant of your blue for better contrast */
+}
+html[data-theme="dark"] .container-fluid.bg-primary a,
+html[data-theme="dark"] .container-fluid.bg-primary p{
+  color: #e6edf5 !important;
+}
+
+/* Buttons outlines against dark surfaces */
+html[data-theme="dark"] .btn-outline-primary{
+  color: #cfe8fa;
+  border-color: #5aa6d2;
+}
+html[data-theme="dark"] .btn-outline-primary:hover{
+  background:#5aa6d2;
+  color:#0b1a24;
+}
+
+/* Range sliders in playground so they’re visible in dark */
+html[data-theme="dark"] input[type="range"]{
+  filter: brightness(1.05) contrast(1.05);
+}
+
+/* Make portfolio filter pills readable in dark */
+html[data-theme="dark"] #portfolio-flters .btn{
+  border-color: var(--border);
+  color: var(--text);
+}
+html[data-theme="dark"] #portfolio-flters .btn.active{
+  background: #1e2e3b;
+  color: #e6edf5;
+}
