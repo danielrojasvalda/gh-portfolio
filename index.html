@@ -637,18 +637,34 @@
   <!-- Footer End -->
 
   <!-- Auto-theme for Spotify -->
-  <script>
-    (function(){
-      var frame = document.getElementById('spotifyFooter');
-      if (!frame) return;
-      var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      try {
-        var url = new URL(frame.src);
-        url.searchParams.set('theme', prefersLight ? '1' : '0'); // 1 = light, 0 = dark
+<script>
+  (function(){
+    const frame = document.getElementById('spotifyFooter');
+    if(!frame) return;
+
+    function setSpotifyTheme(theme){
+      try{
+        const url = new URL(frame.src);
+        // Spotify: theme=0 (dark), theme=1 (light)
+        url.searchParams.set('theme', theme === 'dark' ? '0' : '1');
         frame.src = url.toString();
-      } catch(e) {}
-    })();
-  </script>
+      }catch(e){}
+    }
+
+    // Initial based on current data-theme (or fallback to prefers-color-scheme)
+    const root = document.documentElement;
+    const initial = root.getAttribute('data-theme') ||
+       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    setSpotifyTheme(initial);
+
+    // Watch for changes triggered by the toggle
+    const obs = new MutationObserver(() => {
+      const t = root.getAttribute('data-theme') || 'light';
+      setSpotifyTheme(t);
+    });
+    obs.observe(root, { attributes:true, attributeFilter:['data-theme'] });
+  })();
+</script>
 
   <!-- Scroll to Bottom -->
   <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom" aria-hidden="true"></i>
@@ -762,5 +778,6 @@
 
 </body>
 </html>
+
 
 
