@@ -6,459 +6,554 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="img/favicon.ico" rel="icon">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
+
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="51">
-  <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
-    <a href="index.html" class="navbar-brand ml-lg-3">
-      <h1 class="m-0 display-5"><span class="text-primary">Freddy</span>Rojas</h1>
-    </a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
-      <div class="navbar-nav m-auto py-0">
-        <a href="#home" class="nav-item nav-link active">Home</a>
-        <a href="#about" class="nav-item nav-link">About</a>
-        <a href="#qualification" class="nav-item nav-link">Qualifications</a>
-        <a href="#skill" class="nav-item nav-link">Skills</a>
-        <a href="#service" class="nav-item nav-link">Service</a>
-        <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
-        <a href="#contact" class="nav-item nav-link">Contact</a>
+<body>
+  <header class="site-header" id="top">
+    <nav class="navbar container">
+      <a href="#home" class="brand"><span>Freddy</span> Rojas</a>
+      <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div id="navMenu" class="nav-menu">
+        <a href="#home" class="active">Home</a>
+        <a href="#featured-project">Featured Project</a>
+        <a href="#portfolio">Projects</a>
+        <a href="#qualification">Education & Experience</a>
+        <a href="#skill">How I Build Software</a>
+        <a href="#ai-tools">AI Tools</a>
+        <a href="#contact">Contact</a>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <div class="container-fluid bg-primary d-flex align-items-center mb-5 py-5" id="home" style="min-height: 100vh;">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-5 px-5 pl-lg-0 pb-5 pb-lg-0">
-          <img class="img-fluid w-100 rounded-circle shadow-sm" src="img/profile.jpg" alt="Profile photo">
-        </div>
-        <div class="col-lg-7 text-center text-lg-left">
-          <h3 class="text-white font-weight-normal mb-3">I'm</h3>
-          <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 2px #ffffff;">Freddy Rojas</h1>
-          <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
-          <div class="typed-text d-none">Web Designer, Web Developer, FrontEnd Developer, BackEnd Developer, Apps Developer</div>
-          <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-            <a href="files/Resume-Freddy-RojasV.pdf" download class="btn btn-outline-light mr-5">Resume</a>
-            <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-            <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-            <a class="btn btn-light btn-social mr-2" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 512 512">
-                <path d="M494.9 229.5L448 97.1c-2.6-7.3-12.8-7.3-15.4 0L384 229.5H128l-48.6-132.4c-2.6-7.3-12.8-7.3-15.4 0L17.1 229.5c-2.4 6.5.2 13.8 6.1 17.6L256 417.7l232.8-170.6c5.9-3.8 8.5-11.1 6.1-17.6z"/>
-              </svg>
+  <main>
+    <section class="section hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Backend • Automation • Full-Stack Engineer</p>
+          <h1>Building practical automation, integrations, and software systems.</h1>
+          <div class="typed-text-wrap" aria-live="polite">
+            <span class="typed-text-reserve" aria-hidden="true"></span>
+            <h2 class="typed-text-output" aria-label="Roles"></h2>
+          </div>
+          <div class="typed-text" hidden>Back End Developer, Automation Engineer, Full-Stack Engineer, API Integrations Specialist</div>
+          <p class="hero-description">I build backend APIs, production-ready automations, and full-stack solutions that simplify operations and create measurable business value.</p>
+          <div class="hero-actions">
+            <a href="#portfolio" class="btn btn-primary">View Projects</a>
+            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            <a href="files/Resume-Freddy-RojasV.pdf" download class="btn btn-secondary">Download Resume</a>
+          </div>
+          <div class="social-row" aria-label="Social links">
+            <a class="social-btn" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a class="social-btn" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a class="social-btn" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener" aria-label="GitLab">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 512 512"><path d="M494.9 229.5L448 97.1c-2.6-7.3-12.8-7.3-15.4 0L384 229.5H128l-48.6-132.4c-2.6-7.3-12.8-7.3-15.4 0L17.1 229.5c-2.4 6.5.2 13.8 6.1 17.6L256 417.7l232.8-170.6c5.9-3.8 8.5-11.1 6.1-17.6z"/></svg>
             </a>
-            <button id="themeToggle" class="btn btn-sm btn-outline-light"><i class="far fa-moon"></i></button>
+            <button id="themeToggle" class="social-btn" aria-pressed="false" aria-label="Toggle theme"><i class="far fa-moon"></i></button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="container-fluid py-5" id="about">
-    <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
-        <h1 class="position-absolute text-uppercase text-primary">About Me</h1>
-      </div>
-      <div class="row align-items-center">
-        <div class="col-lg-5 pb-4 pb-lg-0">
-          <img class="img-fluid rounded w-100" src="img/about.jpg" alt="About photo" loading="lazy">
+        <div class="hero-image-wrap">
+          <img class="hero-image" src="img/profile.jpg" alt="Profile photo">
         </div>
-        <div class="col-lg-7">
-          <h3 class="mb-4">Software Developer</h3>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="what-i-build">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">What I Build</p>
+          <h2>Engineering Solutions with Practical Impact</h2>
+          <p>A quick view of the core problem spaces I focus on and ship in production environments.</p>
+        </div>
+        <div class="build-grid">
+          <article class="build-card">
+            <div class="build-icon" aria-hidden="true"><i class="fa-solid fa-server"></i></div>
+            <h3>Backend Systems</h3>
+            <p>Design scalable REST APIs and backend architectures using Python, Flask, and SQLAlchemy.</p>
+          </article>
+          <article class="build-card">
+            <div class="build-icon" aria-hidden="true"><i class="fa-solid fa-link"></i></div>
+            <h3>Automation & Integrations</h3>
+            <p>Build automation workflows and integrations using tools like n8n, APIs, and webhooks.</p>
+          </article>
+          <article class="build-card">
+            <div class="build-icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></div>
+            <h3>Full-Stack Applications</h3>
+            <p>Develop modern web applications using React, Node.js, and clean frontend architecture.</p>
+          </article>
+          <article class="build-card">
+            <div class="build-icon" aria-hidden="true"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3>AI-Assisted Workflows</h3>
+            <p>Create AI-powered pipelines that extract structured information and automate operational processes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section featured-section" id="featured-project">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Featured Project</p>
+          <h2>AI Lead Intake Automation</h2>
+          <p>Automation workflow that captures incoming lead data via webhook, validates inputs, processes business rules, and stores the lead while handling error scenarios gracefully.</p>
+        </div>
+        <article class="featured-card">
+          <div>
+            <p>The implementation demonstrates structured input validation, workflow automation, API integration, and production-oriented error handling.</p>
+            <div class="badge-row">
+              <span class="badge">n8n</span>
+              <span class="badge">Node.js</span>
+              <span class="badge">Webhooks</span>
+              <span class="badge">Automation</span>
+              <span class="badge">APIs</span>
+            </div>
+            <div class="card-actions">
+              <a href="https://github.com/danielrojasvalda/ai-lead-intake-automation" target="_blank" rel="noopener" class="btn btn-accent"><i class="fab fa-github"></i> View on GitHub</a>
+            </div>
+          </div>
+          <div class="diagram-shell">
+            <img class="architecture-diagram" src="img/ai-lead-intake-architecture.svg" alt="Architecture diagram for AI Lead Intake Automation showing React UI, n8n webhook, OpenAI extraction, validation layer, and structured lead data.">
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-alt projects-section" id="portfolio">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Projects</p>
+          <h2>Selected Work</h2>
+          <p>Original portfolio projects are preserved below, with one additional backend case study card.</p>
+        </div>
+
+        <div class="project-card-grid">
+          <article class="project-card">
+            <h3>ASC Profit Software Backend</h3>
+            <p>Backend development for a medical analytics platform designed to calculate revenue, cost, and profitability for ambulatory surgery centers.</p>
+            <div class="badge-row">
+              <span class="badge">Backend APIs</span>
+              <span class="badge">Analytics</span>
+              <span class="badge">Private Repository</span>
+            </div>
+          </article>
+        </div>
+
+        <ul class="portfolio-filters" id="portfolio-flters">
+          <li class="active" data-filter="*">All</li>
+          <li data-filter=".first">Public Sector</li>
+          <li data-filter=".second">Bank</li>
+          <li data-filter=".third">Enterprise</li>
+        </ul>
+
+        <div class="portfolio-container">
+          <article class="portfolio-item first">
+            <img src="img/portfolio-1.jpg" alt="SICOES" loading="lazy">
+            <div class="portfolio-overlay"><a href="https://www.sicoes.gob.bo/portal/index.php" target="_blank" rel="noopener">View</a></div>
+          </article>
+          <article class="portfolio-item second">
+            <img src="img/portfolio-2.jpg" alt="Banco Fortaleza" loading="lazy">
+            <div class="portfolio-overlay"><a href="https://www.bancofortaleza.com.bo/" target="_blank" rel="noopener">View</a></div>
+          </article>
+          <article class="portfolio-item first">
+            <img src="img/portfolio-3.jpg" alt="SIGEP" loading="lazy">
+            <div class="portfolio-overlay"><a href="https://sigep.gob.bo/seguridad/faces/ingreso.jspx" target="_blank" rel="noopener">View</a></div>
+          </article>
+          <article class="portfolio-item third">
+            <img src="img/portfolio-4.jpg" alt="Quipus" loading="lazy">
+            <div class="portfolio-overlay"><a href="https://www.quipus.gob.bo/" target="_blank" rel="noopener">View</a></div>
+          </article>
+          <article class="portfolio-item third">
+            <img src="img/portfolio-5.jpg" alt="Wedding app" loading="lazy">
+            <div class="portfolio-overlay"><a href="https://danielrojasvalda.github.io/wedding-app/" target="_blank" rel="noopener">View</a></div>
+          </article>
+          <article class="portfolio-item third">
+            <img src="img/portfolio-6.jpg" alt="Nucci Medical" loading="lazy">
+            <div class="portfolio-overlay"><a href="https://nuccimedical.com/" target="_blank" rel="noopener">View</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="about">
+      <div class="container two-col">
+        <div>
+          <img class="about-image" src="img/about.jpg" alt="About photo" loading="lazy">
+        </div>
+        <div>
+          <div class="section-header">
+            <p class="eyebrow">About</p>
+            <h2>About Me</h2>
+          </div>
+          <h3>Software Developer</h3>
           <p>I'm a systems engineer originally from Bolivia with hands-on experience building specialized applications. After relocating to the U.S., I continued expanding my skill set while staying focused on software development.</p>
           <p>A USF Software Developer Bootcamp graduate, I enjoy building scalable, efficient solutions and actively leveraging AI-assisted development tools to accelerate delivery, improve code quality, and design modern, scalable software systems.</p>
           <p>Curious by nature and driven by impact, I’m always learning, refining, and collaborating to deliver meaningful technology. Outside of work, I’m a proud dad, soccer enthusiast, and lifelong tech explorer.</p>
-          <div class="row mb-3">
-            <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">Freddy Daniel Rojas</span></h6></div>
-            <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">12 September</span></h6></div>
-            <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary">+1 321 945 7729</span></h6></div>
-            <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">danielrojasvalda@gmail.com</span></h6></div>
-          </div>
-          <a href="#contact" class="btn btn-outline-primary mr-4">Contact Me</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container-fluid py-5" id="qualification">
-    <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Qualifications</h1>
-        <h1 class="position-absolute text-uppercase text-primary">Education &amp; Experience</h1>
-      </div>
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <h3 class="mb-4">My Education</h3>
-          <div class="border-left border-primary pt-2 pl-4 ml-2">
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Software Engineering Bootcamp</h5>
-              <p class="mb-2"><strong>University of South Florida</strong></p>
-              <p>630 hours focused on AI for Engineers, JavaScript front end, Python/Flask &amp; Node.js back end, React.js, and rigorous data structures &amp; algorithms.</p>
-            </div>
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Superior Course in Project Management</h5>
-              <p class="mb-2"><strong>Rey Juan Carlos University</strong></p>
-            </div>
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Bachelor of Systems Engineering</h5>
-              <p class="mb-2"><strong>Bolivian Catholic University</strong></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <h3 class="mb-4">My Experience</h3>
-          <div class="border-left border-primary pt-2 pl-4 ml-2">
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Back End Developer</h5>
-              <p class="mb-2"><strong>ZYSC Software LLC, Tampa, Florida, USA</strong> | <small>Mar 2025 - Present</small></p>
-              <p>Designed and implemented modular RESTful APIs using Python, Flask, and SQLAlchemy, focusing on scalability and maintainability.</p>
-              <p>Enhanced backend architecture with new models, schemas, routes, and reusable utilities, maintaining clean documentation and Postman/Swagger testing.</p>
-              <p>Collaborated with frontend and leadership to align backend functionality with business goals and UI expectations.</p>
-              <p>Maintained secure database access to AWS RDS via SSH tunnels and Docker-based dev environments.</p>
-            </div>
-
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Quality Assurance Analyst – Multilingual</h5>
-              <p class="mb-2"><strong>ID.me, Tampa, Florida, USA</strong> | <small>Jun 2021 - Mar 2025</small></p>
-              <p>Executed 380+ weekly quality audits for IRS and partner programs, flagged fraud patterns, and drove timely resolutions using JIRA, Zendesk, and Confluence.</p>
-            </div>
-
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Quality Assurance Engineer (Cross-training)</h5>
-              <p class="mb-2"><strong>ID.me, Tampa, Florida, USA</strong> | <small>May 2024 – Jul 2024</small></p>
-              <p>Developed and executed test matrices and test cases for Marketplace web, browser extensions, and mobile apps. Used JIRA, Confluence, Sentry, GitHub, and Harness for collaboration, tracking, and error monitoring. Prioritized effectively despite limited environments and tight timelines.</p>
-            </div>
-
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Classroom Monitor / IT Help Desk</h5>
-              <p class="mb-2"><strong>FCPS, Fairfax, Virginia, USA</strong> | <small>Feb 2021 – Jun 2021</small></p>
-              <p>Provided in-person classroom assistance and technical support to 50+ teachers and 300+ students weekly.</p>
-            </div>
-
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Software Development Specialist</h5>
-              <p class="mb-2"><strong>Fortaleza Bank, La Paz, Bolivia</strong> | <small>Nov 2019 - Aug 2020</small></p>
-              <p>Built and integrated 4GL/PHP/JS backend modules for Netbank; improved performance with EJB and Spring Boot.</p>
-            </div>
-
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Full-Stack Developer</h5>
-              <p class="mb-2"><strong>Red Solutions</strong> | <small>Jun 2019 – Jun 2021</small></p>
-              <p>Launched a startup, led SMB tech support, and delivered websites using modern stacks.</p>
-            </div>
-
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Head of IT / Network &amp; Communications</h5>
-              <p class="mb-2"><strong>Quipus Public Enterprise, La Paz, Bolivia</strong> | <small>Apr 2015 - Jul 2019</small></p>
-              <p>Revamped web stack, boosted availability and performance, and automated ops for 800+ units.</p>
-            </div>
-
-            <div class="position-relative mb-4">
-              <i class="far fa-dot-circle text-primary position-absolute" style="top: 2px; left: -32px;"></i>
-              <h5 class="font-weight-bold mb-1">Backend Software Developer</h5>
-              <p class="mb-2"><strong>ProcessMaker, La Paz, Bolivia</strong> | <small>Apr 2013 - Mar 2015</small></p>
-              <p>Resolved PM2.x bugs, API testing, unit tests, and front-end testing with Selenium; supported Scrum delivery.</p>
-            </div>
+          <div class="meta-grid">
+            <p><strong>Name:</strong> Freddy Daniel Rojas</p>
+            <p><strong>Birthday:</strong> 12 September</p>
+            <p><strong>Phone:</strong> +1 321 945 7729</p>
+            <p><strong>Email:</strong> danielrojasvalda@gmail.com</p>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="container-fluid py-5" id="skill">
-    <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Skills</h1>
-        <h1 class="position-absolute text-uppercase text-primary">My Skills</h1>
+    <section class="section" id="qualification">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Qualifications</p>
+          <h2>Education &amp; Experience</h2>
+        </div>
+        <div class="timeline-grid">
+          <div>
+            <h3>Education</h3>
+            <article class="timeline-item education-item">
+              <h4>Software Engineering Bootcamp</h4>
+              <p><strong>University of South Florida</strong></p>
+              <p class="edu-note">630 hours completed • Focus: AI for Engineers, full-stack JavaScript, Python/Flask, React, and data structures.</p>
+            </article>
+            <article class="timeline-item education-item">
+              <h4>Superior Course in Project Management</h4>
+              <p><strong>Rey Juan Carlos University</strong></p>
+              <p class="edu-note">Advanced project planning, delivery governance, and execution discipline.</p>
+            </article>
+            <article class="timeline-item education-item">
+              <h4>Bachelor of Systems Engineering</h4>
+              <p><strong>Bolivian Catholic University</strong></p>
+              <p class="edu-note">Core systems engineering foundations across software, infrastructure, and analysis.</p>
+            </article>
+          </div>
+          <div class="experience-timeline">
+            <h3>Experience</h3>
+            <article class="timeline-item experience-card">
+              <h4>Back End Developer</h4>
+              <p class="role-meta"><strong>ZYSC Software LLC</strong> <span class="role-location">Tampa, Florida, USA</span> <span>Mar 2025 - Present</span></p>
+              <ul class="role-bullets">
+                <li>Architected modular REST APIs with clean contracts and maintainable service boundaries.</li>
+                <li>Implemented reusable models, schemas, and utilities to accelerate backend delivery.</li>
+                <li>Improved reliability through structured validation and production-ready error handling.</li>
+                <li>Partnered with frontend and leadership to translate business requirements into shipped features.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">SQLAlchemy</span>
+                <span class="tech-tag">AWS RDS</span>
+                <span class="tech-tag">Docker</span>
+              </div>
+              <details class="exp-details">
+                <summary><span class="toggle-label">Show details</span></summary>
+                <p>Enhanced backend architecture with new models, schemas, routes, and reusable utilities while maintaining clean documentation and Postman/Swagger testing.</p>
+                <p>Maintained secure database access to AWS RDS through SSH tunnels and Docker-based development workflows.</p>
+              </details>
+            </article>
+            <article class="timeline-item experience-card">
+              <h4>Quality Assurance Analyst – Multilingual</h4>
+              <p class="role-meta"><strong>ID.me</strong> <span class="role-location">Tampa, Florida, USA</span> <span>Jun 2021 - Mar 2025</span></p>
+              <ul class="role-bullets">
+                <li>Executed 380+ weekly quality audits for IRS and partner identity verification programs.</li>
+                <li>Identified fraud patterns and high-risk cases, improving escalation quality and response speed.</li>
+                <li>Drove corrective action workflows with operations teams and quality leadership.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">JIRA</span>
+                <span class="tech-tag">Zendesk</span>
+                <span class="tech-tag">Confluence</span>
+                <span class="tech-tag">QA Audits</span>
+              </div>
+              <details class="exp-details">
+                <summary><span class="toggle-label">Show details</span></summary>
+                <p>Supported multilingual quality operations and documented trends to improve fraud detection consistency and decision quality.</p>
+              </details>
+            </article>
+            <article class="timeline-item experience-card">
+              <h4>Quality Assurance Engineer (Cross-training)</h4>
+              <p class="role-meta"><strong>ID.me</strong> <span class="role-location">Tampa, Florida, USA</span> <span>May 2024 – Jul 2024</span></p>
+              <ul class="role-bullets">
+                <li>Designed and executed test matrices for web, browser extension, and mobile products.</li>
+                <li>Strengthened release quality through structured regression coverage and defect triage.</li>
+                <li>Prioritized testing under constrained environments and tight delivery timelines.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">JIRA</span>
+                <span class="tech-tag">Confluence</span>
+                <span class="tech-tag">Sentry</span>
+                <span class="tech-tag">GitHub</span>
+                <span class="tech-tag">Harness</span>
+              </div>
+              <details class="exp-details">
+                <summary><span class="toggle-label">Show details</span></summary>
+                <p>Built test cases for Marketplace web experiences, browser extensions, and mobile applications while coordinating with engineering and product teams.</p>
+              </details>
+            </article>
+            <article class="timeline-item experience-card">
+              <h4>Classroom Monitor / IT Help Desk</h4>
+              <p class="role-meta"><strong>FCPS</strong> <span class="role-location">Fairfax, Virginia, USA</span> <span>Feb 2021 – Jun 2021</span></p>
+              <ul class="role-bullets">
+                <li>Provided frontline technical support to sustain classroom instruction and operations.</li>
+                <li>Supported 50+ teachers and 300+ students weekly across daily IT issues.</li>
+                <li>Resolved device and connectivity blockers to reduce instructional downtime.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">IT Support</span>
+                <span class="tech-tag">Help Desk</span>
+              </div>
+              <details class="exp-details">
+                <summary><span class="toggle-label">Show details</span></summary>
+                <p>Assisted with day-to-day device, network, and classroom technology issues to maintain continuity in hybrid learning environments.</p>
+              </details>
+            </article>
+            <article class="timeline-item experience-card">
+              <h4>Software Development Specialist</h4>
+              <p class="role-meta"><strong>Fortaleza Bank</strong> <span class="role-location">La Paz, Bolivia</span> <span>Nov 2019 - Aug 2020</span></p>
+              <ul class="role-bullets">
+                <li>Built and integrated backend modules for digital banking workflows.</li>
+                <li>Delivered performance optimizations across legacy and modern enterprise services.</li>
+                <li>Supported high-reliability delivery in a regulated financial environment.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">4GL</span>
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">EJB</span>
+                <span class="tech-tag">Spring Boot</span>
+              </div>
+              <details class="exp-details">
+                <summary><span class="toggle-label">Show details</span></summary>
+                <p>Focused on high-reliability financial software support and integration work across legacy and modern components.</p>
+              </details>
+            </article>
+            <article class="timeline-item experience-card">
+              <h4>Full-Stack Developer</h4>
+              <p class="role-meta"><strong>Red Solutions</strong> <span class="role-location">La Paz, Bolivia</span> <span>Jun 2019 – Jun 2021</span></p>
+              <ul class="role-bullets">
+                <li>Launched and operated a startup delivering digital products for SMB clients.</li>
+                <li>Built and shipped websites end-to-end across modern full-stack tooling.</li>
+                <li>Owned technical support and ongoing maintenance for client environments.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">Full-Stack</span>
+                <span class="tech-tag">Web Delivery</span>
+                <span class="tech-tag">Client Support</span>
+              </div>
+              <details class="exp-details">
+                <summary><span class="toggle-label">Show details</span></summary>
+                <p>Handled implementation, deployment, and maintenance in a fast-moving small business context with direct stakeholder communication.</p>
+              </details>
+            </article>
+            <article class="timeline-item experience-card">
+              <h4>Head of IT / Network &amp; Communications</h4>
+              <p class="role-meta"><strong>Quipus Public Enterprise</strong> <span class="role-location">La Paz, Bolivia</span> <span>Apr 2015 - Jul 2019</span></p>
+              <ul class="role-bullets">
+                <li>Led IT and communications programs supporting 800+ operational units.</li>
+                <li>Improved platform availability and performance across web and network systems.</li>
+                <li>Implemented automation initiatives that reduced manual operational load.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">Infrastructure</span>
+                <span class="tech-tag">Networking</span>
+                <span class="tech-tag">Automation</span>
+              </div>
+              <details class="exp-details">
+                <summary><span class="toggle-label">Show details</span></summary>
+                <p>Managed cross-functional initiatives balancing uptime, scaling, and modernization in a public enterprise environment.</p>
+              </details>
+            </article>
+            <article class="timeline-item experience-card">
+              <h4>Backend Software Developer</h4>
+              <p class="role-meta"><strong>ProcessMaker</strong> <span class="role-location">La Paz, Bolivia</span> <span>Apr 2013 - Mar 2015</span></p>
+              <ul class="role-bullets">
+                <li>Resolved PM2.x backend defects and strengthened API behavior validation.</li>
+                <li>Expanded unit and front-end test coverage to improve release stability.</li>
+                <li>Supported Scrum-based delivery and close QA-engineering collaboration.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tech-tag">APIs</span>
+                <span class="tech-tag">Unit Testing</span>
+                <span class="tech-tag">Selenium</span>
+                <span class="tech-tag">Scrum</span>
+              </div>
+              <details class="exp-details">
+                <summary><span class="toggle-label">Show details</span></summary>
+                <p>Balanced bug resolution, testing, and collaboration with QA to maintain release quality for workflow software platforms.</p>
+              </details>
+            </article>
+          </div>
+        </div>
       </div>
-      <div class="row align-items-center">
-        <ul>
-          <li>Tools &amp; methodologies: Scrum/Agile, GIT, SVN, UI/UX technologies</li>
-          <li>Operating systems: Linux and Windows</li>
-          <li>Web technologies: HTML, CSS, Bootstrap, JavaScript, React, JQuery, C#, Java, PHP, Python, Flask, .NET</li>
-          <li>Databases: Oracle, Microsoft SQL Server, PostgreSQL, MySQL</li>
-          <li>Cisco Certified Network Associate (CCNA)</li>
-          <li>Languages
-            <ul>
-              <li>Spanish (Native)</li>
-              <li>English (Proficient)</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    </section>
 
-<!-- Services Section -->
-  <div class="container-fluid pt-5" id="service">
-    <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Service</h1>
-        <h1 class="position-absolute text-uppercase text-primary">My Services</h1>
-      </div>
-      <div class="row pt-3">
-        <div class="col-md-4 mb-5">
-          <div class="service-item h-100">
-            <div class="service-icon"><i class="fa fa-laptop"></i></div>
-            <div class="service-title">Web Design</div>
-          </div>
+    <section class="section section-alt" id="skill">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">How I Build Software</p>
+          <h2>Core Engineering Capabilities</h2>
         </div>
-        <div class="col-md-4 mb-5">
-          <div class="service-item h-100">
-            <div class="service-icon"><i class="fa fa-laptop-code"></i></div>
-            <div class="service-title">Web Development</div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-5">
-          <div class="service-item h-100">
-            <div class="service-icon"><i class="fab fa-android"></i></div>
-            <div class="service-title">App Design</div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="service-item h-100">
-            <div class="service-icon"><i class="fab fa-apple"></i></div>
-            <div class="service-title">App Development</div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="service-item h-100">
-            <div class="service-icon"><i class="fa fa-search"></i></div>
-            <div class="service-title">SEO</div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="service-item h-100">
-            <div class="service-icon"><i class="fa fa-edit"></i></div>
-            <div class="service-title">Content Creation</div>
-          </div>
+        <div class="work-grid">
+          <article class="work-card">
+            <h3>Backend APIs</h3>
+            <p>RESTful services, modular route design, schema-driven validation, and maintainable backend architecture.</p>
+            <p>Stack: Python, Flask, Node.js, SQLAlchemy.</p>
+          </article>
+          <article class="work-card">
+            <h3>Automation & Integrations</h3>
+            <p>Workflow design with webhooks, event handling, validation gates, and resilient processing patterns.</p>
+            <p>Tools: n8n, APIs, business-rule orchestration.</p>
+          </article>
+          <article class="work-card">
+            <h3>Frontend UI</h3>
+            <p>Responsive interfaces with clean UX patterns and practical business-oriented layouts.</p>
+            <p>Stack: HTML, CSS, Bootstrap, JavaScript, React, jQuery.</p>
+          </article>
+          <article class="work-card">
+            <h3>QA / Reliability</h3>
+            <p>Audit-driven quality mindset with testing discipline, issue triage, and cross-team collaboration.</p>
+            <p>Tools: JIRA, Confluence, Sentry, Selenium.</p>
+          </article>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Portfolio Section -->
-  <div class="container-fluid pt-5 pb-3" id="portfolio">
-    <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Gallery</h1>
-        <h1 class="position-absolute text-uppercase text-primary">My Portfolio</h1>
+    <section class="section section-alt" id="ai-tools">
+      <div class="container ai-tools-panel">
+        <div>
+          <p class="eyebrow">AI Tools</p>
+          <h2>Portfolio AI Assistant</h2>
+          <p>The AI chat assistant remains available for questions about skills, projects, and experience.</p>
+        </div>
+        <button id="openAiChat" class="btn btn-primary" type="button">Open AI Chat</button>
       </div>
-      <div class="row">
-        <div class="col-12 text-center mb-2">
-          <ul class="list-inline mb-4" id="portfolio-flters">
-            <li class="btn btn-sm btn-outline-primary m-1 active" data-filter="*">All</li>
-            <li class="btn btn-sm btn-outline-primary m-1" data-filter=".first">Public Sector</li>
-            <li class="btn btn-sm btn-outline-primary m-1" data-filter=".second">Bank</li>
-            <li class="btn btn-sm btn-outline-primary m-1" data-filter=".third">Enterprise</li>
-          </ul>
-        </div>
-      </div>
-      <div class="row portfolio-container">
-        <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-          <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-1.jpg" alt="SICOES" loading="lazy">
-            <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://www.sicoes.gob.bo/portal/index.php" target="_blank" rel="noopener">
-                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-          <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-2.jpg" alt="Banco Fortaleza" loading="lazy">
-            <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://www.bancofortaleza.com.bo/" target="_blank" rel="noopener">
-                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-          <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-3.jpg" alt="SIGEP" loading="lazy">
-            <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://sigep.gob.bo/seguridad/faces/ingreso.jspx" target="_blank" rel="noopener">
-                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
-          <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-4.jpg" alt="Quipus" loading="lazy">
-            <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://www.quipus.gob.bo/" target="_blank" rel="noopener">
-                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
-          <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-5.jpg" alt="Wedding app" loading="lazy">
-            <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://danielrojasvalda.github.io/wedding-app/" target="_blank" rel="noopener">
-                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
-          <div class="position-relative overflow-hidden mb-2">
-            <img class="img-fluid rounded w-100" src="img/portfolio-6.jpg" alt="Nucci Medical" loading="lazy">
-            <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
-              <a href="https://nuccimedical.com/" target="_blank" rel="noopener">
-                <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Contact Section -->
-  <div class="container-fluid py-5 bg-light" id="contact">
-    <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Contact</h1>
-        <h1 class="position-absolute text-uppercase text-primary">Get in touch</h1>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <p class="mb-4">No form here—use email or LinkedIn to reach me quickly.</p>
-          <a href="mailto:danielrojasvalda@gmail.com?subject=Portfolio%20inquiry&body=Hi%20Freddy%2C%0A"
-             class="btn btn-outline-primary mr-2">
-            <i class="far fa-envelope mr-1"></i> Email me
-          </a>
-          <a class="btn btn-outline-primary mr-2"
-             href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener">
-            <i class="fab fa-linkedin-in mr-1"></i> LinkedIn
-          </a>
-          <a class="btn btn-outline-primary"
-             href="https://wa.me/13219457729?text=Hi%20Freddy%2C%20I%20saw%20your%20portfolio..."
-             target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp mr-1"></i> WhatsApp
-          </a>
+    <section class="section" id="contact">
+      <div class="container contact-card">
+        <div class="section-header">
+          <p class="eyebrow">Contact</p>
+          <h2>Interested in working together?</h2>
+        </div>
+        <p>Reach out via email or social platforms.</p>
+        <div class="contact-links">
+          <a href="mailto:danielrojasvalda@gmail.com?subject=Portfolio%20inquiry&body=Hi%20Freddy%2C%0A" class="btn btn-primary">Email</a>
+          <a href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
+          <a href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener" class="btn btn-secondary">GitLab</a>
+          <a href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn</a>
+          <a href="https://wa.me/13219457729?text=Hi%20Freddy%2C%20I%20saw%20your%20portfolio..." target="_blank" rel="noopener" class="btn btn-secondary">WhatsApp</a>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Revenue & Cost Playground -->
-  <div class="container-fluid py-5 bg-light" id="playground">
-    <div class="container">
-      <div class="position-relative d-flex align-items-center justify-content-center">
-        <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Play</h1>
-        <h1 class="position-absolute text-uppercase text-primary">Revenue & Cost Playground</h1>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 mb-4">
-          <div class="card shadow-sm border-0">
-            <div class="card-body">
-              <h5 class="card-title mb-3">Adjust assumptions</h5>
-              <label class="d-block">Procedures per month
-                <input id="inQty" type="range" min="10" max="200" value="80" class="custom-range">
-              </label>
-              <div class="small mb-3"><span id="outQty">80</span></div>
-              <label class="d-block">Allowed amount per procedure ($)
-                <input id="inAllowed" type="range" min="200" max="8000" value="1800" step="50" class="custom-range">
-              </label>
-              <div class="small mb-3">$<span id="outAllowed">1,800</span></div>
-              <label class="d-block">Average labor cost per case ($)
-                <input id="inLabor" type="range" min="50" max="2000" value="450" step="10" class="custom-range">
-              </label>
-              <div class="small mb-3">$<span id="outLabor">450</span></div>
-              <label class="d-block">Supplies / implants / meds per case ($)
-                <input id="inSup" type="range" min="0" max="4000" value="300" step="10" class="custom-range">
-              </label>
-              <div class="small mb-3">$<span id="outSup">300</span></div>
-              <label class="d-block">Collections realization (% of allowed)
-                <input id="inReal" type="range" min="50" max="100" value="92" step="1" class="custom-range">
-              </label>
-              <div class="small mb-2"><span id="outReal">92</span>%</div>
-            </div>
-          </div>
+    <section class="section" id="playground">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Playground</p>
+          <h2>Revenue & Cost Playground</h2>
         </div>
-        <div class="col-lg-6 mb-4">
-          <div class="card shadow-sm border-0">
-            <div class="card-body">
-              <h5 class="card-title mb-3">Monthly snapshot</h5>
-              <canvas id="rcChart" height="240"></canvas>
-              <div class="mt-3">
-                <div class="d-flex justify-content-between">
-                  <span>Corrected Revenue</span>
+        <div class="playground-grid">
+          <div class="panel">
+            <h3>Adjust assumptions</h3>
+            <label>Procedures per month
+              <input id="inQty" type="range" min="10" max="200" value="80">
+            </label>
+            <div class="small-value"><span id="outQty">80</span></div>
+            <label>Allowed amount per procedure ($)
+              <input id="inAllowed" type="range" min="200" max="8000" value="1800" step="50">
+            </label>
+            <div class="small-value">$<span id="outAllowed">1,800</span></div>
+            <label>Average labor cost per case ($)
+              <input id="inLabor" type="range" min="50" max="2000" value="450" step="10">
+            </label>
+            <div class="small-value">$<span id="outLabor">450</span></div>
+            <label>Supplies / implants / meds per case ($)
+              <input id="inSup" type="range" min="0" max="4000" value="300" step="10">
+            </label>
+            <div class="small-value">$<span id="outSup">300</span></div>
+            <label>Collections realization (% of allowed)
+              <input id="inReal" type="range" min="50" max="100" value="92" step="1">
+            </label>
+            <div class="small-value"><span id="outReal">92</span>%</div>
+          </div>
+          <div class="panel snapshot-panel">
+            <h3>Monthly snapshot</h3>
+            <p class="snapshot-subtext">Live summary based on your current assumptions.</p>
+
+            <div id="snapshotFallback" class="snapshot-fallback" role="status" aria-live="polite" hidden>
+              Snapshot unavailable. Please adjust the inputs to valid numeric values.
+            </div>
+
+            <div id="snapshotContent" class="snapshot-content">
+              <div class="snapshot-kpi-grid">
+                <article class="snapshot-kpi">
+                  <span>Monthly Revenue</span>
                   <strong id="outRev">$0</strong>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <span>Total Cost</span>
-                  <strong id="outCost">$0</strong>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <span>Profit</span>
+                </article>
+                <article class="snapshot-kpi">
+                  <span>Labor Cost</span>
+                  <strong id="outLaborTotal">$0</strong>
+                </article>
+                <article class="snapshot-kpi">
+                  <span>Supplies Cost</span>
+                  <strong id="outSupTotal">$0</strong>
+                </article>
+                <article class="snapshot-kpi">
+                  <span>Estimated Profit</span>
                   <strong id="outProfit">$0</strong>
+                </article>
+              </div>
+
+              <div class="snapshot-breakdown">
+                <div class="snapshot-row">
+                  <div class="snapshot-label"><span>Revenue</span><strong id="metricRevenue">$0</strong></div>
+                  <div class="snapshot-track"><span id="barRevenue" class="snapshot-fill revenue"></span></div>
+                </div>
+                <div class="snapshot-row">
+                  <div class="snapshot-label"><span>Labor</span><strong id="metricLabor">$0</strong></div>
+                  <div class="snapshot-track"><span id="barLabor" class="snapshot-fill labor"></span></div>
+                </div>
+                <div class="snapshot-row">
+                  <div class="snapshot-label"><span>Supplies</span><strong id="metricSupplies">$0</strong></div>
+                  <div class="snapshot-track"><span id="barSupplies" class="snapshot-fill supplies"></span></div>
+                </div>
+                <div class="snapshot-row">
+                  <div class="snapshot-label"><span>Profit</span><strong id="metricProfit">$0</strong></div>
+                  <div class="snapshot-track"><span id="barProfit" class="snapshot-fill profit"></span></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="text-center mt-2">
-        <a href="#contact" class="btn btn-outline-primary">Want a custom calculator?</a>
-      </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <div class="container-fluid bg-primary text-white mt-5 py-4 px-sm-3 px-md-5">
-    <div class="container text-center">
-      <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
-        <div class="mb-3 mb-md-0 mr-md-3">
-          <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-          <a class="btn btn-light btn-social mr-2" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-          <a class="btn btn-light btn-social mr-2" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 512 512">
-              <path d="M494.9 229.5L448 97.1c-2.6-7.3-12.8-7.3-15.4 0L384 229.5H128l-48.6-132.4c-2.6-7.3-12.8-7.3-15.4 0L17.1 229.5c-2.4 6.5.2 13.8 6.1 17.6L256 417.7l232.8-170.6c5.9-3.8 8.5-11.1 6.1-17.6z"/>
-            </svg>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="social-row">
+          <a class="social-btn" href="https://www.linkedin.com/in/freddyrojasv/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a class="social-btn" href="https://github.com/danielrojasvalda/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a class="social-btn" href="https://gitlab.com/danielrojasvalda" target="_blank" rel="noopener" aria-label="GitLab">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 512 512"><path d="M494.9 229.5L448 97.1c-2.6-7.3-12.8-7.3-15.4 0L384 229.5H128l-48.6-132.4c-2.6-7.3-12.8-7.3-15.4 0L17.1 229.5c-2.4 6.5.2 13.8 6.1 17.6L256 417.7l232.8-170.6c5.9-3.8 8.5-11.1 6.1-17.6z"/></svg>
           </a>
         </div>
-        <iframe id="spotifyFooter" style="border-radius:12px; max-width:320px;"
-          src="https://open.spotify.com/embed/playlist/7JRtgEBVVP4fOhZlTSCNPD?utm_source=generator&theme=0"
-          width="100%" height="80" frameborder="0"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy">
-        </iframe>
+        <p>&copy; <span id="year"></span> freddyrojas. All Rights Reserved.</p>
       </div>
-      <p class="m-0 mt-3 small">&copy; <a class="text-white font-weight-bold" href="#">freddyrojas</a>. All Rights Reserved.</p>
+      <iframe id="spotifyFooter"
+        src="https://open.spotify.com/embed/playlist/7JRtgEBVVP4fOhZlTSCNPD?utm_source=generator&theme=0"
+        width="100%" height="80" frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
     </div>
-  </div>
+  </footer>
 
-  <!-- Scroll to Bottom -->
-  <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
-
-  <!-- Back to Top -->
-  <a href="#" class="btn btn-outline-dark px-0 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+  <a href="#top" class="back-to-top" aria-label="Back to top"><i class="fa fa-angle-double-up"></i></a>
 
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
@@ -496,11 +591,11 @@
       <button type="submit">Send</button>
     </form>
   </div>
-  <button id="ai-btn" aria-expanded="false"><i class="far fa-comments mr-1"></i> Ask AI</button>
+  <button id="ai-btn" aria-expanded="false"><i class="far fa-comments"></i> Ask AI</button>
 
   <script>
     (function(){
-      const probe=document.createElement('span'); probe.className='text-primary'; probe.style.display='none';
+      const probe=document.createElement('span'); probe.className='probe-primary'; probe.style.display='none';
       document.body.appendChild(probe);
       const c=getComputedStyle(probe).color;
       if(c) document.documentElement.style.setProperty('--ai-accent', c);
@@ -521,6 +616,13 @@
       btn.setAttribute('aria-expanded', String(!open));
       if (!open) setTimeout(() => input.focus(), 40);
     };
+
+    const aiOpen = document.getElementById('openAiChat');
+    if (aiOpen) {
+      aiOpen.addEventListener('click', () => {
+        if (box.style.display !== 'block') btn.click();
+      });
+    }
 
     function addMessage(text, who){
       const div=document.createElement('div');
@@ -557,43 +659,10 @@
     });
   </script>
 
-  <!-- Template init (Isotope filters) -->
-  <script>
-    window.addEventListener('load', function () {
-      var grid = document.querySelector('.portfolio-container');
-      if (grid && window.imagesLoaded && window.Isotope) {
-        imagesLoaded(grid, function () {
-          var iso = new Isotope(grid, { itemSelector: '.portfolio-item', layoutMode: 'fitRows' });
-          var filters = document.getElementById('portfolio-flters');
-          if (filters) {
-            filters.addEventListener('click', function (e) {
-              if (e.target && e.target.matches('li')) {
-                Array.from(this.children).forEach(function (li) { li.classList.remove('active'); });
-                e.target.classList.add('active');
-                iso.arrange({ filter: e.target.getAttribute('data-filter') });
-              }
-            });
-          }
-        });
-      }
-    });
-  </script>
-
-  <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <!-- JS Libraries -->
   <script src="lib/typed/typed.min.js" defer></script>
-  <script src="lib/easing/easing.min.js" defer></script>
-  <script src="lib/waypoints/waypoints.min.js" defer></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js" defer></script>
   <script src="lib/isotope/isotope.pkgd.min.js" defer></script>
-  <script src="lib/lightbox/js/lightbox.min.js" defer></script>
   <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js" defer></script>
   <script src="js/main.js" defer></script>
-
 </body>
 </html>
-
-
-
-

@@ -1,184 +1,265 @@
-(function ($) {
-  "use strict";
-
-  const $w = $(window);
-
-  /* ---------------- Nav + Scroll UI (single handler) ---------------- */
-  function onScroll() {
-    const y = $w.scrollTop();
-    // Navbar
-    if (y > 200) $('.navbar').fadeIn('slow').css('display', 'flex');
-    else $('.navbar').fadeOut('slow').css('display', 'none');
-    // Scroll helpers
-    if (y > 100) $('.scroll-to-bottom').fadeOut('slow');
-    else $('.scroll-to-bottom').fadeIn('slow');
-    if (y > 200) $('.back-to-top').fadeIn('slow');
-    else $('.back-to-top').fadeOut('slow');
-  }
-  $w.on('scroll', onScroll);
-  onScroll(); // run once
-
-  /* ---------------- Smooth anchor scroll ---------------- */
-  $('.navbar-nav a').on('click', function (e) {
-    if (this.hash) {
-      e.preventDefault();
-      const $target = $(this.hash);
-      if ($target.length) {
-        $('html, body').animate({ scrollTop: $target.offset().top - 45 }, 1500, 'easeInOutExpo');
-        $('.navbar-nav .active').removeClass('active');
-        $(this).closest('a').addClass('active');
-      }
-    }
-  });
-
-  /* ---------------- Typed.js ---------------- */
-    // Typed Initiate
-    if ($('.typed-text-output').length == 1) {
-        var typed_strings = $('.typed-text').text();
-        var typed = new Typed('.typed-text-output', {
-            strings: typed_strings.split(', '),
-            typeSpeed: 80,        // CHANGED: was 100
-            backSpeed: 50,        // CHANGED: was 20
-            backDelay: 2500,      // ADDED: 2.5 second pause before deleting
-            startDelay: 500,      // ADDED: 0.5 second before starting
-            smartBackspace: false,
-            loop: true
-      });
-    }
-
-  /* ---------------- Modal Video ---------------- */
-  $(function () {
-    let videoSrc = '';
-    $('.btn-play').on('click', function () { videoSrc = $(this).data('src') || ''; });
-    const $modal = $('#videoModal');
-    if ($modal.length) {
-      $modal.on('shown.bs.modal', function () {
-        $('#video').attr('src', videoSrc ? `${videoSrc}?autoplay=1&modestbranding=1&showinfo=0` : '');
-      });
-      $modal.on('hide.bs.modal', function () { $('#video').attr('src', ''); });
-    }
-  });
-
-  /* ---------------- Skills progress ---------------- */
-  if ($('.skill').length && $.fn.waypoint) {
-    $('.skill').waypoint(function () {
-      $('.progress .progress-bar').each(function () {
-        $(this).css('width', ($(this).attr('aria-valuenow') || 0) + '%');
-      });
-    }, { offset: '80%' });
-  }
-
-  /* ---------------- Portfolio Isotope + Filters ---------------- */
-  (function initIsotope() {
-    const $grid = $('.portfolio-container');
-    if (!$grid.length || !$.fn.isotope) return;
-    const start = () => {
-      const iso = $grid.isotope({ itemSelector: '.portfolio-item', layoutMode: 'fitRows' });
-      $('#portfolio-flters').on('click', 'li', function () {
-        $('#portfolio-flters li').removeClass('active');
-        $(this).addClass('active');
-        iso.isotope({ filter: $(this).data('filter') });
-      });
-    };
-    if (window.imagesLoaded) { $grid.imagesLoaded(start); } else { start(); }
-  })();
-
-  /* ---------------- Back to top ---------------- */
-  $('.back-to-top').on('click', function () {
-    $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
-    return false;
-  });
-
-  /* ---------------- Testimonials carousel ---------------- */
-  if ($('.testimonial-carousel').length && $.fn.owlCarousel) {
-    $('.testimonial-carousel').owlCarousel({
-      autoplay: true,
-      smartSpeed: 1500,
-      dots: true,
-      loop: true,
-      items: 1
-    });
-  }
-
-// ===== Theme toggle (auto + manual) =====
-(function(){
+(function () {
   const root = document.documentElement;
-  const btn  = document.getElementById('themeToggle');
-  if(!btn) return;
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  const navLinks = document.querySelectorAll('.nav-menu a');
+  const sections = document.querySelectorAll('main section[id]');
+  const backToTop = document.querySelector('.back-to-top');
+  const themeToggle = document.getElementById('themeToggle');
+  const yearEl = document.getElementById('year');
 
-  // Load saved preference (or leave as-is if none)
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light' || saved === 'dark') {
-    root.setAttribute('data-theme', saved);
-    btn.setAttribute('aria-pressed', saved === 'dark' ? 'true' : 'false');
-    btn.innerHTML = saved === 'dark' ? '<i class="far fa-sun"></i>' : '<i class="far fa-moon"></i>';
+  if (yearEl) {
+    yearEl.textContent = String(new Date().getFullYear());
   }
 
-  // Toggle & persist
-  btn.addEventListener('click', () => {
-    const current = root.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    const next = current === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    btn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
-    btn.innerHTML = next === 'dark' ? '<i class="far fa-sun"></i>' : '<i class="far fa-moon"></i>';
-  });
-})();
-  
-  /* ---------------- Revenue & Cost chart (if present) ---------------- */
-  (function () {
-    if (!window.Chart) return;
-    const $id = (id) => document.getElementById(id);
-    const ctx = $id('rcChart');
-    if (!ctx) return;
-
-    const f = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
-    const fmt = (n) => '$' + n.toLocaleString('en-US');
-
-    const inQty = $id('inQty'), outQty = $id('outQty');
-    const inAllowed = $id('inAllowed'), outAllowed = $id('outAllowed');
-    const inLabor = $id('inLabor'), outLabor = $id('outLabor');
-    const inSup = $id('inSup'), outSup = $id('outSup');
-    const inReal = $id('inReal'), outReal = $id('outReal');
-    const outRev = $id('outRev'), outCost = $id('outCost'), outProfit = $id('outProfit');
-
-    const existingChart = Chart.getChart(ctx);
-    if (existingChart) {
-      existingChart.destroy();
-    }
-
-    const chart = new Chart(ctx, {      
-      type: 'bar',
-      data: { labels: ['Revenue','Cost','Profit'], datasets: [{ label: 'USD', data: [0,0,0] }] },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,        
-        plugins: { legend: { display: false } },
-        scales: { y: { type: 'linear', beginAtZero: true, ticks: { callback: (v) => '$' + f.format(v) } } }
-      }
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', function () {
+      const isOpen = navMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
     });
 
-    function recompute(){
-      const qty = +inQty.value, allowed = +inAllowed.value, labor = +inLabor.value, sup = +inSup.value, real = (+inReal.value)/100;
-      const rev = qty * allowed * real;
-      const cost = qty * (labor + sup);
-      const prof = rev - cost;
-      chart.data.datasets[0].data = [rev, cost, prof];
-      chart.update('none');
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
-      outQty.textContent = qty;
-      outAllowed.textContent = allowed.toLocaleString('en-US');
-      outLabor.textContent = labor.toLocaleString('en-US');
-      outSup.textContent = sup.toLocaleString('en-US');
-      outReal.textContent = Math.round(real * 100);
+  function onScroll() {
+    const y = window.scrollY;
+    if (backToTop) {
+      backToTop.classList.toggle('show', y > 260);
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-      outRev.textContent = fmt(rev);
-      outCost.textContent = fmt(cost);
-      outProfit.textContent = fmt(prof);
+  if (window.IntersectionObserver && navLinks.length) {
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.id;
+          navLinks.forEach(function (link) {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        });
+      },
+      { rootMargin: '-30% 0px -55% 0px', threshold: 0.05 }
+    );
+    sections.forEach(function (section) {
+      observer.observe(section);
+    });
+  }
+
+  if (window.Typed) {
+    const typedOutput = document.querySelector('.typed-text-output');
+    const typedSource = document.querySelector('.typed-text');
+    const typedWrap = document.querySelector('.typed-text-wrap');
+    const typedReserve = document.querySelector('.typed-text-reserve');
+    if (typedOutput && typedSource) {
+      const strings = typedSource.textContent.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+      if (strings.length) {
+        if (typedWrap) {
+          const probe = document.createElement('span');
+          const typedStyles = window.getComputedStyle(typedOutput);
+          probe.style.position = 'absolute';
+          probe.style.visibility = 'hidden';
+          probe.style.whiteSpace = 'nowrap';
+          probe.style.fontFamily = typedStyles.fontFamily;
+          probe.style.fontSize = typedStyles.fontSize;
+          probe.style.fontWeight = typedStyles.fontWeight;
+          probe.style.letterSpacing = typedStyles.letterSpacing;
+          probe.style.lineHeight = typedStyles.lineHeight;
+          document.body.appendChild(probe);
+
+          let maxWidth = 0;
+          let longestPhrase = strings[0];
+          strings.forEach(function (phrase) {
+            probe.textContent = phrase;
+            const w = Math.ceil(probe.getBoundingClientRect().width);
+            if (w > maxWidth) {
+              maxWidth = w;
+              longestPhrase = phrase;
+            }
+          });
+          probe.remove();
+          if (maxWidth > 0) {
+            typedWrap.style.setProperty('--typed-width', maxWidth + 'px');
+          }
+          if (typedReserve) {
+            typedReserve.textContent = longestPhrase;
+          }
+        }
+
+        new Typed('.typed-text-output', {
+          strings: strings,
+          typeSpeed: 70,
+          backSpeed: 38,
+          backDelay: 1800,
+          smartBackspace: false,
+          loop: true
+        });
+      }
+    }
+  }
+
+  if (themeToggle) {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light' || saved === 'dark') {
+      root.setAttribute('data-theme', saved);
+      themeToggle.setAttribute('aria-pressed', saved === 'dark' ? 'true' : 'false');
+      themeToggle.innerHTML = saved === 'dark' ? '<i class="far fa-sun"></i>' : '<i class="far fa-moon"></i>';
     }
 
-    [inQty,inAllowed,inLabor,inSup,inReal].forEach(el => el && el.addEventListener('input', recompute));
-    recompute();
-  })();
+    themeToggle.addEventListener('click', function () {
+      const current = root.getAttribute('data-theme') || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+      themeToggle.innerHTML = next === 'dark' ? '<i class="far fa-sun"></i>' : '<i class="far fa-moon"></i>';
+    });
+  }
 
-})(jQuery);
+  function initPortfolioFilters() {
+    const filters = document.getElementById('portfolio-flters');
+    const items = Array.from(document.querySelectorAll('.portfolio-item'));
+    if (!filters || !items.length) return;
+
+    filters.addEventListener('click', function (e) {
+      const btn = e.target.closest('li[data-filter]');
+      if (!btn) return;
+
+      Array.from(filters.querySelectorAll('li')).forEach(function (li) {
+        li.classList.remove('active');
+      });
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+      items.forEach(function (item) {
+        const show = filter === '*' || item.matches(filter);
+        item.style.display = show ? '' : 'none';
+      });
+    });
+  }
+  initPortfolioFilters();
+
+  function initExperienceDetails() {
+    const detailBlocks = document.querySelectorAll('.exp-details');
+    detailBlocks.forEach(function (detailsEl) {
+      const label = detailsEl.querySelector('.toggle-label');
+      if (!label) return;
+      const syncLabel = function () {
+        label.textContent = detailsEl.open ? 'Hide details' : 'Show details';
+      };
+      syncLabel();
+      detailsEl.addEventListener('toggle', syncLabel);
+    });
+  }
+  initExperienceDetails();
+
+  const $id = function (id) { return document.getElementById(id); };
+  const f = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+  const fmt = function (n) { return '$' + n.toLocaleString('en-US'); };
+
+  const inQty = $id('inQty');
+  const outQty = $id('outQty');
+  const inAllowed = $id('inAllowed');
+  const outAllowed = $id('outAllowed');
+  const inLabor = $id('inLabor');
+  const outLabor = $id('outLabor');
+  const inSup = $id('inSup');
+  const outSup = $id('outSup');
+  const inReal = $id('inReal');
+  const outReal = $id('outReal');
+  const outRev = $id('outRev');
+  const outProfit = $id('outProfit');
+  const outLaborTotal = $id('outLaborTotal');
+  const outSupTotal = $id('outSupTotal');
+  const metricRevenue = $id('metricRevenue');
+  const metricLabor = $id('metricLabor');
+  const metricSupplies = $id('metricSupplies');
+  const metricProfit = $id('metricProfit');
+  const barRevenue = $id('barRevenue');
+  const barLabor = $id('barLabor');
+  const barSupplies = $id('barSupplies');
+  const barProfit = $id('barProfit');
+  const snapshotFallback = $id('snapshotFallback');
+  const snapshotContent = $id('snapshotContent');
+
+  if (!inQty || !inAllowed || !inLabor || !inSup || !inReal) return;
+
+  function safeNumber(v) {
+    const n = Number(v);
+    return Number.isFinite(n) ? n : null;
+  }
+
+  function setFallback(isVisible) {
+    if (snapshotFallback) snapshotFallback.hidden = !isVisible;
+    if (snapshotContent) snapshotContent.hidden = isVisible;
+  }
+
+  function setText(el, value) {
+    if (el) el.textContent = value;
+  }
+
+  function setWidth(el, value) {
+    if (!el) return;
+    const clamped = Math.max(0, Math.min(100, value));
+    el.style.width = clamped + '%';
+  }
+
+  function recompute() {
+    const qty = safeNumber(inQty.value);
+    const allowed = safeNumber(inAllowed.value);
+    const labor = safeNumber(inLabor.value);
+    const sup = safeNumber(inSup.value);
+    const realPct = safeNumber(inReal.value);
+
+    if ([qty, allowed, labor, sup, realPct].some(function (n) { return n === null; })) {
+      setFallback(true);
+      setText(outRev, '—');
+      setText(outProfit, '—');
+      setText(outLaborTotal, '—');
+      setText(outSupTotal, '—');
+      return;
+    }
+
+    const real = realPct / 100;
+    const rev = qty * allowed * real;
+    const laborTotal = qty * labor;
+    const suppliesTotal = qty * sup;
+    const cost = laborTotal + suppliesTotal;
+    const prof = rev - cost;
+    const maxValue = Math.max(rev, laborTotal, suppliesTotal, Math.abs(prof), 1);
+
+    setFallback(false);
+    setText(outQty, String(Math.round(qty)));
+    setText(outAllowed, f.format(allowed));
+    setText(outLabor, f.format(labor));
+    setText(outSup, f.format(sup));
+    setText(outReal, String(Math.round(realPct)));
+
+    setText(outRev, fmt(Math.round(rev)));
+    setText(outLaborTotal, fmt(Math.round(laborTotal)));
+    setText(outSupTotal, fmt(Math.round(suppliesTotal)));
+    setText(outProfit, fmt(Math.round(prof)));
+
+    setText(metricRevenue, fmt(Math.round(rev)));
+    setText(metricLabor, fmt(Math.round(laborTotal)));
+    setText(metricSupplies, fmt(Math.round(suppliesTotal)));
+    setText(metricProfit, fmt(Math.round(prof)));
+
+    setWidth(barRevenue, (rev / maxValue) * 100);
+    setWidth(barLabor, (laborTotal / maxValue) * 100);
+    setWidth(barSupplies, (suppliesTotal / maxValue) * 100);
+    setWidth(barProfit, (Math.abs(prof) / maxValue) * 100);
+  }
+
+  [inQty, inAllowed, inLabor, inSup, inReal].forEach(function (el) {
+    if (el) el.addEventListener('input', recompute);
+  });
+  recompute();
+})();
