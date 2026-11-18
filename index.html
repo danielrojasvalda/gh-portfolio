@@ -609,12 +609,16 @@
     const form = document.getElementById('ai-form');
     const input = document.getElementById('ai-input');
     const statusEl = document.getElementById('ai-status');
-
     btn.onclick = () => {
       const open = box.style.display === 'block';
+    
       box.style.display = open ? 'none' : 'block';
       btn.setAttribute('aria-expanded', String(!open));
-      if (!open) setTimeout(() => input.focus(), 40);
+    
+      if (!open) {
+        showWelcome();
+        setTimeout(() => input.focus(), 40);
+      }
     };
 
     const aiOpen = document.getElementById('openAiChat');
@@ -625,6 +629,20 @@
     }
 
     function addMessage(text, who){
+      // Show a welcome message when the chat first opens
+      let welcomeShown = false;
+      
+      function showWelcome() {
+        if (welcomeShown) return;
+      
+        addMessage(
+          "Hi! 👋 I'm Freddy's AI assistant. Ask me about his skills, work experience, or projects!",
+          "bot"
+        );
+      
+        welcomeShown = true;
+      }
+      
       const div=document.createElement('div');
       div.className=`m ${who}`;
       div.textContent=text;
