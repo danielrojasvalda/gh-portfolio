@@ -628,27 +628,29 @@
       });
     }
 
-    function addMessage(text, who){
-      // Show a welcome message when the chat first opens
-      let welcomeShown = false;
-      
-      function showWelcome() {
-        if (welcomeShown) return;
-      
-        addMessage(
-          "Hi! 👋 I'm Freddy's AI assistant. Ask me about his skills, work experience, or projects!",
-          "bot"
-        );
-      
-        welcomeShown = true;
-      }
-      
-      const div=document.createElement('div');
-      div.className=`m ${who}`;
-      div.textContent=text;
+
+    function addMessage(text, who) {
+      const div = document.createElement('div');
+      div.className = `m ${who}`;
+      div.textContent = text;
       log.appendChild(div);
-      log.scrollTop=log.scrollHeight;
+      log.scrollTop = log.scrollHeight;
     }
+    
+    // Show welcome message only once per page load
+    let welcomeShown = false;
+    
+    function showWelcome() {
+      if (welcomeShown) return;
+    
+      addMessage(
+        "Hi! 👋 I'm Freddy's AI assistant. Ask me about his skills, work experience, or projects!",
+        "bot"
+      );
+    
+      welcomeShown = true;
+    }
+    
     function setStatus(t){ statusEl.textContent = t ? ` · ${t}` : ''; }
 
     form.addEventListener('submit', async (e)=>{
